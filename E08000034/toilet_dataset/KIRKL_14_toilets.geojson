@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_14_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Marsden Mechanics Hall and Library", "payment_info": "Free", "accessible": "False", "radar": "False", "women": "True", "men": "True", "baby_change": "False", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 43, "park_offical_id": "KIRKL_14" }, "geometry": { "type": "Point", "coordinates": [ -1.9264191, 53.6007792 ] } },
+{ "type": "Feature", "properties": { "name": "Standedge Tunnel Visitor Centre", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 43, "park_offical_id": "KIRKL_14" }, "geometry": { "type": "Point", "coordinates": [ -1.939837933, 53.604442791 ] } }
+]
+}

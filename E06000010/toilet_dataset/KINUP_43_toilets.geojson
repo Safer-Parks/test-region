@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "KINUP_43_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Outpatients Toilets Tower Block Hull Royal Infirmary", "payment_info": "Cost unknown", "accessible": "True", "radar": "False", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "Closed", "Sun": "Closed", "index_right": 61, "park_offical_id": "KINUP_43" }, "geometry": { "type": "Point", "coordinates": [ -0.35833776, 53.74410144 ] } }
+]
+}

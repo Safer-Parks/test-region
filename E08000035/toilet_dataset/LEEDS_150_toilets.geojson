@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_150_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Morrisons Supermarket Morley", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 86, "park_offical_id": "LEEDS_150" }, "geometry": { "type": "Point", "coordinates": [ -1.602477729, 53.745445398 ] } }
+]
+}

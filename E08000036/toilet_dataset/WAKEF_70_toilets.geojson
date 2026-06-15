@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_70_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Trinity Walk Shopping Centre", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 201, "park_offical_id": "WAKEF_70" }, "geometry": { "type": "Point", "coordinates": [ -1.493802667, 53.684419703 ] } },
+{ "type": "Feature", "properties": { "name": "Wakefield One Council Offices and Library", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 201, "park_offical_id": "WAKEF_70" }, "geometry": { "type": "Point", "coordinates": [ -1.503680741, 53.684283775 ] } },
+{ "type": "Feature", "properties": { "name": "Ridings Centre", "payment_info": "Free", "accessible": "False", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 201, "park_offical_id": "WAKEF_70" }, "geometry": { "type": "Point", "coordinates": [ -1.494521499, 53.682105208 ] } },
+{ "type": "Feature", "properties": { "name": "Drury Lane Health and Wellbeing Centre", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "08:30-17:00", "Tue": "08:30-17:00", "Wed": "08:30-17:00", "Thu": "08:30-17:00", "Fri": "08:30-17:00", "Sat": "Closed", "Sun": "Closed", "index_right": 201, "park_offical_id": "WAKEF_70" }, "geometry": { "type": "Point", "coordinates": [ -1.503144801, 53.682989013 ] } },
+{ "type": "Feature", "properties": { "name": "Wakefield Westgate Platform 1", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 201, "park_offical_id": "WAKEF_70" }, "geometry": { "type": "Point", "coordinates": [ -1.505773096, 53.682878317 ] } }
+]
+}

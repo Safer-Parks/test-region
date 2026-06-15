@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "NOREA_17_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Grant Street car park", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 261, "park_offical_id": "NOREA_17" }, "geometry": { "type": "Point", "coordinates": [ -0.031052842, 53.562695984 ] } },
+{ "type": "Feature", "properties": { "name": "Saint Peters ave Public Toilets", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-18:00", "Tue": "09:00-18:00", "Wed": "09:00-18:00", "Thu": "09:00-18:00", "Fri": "09:00-18:00", "Sat": "09:00-18:00", "Sun": "09:00-18:00", "index_right": 261, "park_offical_id": "NOREA_17" }, "geometry": { "type": "Point", "coordinates": [ -0.029938817, 53.558795674 ] } },
+{ "type": "Feature", "properties": { "name": "Kingsway public conveniences ", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 261, "park_offical_id": "NOREA_17" }, "geometry": { "type": "Point", "coordinates": [ -0.018203, 53.552446 ] } },
+{ "type": "Feature", "properties": { "name": "Wetherspoons", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "Unknown", "men": "Unknown", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 261, "park_offical_id": "NOREA_17" }, "geometry": { "type": "Point", "coordinates": [ -0.031177998, 53.560895853 ] } },
+{ "type": "Feature", "properties": { "name": "Cleethorpes Station", "payment_info": "train passengers only allowed to use now", "accessible": "False", "radar": "False", "women": "Unknown", "men": "Unknown", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 261, "park_offical_id": "NOREA_17" }, "geometry": { "type": "Point", "coordinates": [ -0.029595494, 53.561834206 ] } }
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_137_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Horbury Library", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 39, "park_offical_id": "WAKEF_137" }, "geometry": { "type": "Point", "coordinates": [ -1.559710612, 53.661165126 ] } },
+{ "type": "Feature", "properties": { "name": "Cooperative Supermarket", "payment_info": "Free", "accessible": "False", "radar": "Unknown", "women": "Unknown", "men": "Unknown", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 39, "park_offical_id": "WAKEF_137" }, "geometry": { "type": "Point", "coordinates": [ -1.555531025, 53.659369698 ] } }
+]
+}

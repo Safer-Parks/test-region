@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_567_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "The Shambles", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 323, "park_offical_id": "LEEDS_567" }, "geometry": { "type": "Point", "coordinates": [ -1.386262178, 53.927933113 ] } },
+{ "type": "Feature", "properties": { "name": "Wetherby Leisure Centre ", "payment_info": "Free", "accessible": "True", "radar": "False", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 323, "park_offical_id": "LEEDS_567" }, "geometry": { "type": "Point", "coordinates": [ -1.389909886, 53.925974746 ] } },
+{ "type": "Feature", "properties": { "name": "Shell", "payment_info": "Free", "accessible": "True", "radar": "False", "women": "True", "men": "True", "baby_change": "False", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 323, "park_offical_id": "LEEDS_567" }, "geometry": { "type": "Point", "coordinates": [ -1.384741499, 53.930900983 ] } },
+{ "type": "Feature", "properties": { "name": "Morrisons Wetherby", "payment_info": "none ", "accessible": "True", "radar": "False", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 323, "park_offical_id": "LEEDS_567" }, "geometry": { "type": "Point", "coordinates": [ -1.38459242, 53.928675258 ] } }
+]
+}

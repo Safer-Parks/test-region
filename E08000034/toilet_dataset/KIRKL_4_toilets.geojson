@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_4_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Asda", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "00:00-00:00", "Tue": "00:00-00:00", "Wed": "00:00-00:00", "Thu": "00:00-00:00", "Fri": "00:00-00:00", "Sat": "00:00-00:00", "Sun": "00:00-00:00", "index_right": 166, "park_offical_id": "KIRKL_4" }, "geometry": { "type": "Point", "coordinates": [ -1.632818942, 53.688413996 ] } },
+{ "type": "Feature", "properties": { "name": "KFC", "payment_info": "Free", "accessible": "False", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 166, "park_offical_id": "KIRKL_4" }, "geometry": { "type": "Point", "coordinates": [ -1.626416402, 53.688496145 ] } },
+{ "type": "Feature", "properties": { "name": "Dewsbury Health Centre", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "Closed", "Sun": "Closed", "index_right": 166, "park_offical_id": "KIRKL_4" }, "geometry": { "type": "Point", "coordinates": [ -1.63493462, 53.689824622 ] } },
+{ "type": "Feature", "properties": { "name": "Dewsbury Bus Station", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 166, "park_offical_id": "KIRKL_4" }, "geometry": { "type": "Point", "coordinates": [ -1.630723063, 53.689844588 ] } }
+]
+}

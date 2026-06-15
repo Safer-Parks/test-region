@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_77_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "McDonalds", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 208, "park_offical_id": "WAKEF_77" }, "geometry": { "type": "Point", "coordinates": [ -1.321046948, 53.696900558 ] } }
+]
+}

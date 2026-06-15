@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_95_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Costa", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "07:00-18:00", "Tue": "07:00-18:00", "Wed": "07:00-18:00", "Thu": "07:00-18:00", "Fri": "07:00-18:00", "Sat": "07:30-18:00", "Sun": "09:00-17:00", "index_right": 509, "park_offical_id": "LEEDS_95" }, "geometry": { "type": "Point", "coordinates": [ -1.693930267, 53.904548406 ] } },
+{ "type": "Feature", "properties": { "name": "Otley Library Toilets", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 509, "park_offical_id": "LEEDS_95" }, "geometry": { "type": "Point", "coordinates": [ -1.691446602, 53.905011309 ] } },
+{ "type": "Feature", "properties": { "name": "Sainsburys Toilet", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 509, "park_offical_id": "LEEDS_95" }, "geometry": { "type": "Point", "coordinates": [ -1.692213714, 53.902773745 ] } },
+{ "type": "Feature", "properties": { "name": "Orchard Gate Public Toilets", "payment_info": "030", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 509, "park_offical_id": "LEEDS_95" }, "geometry": { "type": "Point", "coordinates": [ -1.69298619, 53.905175645 ] } },
+{ "type": "Feature", "properties": { "name": "The Bowling Green Wetherspoons", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "08:00-00:00", "Tue": "08:00-00:00", "Wed": "08:00-00:00", "Thu": "08:00-00:00", "Fri": "08:00-01:00", "Sat": "08:00-01:00", "Sun": "08:00-23:00", "index_right": 509, "park_offical_id": "LEEDS_95" }, "geometry": { "type": "Point", "coordinates": [ -1.692884302, 53.90416922 ] } }
+]
+}

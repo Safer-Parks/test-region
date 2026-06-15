@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_35_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Carlton Lanes Shopping Centre", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:30", "Tue": "09:00-17:30", "Wed": "09:00-17:30", "Thu": "09:00-17:30", "Fri": "09:00-17:30", "Sat": "09:00-17:30", "Sun": "10:00-16:00", "index_right": 154, "park_offical_id": "WAKEF_35" }, "geometry": { "type": "Point", "coordinates": [ -1.349979937, 53.726196492 ] } },
+{ "type": "Feature", "properties": { "name": "Castleford Bus Station", "payment_info": "20p", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 154, "park_offical_id": "WAKEF_35" }, "geometry": { "type": "Point", "coordinates": [ -1.358128488, 53.724509999 ] } }
+]
+}

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_110_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Bankfield Museum", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 9, "park_offical_id": "CALDE_110" }, "geometry": { "type": "Point", "coordinates": [ -1.863362789, 53.732545688 ] } }
+]
+}

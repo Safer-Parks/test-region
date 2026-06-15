@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_22_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Flutterbites Cafe", "payment_info": "Free", "accessible": "False", "radar": "Unknown", "women": "Unknown", "men": "Unknown", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 38, "park_offical_id": "CALDE_22" }, "geometry": { "type": "Point", "coordinates": [ -1.8665494, 53.7074226 ] } },
+{ "type": "Feature", "properties": { "name": "New Lodge Fisheries", "payment_info": "true", "accessible": "False", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 38, "park_offical_id": "CALDE_22" }, "geometry": { "type": "Point", "coordinates": [ -1.870202, 53.709276 ] } }
+]
+}

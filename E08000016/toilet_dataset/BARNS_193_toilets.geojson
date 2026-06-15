@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_193_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Tesco Barnsley", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "06:00-00:00", "Tue": "06:00-00:00", "Wed": "06:00-00:00", "Thu": "06:00-00:00", "Fri": "06:00-00:00", "Sat": "06:00-00:00", "Sun": "10:00-16:00", "index_right": 55, "park_offical_id": "BARNS_193" }, "geometry": { "type": "Point", "coordinates": [ -1.435262919, 53.5409929 ] } },
+{ "type": "Feature", "properties": { "name": "Tesco cafe toilets ", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "08:00-18:00", "Tue": "08:00-18:00", "Wed": "08:00-18:00", "Thu": "08:00-18:00", "Fri": "08:00-18:00", "Sat": "08:00-06:00", "Sun": "10:00-16:00", "index_right": 55, "park_offical_id": "BARNS_193" }, "geometry": { "type": "Point", "coordinates": [ -1.435432434, 53.540690104 ] } },
+{ "type": "Feature", "properties": { "name": "Dunelm ", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 55, "park_offical_id": "BARNS_193" }, "geometry": { "type": "Point", "coordinates": [ -1.432192326, 53.539918493 ] } },
+{ "type": "Feature", "properties": { "name": "McDonalds Barnsley", "payment_info": "Cost unknown", "accessible": "True", "radar": "False", "women": "True", "men": "True", "baby_change": "False", "Mon": "00:00-00:00", "Tue": "00:00-00:00", "Wed": "00:00-00:00", "Thu": "00:00-00:00", "Fri": "00:00-00:00", "Sat": "00:00-00:00", "Sun": "00:00-00:00", "index_right": 55, "park_offical_id": "BARNS_193" }, "geometry": { "type": "Point", "coordinates": [ -1.437697721, 53.544916221 ] } },
+{ "type": "Feature", "properties": { "name": "Costa coffee ", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 55, "park_offical_id": "BARNS_193" }, "geometry": { "type": "Point", "coordinates": [ -1.432460546, 53.540992412 ] } }
+]
+}

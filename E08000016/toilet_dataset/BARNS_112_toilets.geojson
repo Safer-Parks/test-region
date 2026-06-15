@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_112_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Elsecar Heritage Centre 2", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 16, "park_offical_id": "BARNS_112" }, "geometry": { "type": "Point", "coordinates": [ -1.420339644, 53.494808374 ] } },
+{ "type": "Feature", "properties": { "name": "Elsecar Park", "payment_info": "Free", "accessible": "False", "radar": "False", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 16, "park_offical_id": "BARNS_112" }, "geometry": { "type": "Point", "coordinates": [ -1.425465345, 53.49264783 ] } },
+{ "type": "Feature", "properties": { "name": "Elsecar Heritage Centre 1", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 16, "park_offical_id": "BARNS_112" }, "geometry": { "type": "Point", "coordinates": [ -1.420323551, 53.494457333 ] } },
+{ "type": "Feature", "properties": { "name": "Elsecar Station Park  Ride", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "00:00-23:59", "Tue": "00:00-23:59", "Wed": "00:00-23:59", "Thu": "00:00-23:59", "Fri": "00:00-23:59", "Sat": "00:00-23:59", "Sun": "00:00-23:59", "index_right": 16, "park_offical_id": "BARNS_112" }, "geometry": { "type": "Point", "coordinates": [ -1.428735598, 53.498379372 ] } }
+]
+}

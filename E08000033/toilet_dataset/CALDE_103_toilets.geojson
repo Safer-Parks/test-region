@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_103_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Halifax train station", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 5, "park_offical_id": "CALDE_103" }, "geometry": { "type": "Point", "coordinates": [ -1.853712201, 53.720690033 ] } },
+{ "type": "Feature", "properties": { "name": "Eureka Childrens Museum", "payment_info": "Free", "accessible": "False", "radar": "False", "women": "Unknown", "men": "Unknown", "baby_change": "False", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 5, "park_offical_id": "CALDE_103" }, "geometry": { "type": "Point", "coordinates": [ -1.854488705, 53.720439674 ] } }
+]
+}

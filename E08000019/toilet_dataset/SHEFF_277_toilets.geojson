@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_277_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Heeley Farm", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-16:30", "Tue": "09:00-16:30", "Wed": "09:00-16:30", "Thu": "09:00-16:30", "Fri": "09:00-16:30", "Sat": "09:00-16:00", "Sun": "09:00-16:30", "index_right": 205, "park_offical_id": "SHEFF_277" }, "geometry": { "type": "Point", "coordinates": [ -1.467726255, 53.36301834 ] } }
+]
+}

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_4_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Crystal Peaks Ground Floor", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 250, "park_offical_id": "SHEFF_4" }, "geometry": { "type": "Point", "coordinates": [ -1.351983547, 53.341616254 ] } }
+]
+}

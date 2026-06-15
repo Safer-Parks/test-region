@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_128_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Heeley Farm", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-16:30", "Tue": "09:00-16:30", "Wed": "09:00-16:30", "Thu": "09:00-16:30", "Fri": "09:00-16:30", "Sat": "09:00-16:00", "Sun": "09:00-16:30", "index_right": 66, "park_offical_id": "SHEFF_128" }, "geometry": { "type": "Point", "coordinates": [ -1.467726255, 53.36301834 ] } },
+{ "type": "Feature", "properties": { "name": "Lidl ", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "10:00-16:00", "Tue": "10:00-16:00", "Wed": "10:00-16:00", "Thu": "10:00-16:00", "Fri": "10:00-16:00", "Sat": "10:00-16:00", "Sun": "10:00-16:00", "index_right": 66, "park_offical_id": "SHEFF_128" }, "geometry": { "type": "Point", "coordinates": [ -1.476812687, 53.357947291 ] } },
+{ "type": "Feature", "properties": { "name": "Costa coffee", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 66, "park_offical_id": "SHEFF_128" }, "geometry": { "type": "Point", "coordinates": [ -1.478590057, 53.356608666 ] } }
+]
+}

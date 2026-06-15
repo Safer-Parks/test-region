@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_24_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Brighouse Tescos", "payment_info": "Cost unknown", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 40, "park_offical_id": "CALDE_24" }, "geometry": { "type": "Point", "coordinates": [ -1.776313052, 53.703804253 ] } },
+{ "type": "Feature", "properties": { "name": "Sainsburys", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 40, "park_offical_id": "CALDE_24" }, "geometry": { "type": "Point", "coordinates": [ -1.778079271, 53.700847847 ] } },
+{ "type": "Feature", "properties": { "name": "Briggate Toilets", "payment_info": "Free", "accessible": "False", "radar": "Unknown", "women": "Unknown", "men": "Unknown", "baby_change": "False", "Mon": "00:00-00:00", "Tue": "00:00-00:00", "Wed": "00:00-00:00", "Thu": "00:00-00:00", "Fri": "00:00-00:00", "Sat": "00:00-00:00", "Sun": "00:00-00:00", "index_right": 40, "park_offical_id": "CALDE_24" }, "geometry": { "type": "Point", "coordinates": [ -1.782311797, 53.701373429 ] } },
+{ "type": "Feature", "properties": { "name": "Brighouse Library and Smith Art Gallery", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 40, "park_offical_id": "CALDE_24" }, "geometry": { "type": "Point", "coordinates": [ -1.786023974, 53.703958371 ] } }
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_283_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Baghill House Health and Wellbeing Centre", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "08:30-16:30", "Tue": "08:30-16:30", "Wed": "08:30-16:30", "Thu": "08:30-16:30", "Fri": "08:30-16:30", "Sat": "Closed", "Sun": "Closed", "index_right": 126, "park_offical_id": "WAKEF_283" }, "geometry": { "type": "Point", "coordinates": [ -1.303094923, 53.693926446 ] } },
+{ "type": "Feature", "properties": { "name": "Pontefract Castle", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 126, "park_offical_id": "WAKEF_283" }, "geometry": { "type": "Point", "coordinates": [ -1.303698421, 53.695230427 ] } }
+]
+}

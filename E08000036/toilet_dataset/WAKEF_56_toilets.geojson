@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_56_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Trinity Walk Shopping Centre", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 185, "park_offical_id": "WAKEF_56" }, "geometry": { "type": "Point", "coordinates": [ -1.493802667, 53.684419703 ] } },
+{ "type": "Feature", "properties": { "name": "Pinderfields hospital", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 185, "park_offical_id": "WAKEF_56" }, "geometry": { "type": "Point", "coordinates": [ -1.487563848, 53.692581199 ] } }
+]
+}

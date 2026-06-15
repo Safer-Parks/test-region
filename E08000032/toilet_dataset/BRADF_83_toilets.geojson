@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "BRADF_83_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Tescos", "payment_info": "Free", "accessible": "True", "radar": "False", "women": "True", "men": "True", "baby_change": "True", "Mon": "00:00-00:00", "Tue": "00:00-00:00", "Wed": "00:00-00:00", "Thu": "00:00-00:00", "Fri": "00:00-00:00", "Sat": "00:00-00:00", "Sun": "00:00-00:00", "index_right": 230, "park_offical_id": "BRADF_83" }, "geometry": { "type": "Point", "coordinates": [ -1.788883209, 53.780914593 ] } }
+]
+}

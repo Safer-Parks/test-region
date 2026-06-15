@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_233_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Wharfe Meadows", "payment_info": "Cost unknown", "accessible": "False", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 172, "park_offical_id": "LEEDS_233" }, "geometry": { "type": "Point", "coordinates": [ -1.693748933, 53.910537391 ] } }
+]
+}

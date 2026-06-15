@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_109_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Asda", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 12, "park_offical_id": "WAKEF_109" }, "geometry": { "type": "Point", "coordinates": [ -1.352444887, 53.714269126 ] } },
+{ "type": "Feature", "properties": { "name": "Castleford Bus Station", "payment_info": "20p", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 12, "park_offical_id": "WAKEF_109" }, "geometry": { "type": "Point", "coordinates": [ -1.358128488, 53.724509999 ] } }
+]
+}

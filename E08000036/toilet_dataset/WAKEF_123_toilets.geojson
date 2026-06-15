@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_123_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "petrol station", "payment_info": "Free", "accessible": "Unknown", "radar": "Unknown", "women": "Unknown", "men": "Unknown", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 28, "park_offical_id": "WAKEF_123" }, "geometry": { "type": "Point", "coordinates": [ -1.484244227, 53.672912598 ] } }
+]
+}

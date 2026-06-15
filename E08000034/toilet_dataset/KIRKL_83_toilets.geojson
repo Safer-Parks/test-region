@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_83_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Birstall Library", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "10:00-13:00", "Tue": "10:00-17:00", "Wed": "10:00-19:00", "Thu": "10:00-17:00", "Fri": "10:00-13:00", "Sat": "09:00-12:30", "Sun": "Closed", "index_right": 228, "park_offical_id": "KIRKL_83" }, "geometry": { "type": "Point", "coordinates": [ -1.661059856, 53.731647621 ] } },
+{ "type": "Feature", "properties": { "name": "Wilton Park Cafe Batley", "payment_info": "Cost unknown", "accessible": "False", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 228, "park_offical_id": "KIRKL_83" }, "geometry": { "type": "Point", "coordinates": [ -1.650913446, 53.726006962 ] } }
+]
+}
