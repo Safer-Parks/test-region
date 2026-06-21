@@ -310,6 +310,9 @@
     <!-- Proj4 for coordinate transformation -->
     <script src="https://cdn.jsdelivr.net/npm/proj4@2.9.0/dist/proj4.js"></script>
     
+    <!-- Chroma.js for color mapping -->
+    <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.2/dist/chroma.min.js"></script>
+    
     <!-- Main Application Script -->
     <script>
         // Initialize Proj4 for coordinate transformation
@@ -383,7 +386,8 @@
             authoritiesLayer: null,
             allParksData: [],
             sortedParks: [],
-            entrancesLayer: null
+            entrancesLayer: null,
+            visibilityLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -543,6 +547,7 @@
                 const parks = parksData.features.map(feature => ({
                     name: feature.properties['Park Name'] || feature.properties.name || `Park ${feature.properties.park_offical_id || 'Unknown'}`,
                     id: feature.properties.park_offical_id,
+                    newParkId: feature.properties.new_park_id, // New park ID for visibility file lookup
                     geometry: transformCoordinates(feature.geometry),
                     properties: feature.properties
                 }));
@@ -704,10 +709,16 @@
             // Load park entrances and wait for it to complete
             await loadParkEntrances(selectedPark);
             
+            // Load visibility hexagons and wait for it to complete
+            await loadVisibilityHexagons(selectedPark);
+            
             // Show and populate layer toggles for both layers
             const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
             if (mapState.entrancesLayer) {
                 layerToggles.push(mapState.entrancesLayer);
+            }
+            if (mapState.visibilityLayer) {
+                layerToggles.push(mapState.visibilityLayer);
             }
             populateLayerToggles(layerToggles);
             updateLegend();
@@ -813,6 +824,157 @@
             }
         }
         
+        // Helper functions for hexagon calculation
+        function toRad(deg) {
+            return deg * Math.PI / 180;
+        }
+
+        function toDeg(rad) {
+            return rad * 180 / Math.PI;
+        }
+
+        // Calculate distance between two points in meters (haversine formula)
+        function haversineDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371000; // Earth radius in meters
+            const φ1 = toRad(lat1);
+            const φ2 = toRad(lat2);
+            const Δφ = toRad(lat2 - lat1);
+            const Δλ = toRad(lon2 - lon1);
+
+            const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                      Math.cos(φ1) * Math.cos(φ2) *
+                      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        // Calculate destination point given distance and bearing
+        function destinationPoint(lat, lon, distanceM, bearingDeg) {
+            const R = 6371000; // Earth radius in meters
+            const φ1 = toRad(lat);
+            const λ1 = toRad(lon);
+            const θ = toRad(bearingDeg);
+            const δ = distanceM / R;
+
+            const φ2 = Math.asin(Math.sin(φ1) * Math.cos(δ) +
+                                Math.cos(φ1) * Math.sin(δ) * Math.cos(θ));
+            const λ2 = λ1 + Math.atan2(Math.sin(θ) * Math.sin(δ) * Math.cos(φ1),
+                                       Math.cos(δ) - Math.sin(φ1) * Math.sin(φ2));
+
+            return [toDeg(φ2), toDeg(λ2)];
+        }
+
+        // Create hexagon from center point and radius in meters
+        function createHexFromCenter(lat, lon, radiusM) {
+            const hexPoints = [];
+            for (let i = 0; i < 6; i++) {
+                const bearing = i * 60; // 6 points, 60 degrees apart
+                const point = destinationPoint(lat, lon, radiusM, bearing);
+                hexPoints.push([point[0], point[1]]); // [lat, lon] for Leaflet
+            }
+            hexPoints.push(hexPoints[0]); // Close the polygon
+            return hexPoints;
+        }
+        
+        // Hexagon radius configuration
+        const HEX_RADIUS_M = 8; // Fixed radius in meters for all visibility hexagons
+        
+        // Load visibility hexagons for selected park
+        async function loadVisibilityHexagons(park) {
+            try {
+                // Remove existing visibility layer
+                if (mapState.visibilityLayer && mapState.visibilityLayer.layer) {
+                    map.removeLayer(mapState.visibilityLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                const authName = mapState.currentAuthority.name;
+                
+                // Get the new_park_id from the park object
+                if (!park.newParkId) {
+                    console.log(`No new_park_id found for park: ${park.name}`);
+                    return;
+                }
+                
+                // Try to load visibility file from combined parks directory
+                const visibilityFilename = `${authName}_pp_or_g_cmb/${park.newParkId}_visibility.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${visibilityFilename}`);
+                    if (!response.ok) {
+                        console.log(`Visibility file not found: ${visibilityFilename}`);
+                        return;
+                    }
+                    
+                    const visibilityData = await response.json();
+                    
+                    if (!visibilityData.features || visibilityData.features.length === 0) {
+                        console.log(`No visibility data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create hexagon layer
+                    const hexagonLayer = L.featureGroup();
+                    
+                    // Get visibility range for color scaling
+                    const visibilityValues = visibilityData.features.map(f => f.properties.visibility_pct || 0);
+                    const minVis = Math.min(...visibilityValues);
+                    const maxVis = Math.max(...visibilityValues);
+                    
+                    // Create color scale using a simple viridis-like interpolation
+                    // Define viridis color stops (since chroma may not be available)
+                    const viridisColors = ['#440154', '#482777', '#3b528b', '#2d708e', '#20908c', '#1fa78d', '#35b779', '#6ece58', '#b5de2b', '#fde724'];
+                    
+                    // Simple color interpolation function
+                    const getColorForValue = (value, minVal, maxVal) => {
+                        const normalized = (value - minVal) / (maxVal - minVal);
+                        const index = Math.floor(normalized * (viridisColors.length - 1));
+                        return viridisColors[Math.min(Math.max(index, 0), viridisColors.length - 1)];
+                    };
+                    
+                    const colorScale = getColorForValue;
+                    
+                    visibilityData.features.forEach((feature, index) => {
+                        const coords = feature.geometry.coordinates;
+                        const lon = coords[0];
+                        const lat = coords[1];
+                        const visibility = feature.properties.visibility_pct || 0;
+                        
+                        // Create hexagon using fixed radius
+                        const hexCorners = createHexFromCenter(lat, lon, HEX_RADIUS_M);
+                        
+                        // Create polygon for hexagon
+                        const hexagon = L.polygon(hexCorners, {
+                            color: colorScale(visibility, minVis, maxVis),
+                            weight: 1,
+                            opacity: 0.7,
+                            fillOpacity: 0.6,
+                            fillColor: colorScale(visibility, minVis, maxVis)
+                        });
+                        
+                        // Add popup with visibility percentage
+                        hexagon.bindPopup(`<strong>Visibility</strong><br/>${visibility.toFixed(1)}%`);
+                        
+                        hexagonLayer.addLayer(hexagon);
+                    });
+                    
+                    // Store layer info for toggling (but don't add to map yet - user must enable via toggle)
+                    mapState.visibilityLayer = {
+                        id: 'visibility-hexagons',
+                        name: 'Visibility Analysis',
+                        layer: hexagonLayer,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${visibilityData.features.length} visibility hexagons for ${park.name}`);
+                } catch (error) {
+                    console.error('Error loading visibility:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadVisibilityHexagons:', error);
+            }
+        }
+        
         // Populate layer toggles
         function populateLayerToggles(layers) {
             const container = document.getElementById('dataLayerToggles');
@@ -902,6 +1064,22 @@
                 } catch (error) {
                     console.error('Error toggling park entrances layer:', error);
                 }
+            } else if (layerId === 'visibility-hexagons' && mapState.visibilityLayer) {
+                const layerObj = mapState.visibilityLayer;
+                console.log('Visibility layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Visibility layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Visibility layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling visibility layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
@@ -938,6 +1116,14 @@
                     id: 'park-entrances',
                     name: 'Park Entrances',
                     type: 'entrances'
+                });
+            }
+            
+            if (mapState.visibilityLayer && mapState.visibilityLayer.visible) {
+                visibleLayers.push({
+                    id: 'visibility-hexagons',
+                    name: 'Visibility Analysis',
+                    type: 'visibility'
                 });
             }
             
@@ -1016,6 +1202,39 @@
                     entranceGroup.appendChild(secondaryItem);
                     legendItems.appendChild(entranceGroup);
                     return;
+                } else if (layer.type === 'visibility') {
+                    // Create visibility gradient legend
+                    const label = document.createElement('span');
+                    label.style.fontSize = '0.85rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '0.25rem';
+                    label.style.display = 'block';
+                    label.textContent = layer.name;
+                    
+                    const visibilityGroup = document.createElement('div');
+                    visibilityGroup.style.marginBottom = '0.75rem';
+                    visibilityGroup.appendChild(label);
+                    
+                    // Create gradient bar
+                    const gradientBar = document.createElement('div');
+                    gradientBar.style.width = '100%';
+                    gradientBar.style.height = '20px';
+                    gradientBar.style.background = 'linear-gradient(to right, #440154, #31688e, #35b779, #fde724)';
+                    gradientBar.style.borderRadius = '4px';
+                    gradientBar.style.marginBottom = '0.25rem';
+                    visibilityGroup.appendChild(gradientBar);
+                    
+                    // Add labels
+                    const labelContainer = document.createElement('div');
+                    labelContainer.style.display = 'flex';
+                    labelContainer.style.justifyContent = 'space-between';
+                    labelContainer.style.fontSize = '0.75rem';
+                    labelContainer.style.color = '#666';
+                    labelContainer.innerHTML = '<span>Low</span><span>High</span>';
+                    visibilityGroup.appendChild(labelContainer);
+                    
+                    legendItems.appendChild(visibilityGroup);
+                    return;
                 }
                 
                 item.appendChild(marker);
@@ -1038,6 +1257,10 @@
             if (mapState.entrancesLayer && mapState.entrancesLayer.layer) {
                 map.removeLayer(mapState.entrancesLayer.layer);
                 mapState.entrancesLayer = null;
+            }
+            if (mapState.visibilityLayer && mapState.visibilityLayer.layer) {
+                map.removeLayer(mapState.visibilityLayer.layer);
+                mapState.visibilityLayer = null;
             }
             if (mapState.allParksLayer) {
                 // Make sure all parks layer is visible
