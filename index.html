@@ -331,6 +331,17 @@
                     },
                     onEachFeature: (feature, layer) => {
                         layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
+                        
+                        // Click to select park
+                        layer.on('click', () => {
+                            const parkName = feature.properties.name;
+                            const parkIndex = mapState.sortedParks.findIndex(p => p.name === parkName);
+                            
+                            if (parkIndex !== -1) {
+                                document.getElementById('parks').value = parkIndex;
+                                document.getElementById('loadPark').click();
+                            }
+                        });
                     }
                 }).addTo(map);
                 
