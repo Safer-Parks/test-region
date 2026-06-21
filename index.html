@@ -690,7 +690,7 @@
             // Fit map to park bounds with padding
             const bounds = mapState.parksLayer.getBounds();
             if (bounds.isValid()) {
-                map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+                map.fitBounds(bounds, { padding: [50, 50], maxZoom: 17 });
                 console.log('Zoomed to park:', selectedPark.name, 'Bounds:', bounds);
             } else {
                 console.warn('Invalid bounds for park:', selectedPark.name);
@@ -1075,7 +1075,6 @@
             navParkName.style.display = 'none';
         });
         
-
 
         
         // Initialize on page load
