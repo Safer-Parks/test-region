@@ -144,6 +144,65 @@
             display: block;
             overflow: hidden;
         }
+        
+        /* Legend item styling */
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .legend-marker {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .legend-marker.outline {
+            border: 2px solid #4F6C37;
+            background: white;
+        }
+        
+        .legend-marker.filled {
+            background: #4F6C37;
+        }
+        
+        .legend-marker.circle {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .legend-marker.circle.primary {
+            background: #EE655F;
+        }
+        
+        .legend-marker.circle.secondary {
+            background: #95a5a6;
+        }
+        
+        /* Force legend positioning on right side */
+        aside#legendPanel {
+            position: fixed !important;
+            right: 10px !important;
+            top: 75px !important;
+            left: auto !important;
+            width: 250px !important;
+            max-width: none !important;
+            max-height: 90vh !important;
+            overflow-y: auto !important;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
 
     </style>
 </head>
@@ -212,6 +271,31 @@
     <main>
         <div id="map"></div>
     </main>
+
+    <!-- Legend Sidebar (Right) -->
+    <aside aria-label="Map Legend" id="legendPanel" style="display: none;">
+        <div class="accordion">
+            <h2>
+                <button 
+                    type="button" 
+                    aria-expanded="true" 
+                    class="accordion-trigger" 
+                    aria-controls="legend-content"
+                    id="legend-heading">
+                    <span class="accordion-title">Legend</span>
+                    <span class="accordion-icon" aria-hidden="true"></span>
+                </button>
+            </h2>
+            <div id="legend-content" 
+                 role="region" 
+                 aria-labelledby="legend-heading" 
+                 class="accordion-panel">
+                <div id="legendItems">
+                    <!-- Legend items will be dynamically populated here -->
+                </div>
+            </div>
+        </div>
+    </aside>
 
     <!-- Floating attribution -->
     <div class="floating-attribution" aria-hidden="false">
@@ -626,6 +710,7 @@
                 layerToggles.push(mapState.entrancesLayer);
             }
             populateLayerToggles(layerToggles);
+            updateLegend();
         });
         
         // Load park entrances for selected park
@@ -820,6 +905,127 @@
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
+            
+            // Update legend after toggle
+            updateLegend();
+        }
+        
+        // Build and update legend based on visible layers
+        function updateLegend() {
+            const legendItems = document.getElementById('legendItems');
+            const legendPanel = document.getElementById('legendPanel');
+            const visibleLayers = [];
+            
+            // Collect visible layers
+            if (mapState.parkBoundaryLayer && mapState.parkBoundaryLayer.visible) {
+                visibleLayers.push({
+                    id: 'park-boundary',
+                    name: 'Park Boundary',
+                    type: 'outline'
+                });
+            }
+            
+            if (mapState.otherParksLayer && mapState.otherParksLayer.visible) {
+                visibleLayers.push({
+                    id: 'all-parks',
+                    name: 'Nearby Parks',
+                    type: 'filled'
+                });
+            }
+            
+            if (mapState.entrancesLayer && mapState.entrancesLayer.visible) {
+                visibleLayers.push({
+                    id: 'park-entrances',
+                    name: 'Park Entrances',
+                    type: 'entrances'
+                });
+            }
+            
+            // Clear existing items
+            legendItems.innerHTML = '';
+            
+            // Show legend if there are visible layers
+            if (visibleLayers.length > 0) {
+                legendPanel.style.display = 'block';
+            } else {
+                legendPanel.style.display = 'none';
+                return;
+            }
+            
+            // Build legend items
+            visibleLayers.forEach(layer => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                
+                const marker = document.createElement('div');
+                marker.className = 'legend-marker';
+                
+                if (layer.type === 'outline') {
+                    marker.className += ' outline';
+                } else if (layer.type === 'filled') {
+                    marker.className += ' filled';
+                } else if (layer.type === 'entrances') {
+                    // Show both primary and secondary entrance examples
+                    const label = document.createElement('span');
+                    label.textContent = layer.name;
+                    
+                    const entranceGroup = document.createElement('div');
+                    entranceGroup.style.marginBottom = '0.75rem';
+                    
+                    const entranceLabel = document.createElement('span');
+                    entranceLabel.style.fontSize = '0.85rem';
+                    entranceLabel.style.fontWeight = '500';
+                    entranceLabel.style.marginBottom = '0.25rem';
+                    entranceLabel.style.display = 'block';
+                    entranceLabel.textContent = layer.name;
+                    entranceGroup.appendChild(entranceLabel);
+                    
+                    // Primary entrance
+                    const primaryItem = document.createElement('div');
+                    primaryItem.style.display = 'flex';
+                    primaryItem.style.alignItems = 'center';
+                    primaryItem.style.gap = '0.5rem';
+                    primaryItem.style.marginBottom = '0.25rem';
+                    primaryItem.style.fontSize = '0.85rem';
+                    
+                    const primaryMarker = document.createElement('div');
+                    primaryMarker.className = 'legend-marker circle primary';
+                    primaryItem.appendChild(primaryMarker);
+                    
+                    const primaryLabel = document.createElement('span');
+                    primaryLabel.textContent = 'Primary';
+                    primaryItem.appendChild(primaryLabel);
+                    
+                    entranceGroup.appendChild(primaryItem);
+                    
+                    // Secondary entrance
+                    const secondaryItem = document.createElement('div');
+                    secondaryItem.style.display = 'flex';
+                    secondaryItem.style.alignItems = 'center';
+                    secondaryItem.style.gap = '0.5rem';
+                    secondaryItem.style.fontSize = '0.85rem';
+                    
+                    const secondaryMarker = document.createElement('div');
+                    secondaryMarker.className = 'legend-marker circle secondary';
+                    secondaryItem.appendChild(secondaryMarker);
+                    
+                    const secondaryLabel = document.createElement('span');
+                    secondaryLabel.textContent = 'Secondary';
+                    secondaryItem.appendChild(secondaryLabel);
+                    
+                    entranceGroup.appendChild(secondaryItem);
+                    legendItems.appendChild(entranceGroup);
+                    return;
+                }
+                
+                item.appendChild(marker);
+                
+                const label = document.createElement('span');
+                label.textContent = layer.name;
+                item.appendChild(label);
+                
+                legendItems.appendChild(item);
+            });
         }
         
         // Reset map view
@@ -860,6 +1066,7 @@
             document.getElementById('dataLayerToggles').style.display = 'none';
             document.getElementById('layerHint').style.display = 'none';
             document.getElementById('layerHR').style.display = 'none';
+            document.getElementById('legendPanel').style.display = 'none';
             
             document.getElementById('parks').value = '';
             
@@ -875,7 +1082,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Page loaded, initializing dashboard...');
             
-            // Handle accordion toggle
+            // Handle controls accordion toggle
             const accordionTrigger = document.getElementById('controls-heading');
             const accordionPanel = document.getElementById('controls-content');
             
@@ -888,6 +1095,23 @@
                         accordionPanel.style.display = 'none';
                     } else {
                         accordionPanel.style.display = 'block';
+                    }
+                });
+            }
+            
+            // Handle legend accordion toggle
+            const legendTrigger = document.getElementById('legend-heading');
+            const legendPanel = document.getElementById('legend-content');
+            
+            if (legendTrigger && legendPanel) {
+                legendTrigger.addEventListener('click', () => {
+                    const isExpanded = legendTrigger.getAttribute('aria-expanded') === 'true';
+                    legendTrigger.setAttribute('aria-expanded', !isExpanded);
+                    
+                    if (isExpanded) {
+                        legendPanel.style.display = 'none';
+                    } else {
+                        legendPanel.style.display = 'block';
                     }
                 });
             }
