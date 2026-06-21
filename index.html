@@ -192,7 +192,7 @@
                     <!-- Layer toggles will be dynamically populated here -->
                 </div>
                 
-                <button id="resetMapBtn" class="secondary" style="width:100%">Return to Regional View</button>
+                <button id="resetMapBtn" class="secondary" style="width:100%; margin-top:1rem;">Return to Regional View</button>
             </div>
         </div>
     </aside>
@@ -581,10 +581,15 @@
             
             mapState.otherParksLayer = {
                 id: 'all-parks',
-                name: 'Other Parks',
+                name: 'Nearby Parks',
                 layer: mapState.allParksLayer,
-                visible: true
+                visible: false
             };
+            
+            // Remove other parks layer from map by default
+            if (map.hasLayer(mapState.allParksLayer)) {
+                map.removeLayer(mapState.allParksLayer);
+            }
             
             // Fit map to park bounds with padding
             const bounds = mapState.parksLayer.getBounds();
