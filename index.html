@@ -324,10 +324,10 @@
                 
                 mapState.allParksLayer = L.geoJSON(allParksGeoJSON, {
                     style: {
-                        color: '#999999',
-                        weight: 1,
-                        opacity: 0.5,
-                        fillOpacity: 0.05
+                        color: '#4F6C37',
+                        weight: 4,
+                        opacity: 1,
+                        fillOpacity: 0.5
                     },
                     onEachFeature: (feature, layer) => {
                         layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
@@ -400,11 +400,11 @@
             // Create layer with prominent styling
             mapState.parksLayer = L.geoJSON(parkFeature, {
                 style: {
-                    color: '#714a6d',
+                    color: '#4F6C37',
                     weight: 3,
                     opacity: 0.9,
-                    fillOpacity: 0.2,
-                    fillColor: '#714a6d'
+                    fillOpacity: 0.3,
+                    fillColor: '#4F6C37'
                 },
                 onEachFeature: (feature, layer) => {
                     layer.bindPopup(`<strong>${feature.properties.name}</strong>`, { closeButton: true });
