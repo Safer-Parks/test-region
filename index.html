@@ -41,6 +41,36 @@
         .minimal-basemap {
             filter: grayscale(100%) brightness(1.15) contrast(0.9);
         }
+        
+        /* Zoom controls padding */
+        .leaflet-bottom.leaflet-right {
+            padding-right: 5px;
+            padding-bottom: 25px;
+        }
+        
+        /* Hide Leaflet's default attribution control */
+        .leaflet-control-attribution {
+            display: none !important;
+        }
+        
+        /* Style floating attribution */
+        .floating-attribution {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            line-height: 1.4;
+        }
+        
+        .floating-attribution a {
+            color: inherit;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -129,8 +159,13 @@
             console.warn('Proj4 not available');
         }
         
-        // Initialize map
-        const map = L.map('map').setView([54.0, -1.5], 7);
+        // Initialize map with zoom controls disabled (we'll add them to bottom-right)
+        const map = L.map('map', {
+            zoomControl: false
+        }).setView([54.0, -1.5], 7);
+        
+        // Add zoom controls to bottom-right
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
         
         // Define basemap layers
         // Minimal: OSM with grayscale filter (clean, minimalist look)
