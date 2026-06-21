@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "Doncaster_street_lamps",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 2248455942, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.1374681, 53.5243893 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 2248456029, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.1377417, 53.5245934 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 2249171015, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.138359, 53.5250184 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 2249171056, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.1388293, 53.5252469 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 5271852190, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.140801, 53.5264753 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 11506043089, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.2686204, 53.5671564 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 11506043105, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.2687486, 53.5666469 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 11506043108, "authority": "Doncaster", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -1.2687738, 53.5663906 ] } }
+]
+}

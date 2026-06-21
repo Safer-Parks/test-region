@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "North East Lincolnshire_street_lamps",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230265, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.1915806, 53.629087 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230268, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.1907629, 53.6292878 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230269, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.191356, 53.6297833 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230270, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.1928248, 53.6300584 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230271, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.1902357, 53.630135 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230272, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.1908737, 53.6304104 ] } },
+{ "type": "Feature", "properties": { "element_type": "node", "osmid": 3802230273, "authority": "North East Lincolnshire", "source": "osm", "year": null }, "geometry": { "type": "Point", "coordinates": [ -0.1921587, 53.6306271 ] } }
+]
+}
