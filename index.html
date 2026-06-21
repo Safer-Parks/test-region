@@ -138,6 +138,13 @@
         #dataLayerToggles input[type="checkbox"] {
             margin: 0;
         }
+        
+        /* Accordion panel styling */
+        .accordion-panel {
+            display: block;
+            overflow: hidden;
+        }
+
     </style>
 </head>
 <body>
@@ -149,7 +156,7 @@
     </nav>
 
     <!-- Floating Sidebar -->
-    <aside aria-label="Park Controls">
+    <aside aria-label="Park Controls" id="parkMenu">
         <div class="accordion">
             <h2>
                 <button 
@@ -862,10 +869,29 @@
         });
         
 
+
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Page loaded, initializing dashboard...');
+            
+            // Handle accordion toggle
+            const accordionTrigger = document.getElementById('controls-heading');
+            const accordionPanel = document.getElementById('controls-content');
+            
+            if (accordionTrigger && accordionPanel) {
+                accordionTrigger.addEventListener('click', () => {
+                    const isExpanded = accordionTrigger.getAttribute('aria-expanded') === 'true';
+                    accordionTrigger.setAttribute('aria-expanded', !isExpanded);
+                    
+                    if (isExpanded) {
+                        accordionPanel.style.display = 'none';
+                    } else {
+                        accordionPanel.style.display = 'block';
+                    }
+                });
+            }
+            
             loadAuthorities();
         });
     </script>
