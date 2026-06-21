@@ -36,6 +36,11 @@
             max-height: 90vh;
             overflow-y: auto;
         }
+        
+        /* Minimal basemap styling */
+        .minimal-basemap {
+            filter: grayscale(100%) brightness(1.15) contrast(0.9);
+        }
     </style>
 </head>
 <body>
@@ -76,6 +81,13 @@
                 </select>
 
                 <button id="loadPark" class="primary" style="width:100%" disabled>Load Park</button>
+                
+                <hr>
+                
+                <label class="toggle-label">
+                    <input type="checkbox" id="detailedToggle" role="switch" aria-label="Toggle detailed basemap on or off"/>
+                    <span>Detailed Basemap</span>
+                </label>
                 
                 <hr>
                 
@@ -120,11 +132,40 @@
         // Initialize map
         const map = L.map('map').setView([54.0, -1.5], 7);
         
-        // Add basemap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Define basemap layers
+        // Minimal: OSM with grayscale filter (clean, minimalist look)
+        // Detailed: Standard OSM (full color detail)
+        const minimalLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19,
+            className: 'minimal-basemap'
+        });
+        
+        const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
-        }).addTo(map);
+        });
+        
+        // Add minimal layer as default
+        minimalLayer.addTo(map);
+        
+        // Basemap toggle functionality
+        const detailedToggle = document.getElementById('detailedToggle');
+        let isDetailedMode = false;
+        
+        detailedToggle.addEventListener('change', function() {
+            isDetailedMode = this.checked;
+            
+            if (isDetailedMode) {
+                // Switch to OSM (detailed)
+                map.removeLayer(minimalLayer);
+                osmLayer.addTo(map);
+            } else {
+                // Switch to minimal
+                map.removeLayer(osmLayer);
+                minimalLayer.addTo(map);
+            }
+        });
         
         // State management
         let mapState = {
