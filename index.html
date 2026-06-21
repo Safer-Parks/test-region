@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safer Parks Dashboard - Test Region</title>
+    <title>The Safer Parks Dashboard</title>
     
     <!-- Pico CSS Framework - Jade Palette -->
     <link rel="stylesheet" href="css/pico.jade.min.css">
@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="css/dashboard.css">
     
     <style>
+        /* Font imports */
+        @font-face {
+            font-family: 'MrDodo';
+            src: url('css/MrDodo-Regular.otf') format('opentype');
+        }
+        
         /* Additional styles for Test-Region implementation */
         body {
             margin: 0;
@@ -35,6 +41,20 @@
             max-width: 300px;
             max-height: 90vh;
             overflow-y: auto;
+        }
+        
+        /* Headline styling */
+        nav strong {
+            font-family: 'MrDodo', serif;
+            color: #572B70;
+            font-size: 1.2rem;
+        }
+        
+        /* Park name in nav */
+        #navParkName {
+            font-family: 'MrDodo', serif;
+            color: #572B70;
+            font-size: 1.2rem;
         }
         
         /* Minimal basemap styling */
@@ -105,6 +125,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         #dataLayerToggles label {
@@ -123,7 +144,7 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><strong>Safer Parks Dashboard - Test Region</strong></li>
+            <li><strong>The Safer Parks Dashboard</strong><span id="navParkName" style="display:none; margin-left: 2rem;"></span></li>
         </ul>
     </nav>
 
@@ -164,10 +185,6 @@
                     <input type="checkbox" id="detailedToggle" role="switch" aria-label="Toggle detailed basemap on or off"/>
                     <span>Coloured Basemap</span>
                 </label>
-                
-                <hr>
-                
-                <p id="statusMessage" style="font-size: 0.9rem; color: var(--pico-muted-color); text-align: center;"></p>
                 
                 <hr id="layerHR" style="display: none;">
                 
@@ -304,10 +321,8 @@
                 });
                 
                 console.log(`Loaded ${mapState.authorities.length} authorities`);
-                updateStatusMessage(`Loaded ${mapState.authorities.length} authorities`);
             } catch (error) {
                 console.error('Error loading authorities:', error);
-                updateStatusMessage('Error loading authorities');
             }
         }
         
@@ -508,7 +523,6 @@
                 updateStatusMessage(`Loaded ${parks.length} parks from ${successFile}`);
             } catch (error) {
                 console.error('Error loading parks:', error);
-                updateStatusMessage('Error loading parks');
             }
         }
         
@@ -526,8 +540,6 @@
             
             if (!selectedPark || !selectedPark.geometry) {
                 console.error('Park geometry not found at index', selectedIndex);
-                updateStatusMessage('Error loading park');
-                return;
             }
             
             // Remove existing park layer
@@ -583,7 +595,10 @@
                 console.warn('Invalid bounds for park:', selectedPark.name);
             }
             
-            updateStatusMessage(`Loaded: ${selectedPark.name}`);
+            // Display park name in nav
+            const navParkName = document.getElementById('navParkName');
+            navParkName.textContent = 'Park: ' + selectedPark.name;
+            navParkName.style.display = 'inline';
             
             // Show and populate layer toggles for both layers
             populateLayerToggles([mapState.parkBoundaryLayer, mapState.otherParksLayer]);
@@ -697,13 +712,13 @@
             document.getElementById('layerHR').style.display = 'none';
             
             document.getElementById('parks').value = '';
-            updateStatusMessage('Map reset to regional view');
+            
+            // Hide park name in nav
+            const navParkName = document.getElementById('navParkName');
+            navParkName.style.display = 'none';
         });
         
-        // Update status message
-        function updateStatusMessage(message) {
-            document.getElementById('statusMessage').textContent = message;
-        }
+
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
