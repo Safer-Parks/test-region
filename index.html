@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safer Parks Dashboard - Test Region</title>
+    
+    <!-- Pico CSS Framework - Jade Palette -->
+    <link rel="stylesheet" href="css/pico.jade.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/light-theme.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    
+    <style>
+        /* Additional styles for Test-Region implementation */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        aside {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 300px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><strong>Safer Parks Dashboard - Test Region</strong></li>
+        </ul>
+    </nav>
+
+    <!-- Floating Sidebar -->
+    <aside aria-label="Park Controls">
+        <div class="accordion">
+            <h2>
+                <button 
+                    type="button" 
+                    aria-expanded="true" 
+                    class="accordion-trigger" 
+                    aria-controls="controls-content"
+                    id="controls-heading">
+                    <span class="accordion-title">Explore Parks</span>
+                    <span class="accordion-icon" aria-hidden="true"></span>
+                </button>
+            </h2>
+            <div id="controls-content" 
+                 role="region" 
+                 aria-labelledby="controls-heading" 
+                 class="accordion-panel">
+
+                <label for="localAuthority">Select a Local Authority:</label>
+                <select name="localAuthority" id="localAuthority">
+                    <option value="">-- Select an authority --</option>
+                </select>
+
+                <label for="parks">Parks in selected authority:</label>
+                <select name="parks" id="parks" disabled>
+                    <option value="">-- Select an authority first --</option>
+                </select>
+
+                <button id="loadPark" class="primary" style="width:100%" disabled>Load Park</button>
+                
+                <hr>
+                
+                <p id="statusMessage" style="font-size: 0.9rem; color: var(--pico-muted-color); text-align: center;"></p>
+                
+                <button id="resetMapBtn" class="secondary" style="width:100%">Return to Regional View</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Map Container -->
+    <main>
+        <div id="map"></div>
+    </main>
+
+    <!-- Floating attribution -->
+    <div class="floating-attribution" aria-hidden="false">
+        © University of Leeds, 2025 | 
+        <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> | 
+        © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
+    
+    <!-- Proj4 for coordinate transformation -->
+    <script src="https://cdn.jsdelivr.net/npm/proj4@2.9.0/dist/proj4.js"></script>
+    
+    <!-- Main Application Script -->
+    <script>
+        // Initialize Proj4 for coordinate transformation
+        let toWGS84 = null;
+        
+        if (typeof proj4 !== 'undefined') {
+            proj4.defs("EPSG:27700", "+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894 +units=m +no_defs");
+            toWGS84 = proj4("EPSG:27700", "EPSG:4326");
+            console.log('Proj4 initialized for EPSG:27700 -> EPSG:4326 transformation');
+        } else {
+            console.warn('Proj4 not available');
+        }
+        
+        // Initialize map
+        const map = L.map('map').setView([54.0, -1.5], 7);
+        
+        // Add basemap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+        
+        // State management
+        let mapState = {
+            authorities: [],
+            currentAuthority: null,
+            parksLayer: null,
+            allParksLayer: null,
+            authoritiesLayer: null,
+            allParksData: [],
+            sortedParks: [] // Store sorted parks for dropdown index matching
+        };
+        
+        // Utility function to get proper path for authority
+        function getAuthorityPath(authorityId) {
+            // Test-Region folder structure: Test-Region/{authorityId}/
+            return `${authorityId}/`;
+        }
+        
+        // Load authorities from LUT
+        async function loadAuthorities() {
+            try {
+                const response = await fetch('E12000003_lut.geojson');
+                const geojson = await response.json();
+                
+                mapState.authorities = geojson.features.map(feature => ({
+                    id: feature.properties.authority_id,
+                    name: feature.properties.auth_name_e,
+                    geometry: feature.geometry // Don't transform - just store as-is
+                }));
+                
+                // Sort by name
+                mapState.authorities.sort((a, b) => a.name.localeCompare(b.name));
+                
+                // Populate dropdown
+                const select = document.getElementById('localAuthority');
+                mapState.authorities.forEach(auth => {
+                    const option = document.createElement('option');
+                    option.value = auth.id;
+                    option.textContent = auth.name;
+                    select.appendChild(option);
+                });
+                
+                console.log(`Loaded ${mapState.authorities.length} authorities`);
+                updateStatusMessage(`Loaded ${mapState.authorities.length} authorities`);
+            } catch (error) {
+                console.error('Error loading authorities:', error);
+                updateStatusMessage('Error loading authorities');
+            }
+        }
+        
+        // Handle authority selection
+        document.getElementById('localAuthority').addEventListener('change', async (e) => {
+            const authorityId = e.target.value;
+            if (!authorityId) {
+                document.getElementById('parks').disabled = true;
+                document.getElementById('parks').innerHTML = '<option value="">-- Select an authority first --</option>';
+                return;
+            }
+            
+            const authority = mapState.authorities.find(a => a.id === authorityId);
+            mapState.currentAuthority = authority;
+            
+            // Load parks for this authority
+            await loadParksForAuthority(authority);
+        });
+        
+        // Transform coordinates from EPSG:27700 to EPSG:4326
+        function transformCoordinates(geometry) {
+            if (!geometry || !toWGS84) {
+                console.warn('Cannot transform: geometry=' + !!geometry + ', toWGS84=' + !!toWGS84);
+                return geometry;
+            }
+            
+            function transformPoint(coord) {
+                if (!coord || coord.length < 2) {
+                    console.error('Invalid coordinate:', coord);
+                    return coord;
+                }
+                try {
+                    // coord is [easting, northing] in EPSG:27700
+                    const transformed = toWGS84.forward([coord[0], coord[1]]);
+                    
+                    // proj4.forward() returns an array [lon, lat]
+                    if (Array.isArray(transformed) && transformed.length >= 2) {
+                        return [transformed[0], transformed[1]]; // [lon, lat] for GeoJSON
+                    } else if (typeof transformed === 'object' && transformed.x !== undefined && transformed.y !== undefined) {
+                        // Handle object format in case it changes
+                        return [transformed.x, transformed.y];
+                    } else {
+                        console.error('Invalid transformed format:', transformed, 'from', coord);
+                        return coord;
+                    }
+                } catch (err) {
+                    console.error('Error transforming point:', coord, err);
+                    return coord;
+                }
+            }
+            
+            function transformGeometry(geom) {
+                if (!geom) return null;
+                
+                try {
+                    if (geom.type === 'Polygon') {
+                        return {
+                            type: 'Polygon',
+                            coordinates: geom.coordinates.map(ring => ring.map(transformPoint))
+                        };
+                    } else if (geom.type === 'MultiPolygon') {
+                        return {
+                            type: 'MultiPolygon',
+                            coordinates: geom.coordinates.map(poly => 
+                                poly.map(ring => ring.map(transformPoint))
+                            )
+                        };
+                    } else if (geom.type === 'Point') {
+                        return {
+                            type: 'Point',
+                            coordinates: transformPoint(geom.coordinates)
+                        };
+                    }
+                    return geom;
+                } catch (err) {
+                    console.error('Error transforming geometry:', err);
+                    return geom;
+                }
+            }
+            
+            return transformGeometry(geometry);
+        }
+        
+        // Load parks GeoJSON for selected authority
+        async function loadParksForAuthority(authority) {
+            try {
+                const authPath = getAuthorityPath(authority.id);
+                const authName = authority.name;
+                
+                // Try different filenames in order of preference
+                const filenames = [
+                    `${authName}_parks.geojson`,
+                    `${authName}_pocket_parks.geojson`,
+                    `${authName}_pp_or_g_cmb.geojson`
+                ];
+                
+                let parksData = null;
+                let successFile = null;
+                
+                for (const filename of filenames) {
+                    try {
+                        const response = await fetch(`${authPath}${filename}`);
+                        if (response.ok) {
+                            parksData = await response.json();
+                            successFile = filename;
+                            console.log(`Loaded parks from ${successFile}`);
+                            break;
+                        }
+                    } catch (err) {
+                        console.log(`File not found: ${filename}`);
+                    }
+                }
+                
+                if (!parksData || !parksData.features || parksData.features.length === 0) {
+                    updateStatusMessage('No parks found for this authority');
+                    document.getElementById('parks').disabled = true;
+                    document.getElementById('parks').innerHTML = '<option value="">No parks data</option>';
+                    return;
+                }
+                
+                // Extract park names from features and transform coordinates
+                const parks = parksData.features.map(feature => ({
+                    name: feature.properties['Park Name'] || feature.properties.name || `Park ${feature.properties.id || 'Unknown'}`,
+                    id: feature.properties.id || feature.properties.name,
+                    geometry: transformCoordinates(feature.geometry),
+                    properties: feature.properties
+                }));
+                
+                // Sort by name
+                parks.sort((a, b) => a.name.localeCompare(b.name));
+                
+                // Store sorted parks for later use and dropdown index matching
+                mapState.sortedParks = parks;
+                mapState.allParksData = parks;
+                
+                // Remove existing all parks layer
+                if (mapState.allParksLayer) {
+                    map.removeLayer(mapState.allParksLayer);
+                }
+                
+                // Create GeoJSON layer for all parks
+                const allParksGeoJSON = {
+                    type: 'FeatureCollection',
+                    features: mapState.allParksData.map(park => ({
+                        type: 'Feature',
+                        geometry: park.geometry,
+                        properties: { name: park.name }
+                    }))
+                };
+                
+                mapState.allParksLayer = L.geoJSON(allParksGeoJSON, {
+                    style: {
+                        color: '#999999',
+                        weight: 1,
+                        opacity: 0.5,
+                        fillOpacity: 0.05
+                    },
+                    onEachFeature: (feature, layer) => {
+                        layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
+                    }
+                }).addTo(map);
+                
+                console.log(`Rendered ${mapState.allParksData.length} parks on map`);
+                
+                // Populate parks dropdown
+                const parksSelect = document.getElementById('parks');
+                parksSelect.innerHTML = '<option value="">-- Select a park --</option>';
+                
+                parks.forEach((park, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = park.name;
+                    parksSelect.appendChild(option);
+                });
+                
+                parksSelect.disabled = false;
+                document.getElementById('loadPark').disabled = false;
+                
+                // Fit map to all parks
+                if (mapState.allParksLayer) {
+                    const bounds = mapState.allParksLayer.getBounds();
+                    if (bounds.isValid()) {
+                        map.fitBounds(bounds, { padding: [50, 50] });
+                    }
+                }
+                
+                updateStatusMessage(`Loaded ${parks.length} parks from ${successFile}`);
+            } catch (error) {
+                console.error('Error loading parks:', error);
+                updateStatusMessage('Error loading parks');
+            }
+        }
+        
+        // Load selected park on map
+        document.getElementById('loadPark').addEventListener('click', () => {
+            const parksSelect = document.getElementById('parks');
+            const selectedIndex = parksSelect.value;
+            
+            if (selectedIndex === '') {
+                alert('Please select a park first');
+                return;
+            }
+            
+            const selectedPark = mapState.sortedParks[selectedIndex];
+            
+            if (!selectedPark || !selectedPark.geometry) {
+                console.error('Park geometry not found at index', selectedIndex);
+                updateStatusMessage('Error loading park');
+                return;
+            }
+            
+            // Remove existing park layer
+            if (mapState.parksLayer) {
+                map.removeLayer(mapState.parksLayer);
+            }
+            
+            // Create GeoJSON feature for selected park
+            const parkFeature = {
+                type: 'Feature',
+                geometry: selectedPark.geometry,
+                properties: {
+                    name: selectedPark.name
+                }
+            };
+            
+            // Create layer with prominent styling
+            mapState.parksLayer = L.geoJSON(parkFeature, {
+                style: {
+                    color: '#714a6d',
+                    weight: 3,
+                    opacity: 0.9,
+                    fillOpacity: 0.2,
+                    fillColor: '#714a6d'
+                },
+                onEachFeature: (feature, layer) => {
+                    layer.bindPopup(`<strong>${feature.properties.name}</strong>`, { closeButton: true });
+                    layer.openPopup();
+                }
+            }).addTo(map);
+            
+            // Fit map to park bounds with padding
+            const bounds = mapState.parksLayer.getBounds();
+            if (bounds.isValid()) {
+                map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+                console.log('Zoomed to park:', selectedPark.name, 'Bounds:', bounds);
+            } else {
+                console.warn('Invalid bounds for park:', selectedPark.name);
+            }
+            
+            updateStatusMessage(`Loaded: ${selectedPark.name}`);
+        });
+        
+        // Reset map view
+        document.getElementById('resetMapBtn').addEventListener('click', () => {
+            map.setView([54.0, -1.5], 7);
+            if (mapState.parksLayer) {
+                map.removeLayer(mapState.parksLayer);
+                mapState.parksLayer = null;
+            }
+            if (mapState.allParksLayer) {
+                // Fit to all parks if they exist
+                const bounds = mapState.allParksLayer.getBounds();
+                if (bounds.isValid()) {
+                    map.fitBounds(bounds, { padding: [50, 50] });
+                }
+            }
+            document.getElementById('parks').value = '';
+            updateStatusMessage('Map reset to regional view');
+        });
+        
+        // Update status message
+        function updateStatusMessage(message) {
+            document.getElementById('statusMessage').textContent = message;
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded, initializing dashboard...');
+            loadAuthorities();
+        });
+    </script>
+</body>
+</html>
