@@ -188,6 +188,10 @@
                 
                 <hr id="layerHR" style="display: none;">
                 
+                <div id="layerHint" style="display: none; font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; line-height: 1.4;">
+                    Toggle layers on/off to show/hide them and control their stacking order.
+                </div>
+                
                 <div id="dataLayerToggles" style="display: none;">
                     <!-- Layer toggles will be dynamically populated here -->
                 </div>
@@ -287,7 +291,8 @@
             allParksLayer: null,
             authoritiesLayer: null,
             allParksData: [],
-            sortedParks: [] // Store sorted parks for dropdown index matching
+            sortedParks: [],
+            entrancesLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -437,7 +442,7 @@
                 }
                 
                 if (!parksData || !parksData.features || parksData.features.length === 0) {
-                    updateStatusMessage('No parks found for this authority');
+                    console.warn('No parks found for this authority');
                     document.getElementById('parks').disabled = true;
                     document.getElementById('parks').innerHTML = '<option value="">No parks data</option>';
                     return;
@@ -445,8 +450,8 @@
                 
                 // Extract park names from features and transform coordinates
                 const parks = parksData.features.map(feature => ({
-                    name: feature.properties['Park Name'] || feature.properties.name || `Park ${feature.properties.id || 'Unknown'}`,
-                    id: feature.properties.id || feature.properties.name,
+                    name: feature.properties['Park Name'] || feature.properties.name || `Park ${feature.properties.park_offical_id || 'Unknown'}`,
+                    id: feature.properties.park_offical_id,
                     geometry: transformCoordinates(feature.geometry),
                     properties: feature.properties
                 }));
@@ -520,14 +525,14 @@
                     }
                 }
                 
-                updateStatusMessage(`Loaded ${parks.length} parks from ${successFile}`);
+                console.log(`Loaded ${parks.length} parks from ${successFile}`);
             } catch (error) {
                 console.error('Error loading parks:', error);
             }
         }
         
         // Load selected park on map
-        document.getElementById('loadPark').addEventListener('click', () => {
+        document.getElementById('loadPark').addEventListener('click', async () => {
             const parksSelect = document.getElementById('parks');
             const selectedIndex = parksSelect.value;
             
@@ -605,14 +610,122 @@
             navParkName.textContent = 'Park: ' + selectedPark.name;
             navParkName.style.display = 'inline';
             
+            // Load park entrances and wait for it to complete
+            await loadParkEntrances(selectedPark);
+            
             // Show and populate layer toggles for both layers
-            populateLayerToggles([mapState.parkBoundaryLayer, mapState.otherParksLayer]);
+            const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
+            if (mapState.entrancesLayer) {
+                layerToggles.push(mapState.entrancesLayer);
+            }
+            populateLayerToggles(layerToggles);
         });
+        
+        // Load park entrances for selected park
+        async function loadParkEntrances(park) {
+            try {
+                // Remove existing entrances layer
+                if (mapState.entrancesLayer && mapState.entrancesLayer.layer) {
+                    map.removeLayer(mapState.entrancesLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                const authName = mapState.currentAuthority.name;
+                
+                // Try to load entrances file
+                const entrancesFilename = `${authName}_park_entrances.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${entrancesFilename}`);
+                    if (!response.ok) {
+                        console.log(`Entrances file not found: ${entrancesFilename}`);
+                        return;
+                    }
+                    
+                    const entrancesData = await response.json();
+                    
+                    // Filter entrances for this park
+                    const parkEntrances = entrancesData.features.filter(feature => 
+                        feature.properties.park_offical_id === park.id
+                    );
+                    
+                    if (parkEntrances.length === 0) {
+                        console.log(`No entrances found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Transform coordinates and create markers
+                    const entranceMarkers = L.featureGroup();
+                    
+                    parkEntrances.forEach((entrance, index) => {
+                        const transformedGeometry = transformCoordinates(entrance.geometry);
+                        
+                        console.log(`Entrance ${index}:`, {
+                            original: entrance.geometry.coordinates,
+                            transformed: transformedGeometry.coordinates,
+                            latLng: [transformedGeometry.coordinates[1], transformedGeometry.coordinates[0]]
+                        });
+                        
+                        // Determine entrance type and style
+                        const source = entrance.properties.source;
+                        let entranceType, color, icon;
+                        
+                        if (source === 'os' || source === 'osm_tagged') {
+                            entranceType = 'Primary Entrance';
+                            color = '#EE655F'; // Orange-Red
+                        } else if (source === 'osm_intersection') {
+                            entranceType = 'Secondary Entrance';
+                            color = '#95a5a6'; // grey
+                        } else {
+                            entranceType = 'Unknown';
+                            color = '#95a5a6'; // Grey
+                        }
+                        
+                        // Create custom marker
+                        const marker = L.circleMarker(
+                            [transformedGeometry.coordinates[1], transformedGeometry.coordinates[0]],
+                            {
+                                radius: 6,
+                                fillColor: color,
+                                color: color,
+                                weight: 2,
+                                opacity: 1,
+                                fillOpacity: 0.8
+                            }
+                        );
+                        
+                        // Add popup
+                        marker.bindPopup(`<strong>${entranceType}</strong><br/>Source: ${source}`);
+                        
+                        entranceMarkers.addLayer(marker);
+                    });
+                    
+                    // Add layer to map
+                    entranceMarkers.addTo(map);
+                    
+                    // Store layer info for toggling
+                    mapState.entrancesLayer = {
+                        id: 'park-entrances',
+                        name: 'Park Entrances',
+                        layer: entranceMarkers,
+                        visible: true
+                    };
+                    
+                    console.log(`Loaded ${parkEntrances.length} entrances for ${park.name}`);
+                    console.log('Entrances layer stored in mapState:', mapState.entrancesLayer);
+                } catch (error) {
+                    console.error('Error loading entrances:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadParkEntrances:', error);
+            }
+        }
         
         // Populate layer toggles
         function populateLayerToggles(layers) {
             const container = document.getElementById('dataLayerToggles');
             const hr = document.getElementById('layerHR');
+            const hint = document.getElementById('layerHint');
             
             container.innerHTML = '';
             
@@ -639,8 +752,9 @@
                 container.appendChild(label);
             });
             
-            // Show the toggles and separator line
+            // Show the toggles, hint, and separator line
             container.style.display = 'flex';
+            hint.style.display = 'block';
             hr.style.display = 'block';
         }
         
@@ -680,6 +794,22 @@
                 } catch (error) {
                     console.error('Error toggling other parks layer:', error);
                 }
+            } else if (layerId === 'park-entrances' && mapState.entrancesLayer) {
+                const layerObj = mapState.entrancesLayer;
+                console.log('Park entrances layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Park entrances layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Park entrances layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling park entrances layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
@@ -691,6 +821,10 @@
             if (mapState.parksLayer) {
                 map.removeLayer(mapState.parksLayer);
                 mapState.parksLayer = null;
+            }
+            if (mapState.entrancesLayer && mapState.entrancesLayer.layer) {
+                map.removeLayer(mapState.entrancesLayer.layer);
+                mapState.entrancesLayer = null;
             }
             if (mapState.allParksLayer) {
                 // Make sure all parks layer is visible
@@ -711,9 +845,13 @@
             if (mapState.otherParksLayer) {
                 mapState.otherParksLayer.visible = true;
             }
+            if (mapState.entrancesLayer) {
+                mapState.entrancesLayer.visible = true;
+            }
             
             // Hide layer toggles when resetting
             document.getElementById('dataLayerToggles').style.display = 'none';
+            document.getElementById('layerHint').style.display = 'none';
             document.getElementById('layerHR').style.display = 'none';
             
             document.getElementById('parks').value = '';
