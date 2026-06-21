@@ -71,6 +71,34 @@
             color: inherit;
             text-decoration: underline;
         }
+        
+        /* Floating Scale Bar Styling */
+        .leaflet-control-scale {
+            position: fixed !important;
+            bottom: 0.5rem !important;
+            left: 50% !important;
+            transform: translateX(-50%);
+            margin-left: 200px !important;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 4px 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            font-family: system-ui, -apple-system, sans-serif;
+            z-index: 400;
+        }
+        
+        .leaflet-control-scale-line {
+            border: 2px solid #333;
+            border-top: none;
+            color: #333;
+            font-size: 11px;
+            line-height: 1.1;
+            padding: 2px 5px 1px;
+            background: transparent;
+            text-shadow: none;
+        }
     </style>
 </head>
 <body>
@@ -166,6 +194,14 @@
         
         // Add zoom controls to bottom-right
         L.control.zoom({ position: 'bottomright' }).addTo(map);
+        
+        // Add scale control
+        L.control.scale({
+            position: 'bottomleft',
+            metric: true,
+            imperial: false,
+            maxWidth: 150
+        }).addTo(map);
         
         // Define basemap layers
         // Minimal: OSM with grayscale filter (clean, minimalist look)
