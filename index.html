@@ -983,6 +983,12 @@
             // Load toilet dataset and wait for it to complete
             await loadToiletDataset(selectedPark);
             
+            // Load cycling dataset and wait for it to complete
+            await loadCyclingDataset(selectedPark);
+            
+            // Load walking dataset and wait for it to complete
+            await loadWalkingDataset(selectedPark);
+            
             // Show and populate layer toggles for both layers
             const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
             if (mapState.entrancesLayer) {
@@ -996,6 +1002,12 @@
             }
             if (mapState.toiletLayer) {
                 layerToggles.push(mapState.toiletLayer);
+            }
+            if (mapState.cyclingLayer) {
+                layerToggles.push(mapState.cyclingLayer);
+            }
+            if (mapState.walkingLayer) {
+                layerToggles.push(mapState.walkingLayer);
             }
             if (mapState.foliageLowLayer) {
                 layerToggles.push(mapState.foliageLowLayer);
@@ -1740,6 +1752,203 @@
             }
         }
         
+        // Load Cycling dataset for selected park
+        async function loadCyclingDataset(park) {
+            try {
+                console.log(`loadCyclingDataset called for park: ${park.name} (ID: ${park.id})`);
+                
+                // Remove existing cycling layer
+                if (mapState.cyclingLayer && mapState.cyclingLayer.layer) {
+                    map.removeLayer(mapState.cyclingLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                
+                // Get the official park ID from the park object
+                if (!park.id) {
+                    console.log(`No official park id found for park: ${park.name}`);
+                    return;
+                }
+                
+                // Load cycling file from cycling_dataset directory
+                const cyclingFilename = `cycling_dataset/${park.id}_cycling.geojson`;
+                console.log(`Attempting to load: ${authPath}${cyclingFilename}`);
+                
+                try {
+                    const response = await fetch(`${authPath}${cyclingFilename}`);
+                    if (!response.ok) {
+                        console.log(`Cycling file not found: ${cyclingFilename} (this is OK - not all parks have cycling data)`);
+                        return;
+                    }
+                    
+                    const cyclingData = await response.json();
+                    
+                    if (!cyclingData.features || cyclingData.features.length === 0) {
+                        console.log(`No cycling data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for cycling routes
+                    const cyclingGroup = L.featureGroup();
+                    
+                    cyclingData.features.forEach(feature => {
+                        if (feature.geometry.type === 'LineString') {
+                            const coords = feature.geometry.coordinates.map(c => [c[1], c[0]]);
+                            
+                            const line = L.polyline(coords, {
+                                color: '#2196F3',
+                                weight: 3,
+                                opacity: 0.7,
+                                lineCap: 'round',
+                                lineJoin: 'round',
+                                dashArray: '5, 5'
+                            });
+                            
+                            // Add popup with cycling route info if available
+                            const popupContent = feature.properties.name ? 
+                                `<strong>${feature.properties.name}</strong>` : 
+                                '<strong>Cycling Route</strong>';
+                            line.bindPopup(popupContent);
+                            
+                            cyclingGroup.addLayer(line);
+                        } else if (feature.geometry.type === 'MultiLineString') {
+                            // Handle MultiLineString: each coordinate array is a separate line
+                            feature.geometry.coordinates.forEach(lineCoords => {
+                                const coords = lineCoords.map(c => [c[1], c[0]]);
+                                
+                                const line = L.polyline(coords, {
+                                    color: '#2196F3',
+                                    weight: 3,
+                                    opacity: 0.7,
+                                    lineCap: 'round',
+                                    lineJoin: 'round',
+                                    dashArray: '5, 5'
+                                });
+                                
+                                // Add popup with cycling route info if available
+                                const popupContent = feature.properties.name ? 
+                                    `<strong>${feature.properties.name}</strong>` : 
+                                    '<strong>Cycling Route</strong>';
+                                line.bindPopup(popupContent);
+                                
+                                cyclingGroup.addLayer(line);
+                            });
+                        }
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.cyclingLayer = {
+                        id: 'park-cycling',
+                        name: 'Cycling Routes',
+                        layer: cyclingGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${cyclingData.features.length} cycling routes for ${park.name}`);
+                } catch (error) {
+                    console.error('Error loading cycling data:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadCyclingDataset:', error);
+            }
+        }
+        
+        // Load Walking dataset for selected park
+        async function loadWalkingDataset(park) {
+            try {
+                // Remove existing walking layer
+                if (mapState.walkingLayer && mapState.walkingLayer.layer) {
+                    map.removeLayer(mapState.walkingLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                
+                // Get the official park ID from the park object
+                if (!park.id) {
+                    console.log(`No official park id found for park: ${park.name}`);
+                    return;
+                }
+                
+                // Load walking file from walking_dataset directory
+                const walkingFilename = `walking_dataset/${park.id}_walking.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${walkingFilename}`);
+                    if (!response.ok) {
+                        console.log(`Walking file not found: ${walkingFilename} (this is OK - not all parks have walking data)`);
+                        return;
+                    }
+                    
+                    const walkingData = await response.json();
+                    
+                    if (!walkingData.features || walkingData.features.length === 0) {
+                        console.log(`No walking data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for walking routes
+                    const walkingGroup = L.featureGroup();
+                    
+                    walkingData.features.forEach(feature => {
+                        if (feature.geometry.type === 'LineString') {
+                            const coords = feature.geometry.coordinates.map(c => [c[1], c[0]]);
+                            
+                            const line = L.polyline(coords, {
+                                color: '#FF6F00',
+                                weight: 3,
+                                opacity: 0.7,
+                                lineCap: 'round',
+                                lineJoin: 'round'
+                            });
+                            
+                            // Add popup with walking route info if available
+                            const popupContent = feature.properties.name ? 
+                                `<strong>${feature.properties.name}</strong>` : 
+                                '<strong>Walking Route</strong>';
+                            line.bindPopup(popupContent);
+                            
+                            walkingGroup.addLayer(line);
+                        } else if (feature.geometry.type === 'MultiLineString') {
+                            // Handle MultiLineString: each coordinate array is a separate line
+                            feature.geometry.coordinates.forEach(lineCoords => {
+                                const coords = lineCoords.map(c => [c[1], c[0]]);
+                                
+                                const line = L.polyline(coords, {
+                                    color: '#FF6F00',
+                                    weight: 3,
+                                    opacity: 0.7,
+                                    lineCap: 'round',
+                                    lineJoin: 'round'
+                                });
+                                
+                                // Add popup with walking route info if available
+                                const popupContent = feature.properties.name ? 
+                                    `<strong>${feature.properties.name}</strong>` : 
+                                    '<strong>Walking Route</strong>';
+                                line.bindPopup(popupContent);
+                                
+                                walkingGroup.addLayer(line);
+                            });
+                        }
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.walkingLayer = {
+                        id: 'park-walking',
+                        name: 'Walking Routes',
+                        layer: walkingGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${walkingData.features.length} walking routes for ${park.name}`);
+                } catch (error) {
+                    console.error('Error loading walking data:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadWalkingDataset:', error);
+            }
+        }
+        
         // Helper function to generate feature label with intelligent filtering and sentence case
         function toSentenceCase(str) {
             if (!str) return '';
@@ -2476,8 +2685,38 @@
                 } catch (error) {
                     console.error('Error toggling demographics layer:', error);
                 }
+            } else if (layerId === 'park-cycling' && mapState.cyclingLayer) {
+                const layerObj = mapState.cyclingLayer;
+                console.log('Cycling layer found, toggling visibility:', visible);
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Cycling layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Cycling layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling cycling dataset layer:', error);
+                }
+            } else if (layerId === 'park-walking' && mapState.walkingLayer) {
+                const layerObj = mapState.walkingLayer;
+                console.log('Walking layer found, toggling visibility:', visible);
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Walking layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Walking layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling walking dataset layer:', error);
+                }
             } else {
-                console.warn('toggleDataLayer: layer not found or condition not met');
+                console.warn('toggleDataLayer: layer not found or condition not met', {layerId, cyclingLayer: !!mapState.cyclingLayer, walkingLayer: !!mapState.walkingLayer});
             }
             
             // Update legend after toggle
@@ -2560,6 +2799,22 @@
                     id: 'toilet-facilities',
                     name: 'Toilet Facilities',
                     type: 'toilet'
+                });
+            }
+            
+            if (mapState.cyclingLayer && mapState.cyclingLayer.visible) {
+                visibleLayers.push({
+                    id: 'park-cycling',
+                    name: 'Cycling Routes',
+                    type: 'park-cycling'
+                });
+            }
+            
+            if (mapState.walkingLayer && mapState.walkingLayer.visible) {
+                visibleLayers.push({
+                    id: 'park-walking',
+                    name: 'Walking Routes',
+                    type: 'park-walking'
                 });
             }
             
@@ -2841,6 +3096,45 @@
                     
                     toiletGroup.appendChild(toiletMarker);
                     legendItems.appendChild(toiletGroup);
+                    return;
+                } else if (layer.type === 'park-cycling') {
+                    // Create cycling routes legend
+                    const cyclingGroup = document.createElement('div');
+                    cyclingGroup.style.marginBottom = '0.75rem';
+                    cyclingGroup.style.display = 'flex';
+                    cyclingGroup.style.alignItems = 'center';
+                    cyclingGroup.style.gap = '0.5rem';
+                    
+                    const line = document.createElement('div');
+                    line.style.width = '24px';
+                    line.style.height = '0px';
+                    line.style.borderTop = '3px dashed #2196F3';
+                    line.style.flexShrink = '0';
+                    
+                    cyclingGroup.appendChild(line);
+                    cyclingGroup.appendChild(document.createTextNode('Cycling Routes'));
+                    
+                    legendItems.appendChild(cyclingGroup);
+                    return;
+                } else if (layer.type === 'park-walking') {
+                    // Create walking routes legend
+                    const walkingGroup = document.createElement('div');
+                    walkingGroup.style.marginBottom = '0.75rem';
+                    walkingGroup.style.display = 'flex';
+                    walkingGroup.style.alignItems = 'center';
+                    walkingGroup.style.gap = '0.5rem';
+                    
+                    const line = document.createElement('div');
+                    line.style.width = '24px';
+                    line.style.height = '3px';
+                    line.style.backgroundColor = '#FF6F00';
+                    line.style.borderRadius = '2px';
+                    line.style.flexShrink = '0';
+                    
+                    walkingGroup.appendChild(line);
+                    walkingGroup.appendChild(document.createTextNode('Walking Routes'));
+                    
+                    legendItems.appendChild(walkingGroup);
                     return;
                 } else if (layer.type === 'cycling') {
                     // Create cycling network legend
