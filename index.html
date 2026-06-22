@@ -275,6 +275,20 @@
             border-top-color: rgba(255, 107, 53, 0.95) !important;
         }
 
+        /* Street lamp tooltip styling */
+        .street-lamp-tooltip {
+            background: rgba(255, 215, 0, 0.95) !important;
+            color: #333 !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .street-lamp-tooltip::before {
+            border-top-color: rgba(255, 215, 0, 0.95) !important;
+        }
+
         /* Toggle label spacing */
         .toggle-label {
             display: flex;
@@ -339,6 +353,11 @@
                 <label class="toggle-label">
                     <input type="checkbox" id="cyclingNetworkToggle" role="switch" aria-label="Toggle national cycling network on or off"/>
                     <span>National Cycling Network</span>
+                </label>
+                
+                <label class="toggle-label">
+                    <input type="checkbox" id="streetLampsToggle" role="switch" aria-label="Toggle street lamps on or off"/>
+                    <span>Street Lamps</span>
                 </label>
                 
                 <hr id="layerHR" style="display: none;">
@@ -484,6 +503,24 @@
             }
         });
         
+        // Street Lamps regional toggle
+        const streetLampsToggle = document.getElementById('streetLampsToggle');
+        let streetLampsVisible = false;
+        
+        streetLampsToggle.addEventListener('change', function() {
+            streetLampsVisible = this.checked;
+            
+            if (streetLampsVisible && mapState.streetLampsLayer) {
+                mapState.streetLampsLayer.visible = true;
+                mapState.streetLampsLayer.layer.addTo(map);
+                updateLegend();
+            } else if (mapState.streetLampsLayer && mapState.streetLampsLayer.layer) {
+                mapState.streetLampsLayer.visible = false;
+                map.removeLayer(mapState.streetLampsLayer.layer);
+                updateLegend();
+            }
+        });
+        
         // State management
         let mapState = {
             authorities: [],
@@ -499,7 +536,8 @@
             foliageMidLayer: null,
             foliageTallLayer: null,
             nachLayer: null,
-            cyclingNetworkLayer: null
+            cyclingNetworkLayer: null,
+            streetLampsLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -896,9 +934,6 @@
             }
             if (mapState.toiletLayer) {
                 layerToggles.push(mapState.toiletLayer);
-            }
-            if (mapState.cyclingNetworkLayer) {
-                layerToggles.push(mapState.cyclingNetworkLayer);
             }
             if (mapState.foliageLowLayer) {
                 layerToggles.push(mapState.foliageLowLayer);
@@ -1456,6 +1491,91 @@
             }
         }
         
+        // Load Street Lamps dataset
+        // Load Regional Street Lamps for all authorities
+        async function loadRegionalStreetLamps() {
+            try {
+                // Remove existing street lamps layer if present
+                if (mapState.streetLampsLayer && mapState.streetLampsLayer.layer) {
+                    map.removeLayer(mapState.streetLampsLayer.layer);
+                }
+                
+                // Create feature group for all street lamps
+                const lampsGroup = L.featureGroup();
+                let totalLamps = 0;
+                
+                // Load street lamps for each authority
+                for (const authority of mapState.authorities) {
+                    try {
+                        const authPath = getAuthorityPath(authority.id);
+                        const authName = authority.name;
+                        const streetLampsFilename = `${authName}_street_lamps.geojson`;
+                        
+                        const response = await fetch(`${authPath}${streetLampsFilename}`);
+                        if (!response.ok) {
+                            console.log(`Street lamps file not found for ${authName}`);
+                            continue;
+                        }
+                        
+                        const lampsData = await response.json();
+                        
+                        if (!lampsData.features || lampsData.features.length === 0) {
+                            console.log(`No street lamps data for ${authName}`);
+                            continue;
+                        }
+                        
+                        lampsData.features.forEach(feature => {
+                            if (feature.geometry.type === 'Point') {
+                                const [lng, lat] = feature.geometry.coordinates;
+                                
+                                // Create CircleMarker for efficient rendering
+                                const marker = L.circleMarker([lat, lng], {
+                                    radius: 6,
+                                    color: '#FFD700',
+                                    weight: 2,
+                                    opacity: 0.9,
+                                    fill: true,
+                                    fillColor: '#FFD700',
+                                    fillOpacity: 0.8,
+                                    className: 'street-lamp-marker'
+                                });
+                                
+                                // Add popup with lamp info
+                                const popupContent = `<strong>Street Lamp</strong><br/>` +
+                                    `ID: ${feature.properties.osmid || 'N/A'}<br/>` +
+                                    `Source: ${feature.properties.source || 'OSM'}`;
+                                marker.bindPopup(popupContent);
+                                
+                                // Add tooltip
+                                marker.bindTooltip('Street Lamp', { 
+                                    permanent: false, 
+                                    direction: 'top',
+                                    className: 'street-lamp-tooltip'
+                                });
+                                
+                                lampsGroup.addLayer(marker);
+                                totalLamps++;
+                            }
+                        });
+                    } catch (error) {
+                        console.error(`Error loading street lamps for ${authority.name}:`, error);
+                    }
+                }
+                
+                // Store layer info for toggling
+                mapState.streetLampsLayer = {
+                    id: 'street-lamps',
+                    name: 'Street Lamps',
+                    layer: lampsGroup,
+                    visible: false
+                };
+                
+                console.log(`Loaded regional street lamps: ${totalLamps} lamps across all authorities`);
+            } catch (error) {
+                console.error('Error in loadRegionalStreetLamps:', error);
+            }
+        }
+        
         // Load Toilet dataset
         async function loadToiletDataset(park) {
             try {
@@ -1934,6 +2054,14 @@
                 });
             }
             
+            if (mapState.streetLampsLayer && mapState.streetLampsLayer.visible) {
+                visibleLayers.push({
+                    id: 'street-lamps',
+                    name: 'Street Lamps',
+                    type: 'street-lamps'
+                });
+            }
+            
             // Clear existing items
             legendItems.innerHTML = '';
             
@@ -2220,6 +2348,30 @@
                     cyclingGroup.appendChild(cyclingMarker);
                     legendItems.appendChild(cyclingGroup);
                     return;
+                } else if (layer.type === 'street-lamps') {
+                    // Create street lamps legend
+                    const lampsGroup = document.createElement('div');
+                    lampsGroup.style.marginBottom = '0.75rem';
+                    
+                    // Create marker
+                    const lampsMarker = document.createElement('div');
+                    lampsMarker.style.display = 'flex';
+                    lampsMarker.style.alignItems = 'center';
+                    lampsMarker.style.gap = '0.5rem';
+                    
+                    const circle = document.createElement('div');
+                    circle.style.width = '12px';
+                    circle.style.height = '12px';
+                    circle.style.backgroundColor = '#FFD700';
+                    circle.style.border = '2px solid #FFD700';
+                    circle.style.borderRadius = '50%';
+                    
+                    lampsMarker.appendChild(circle);
+                    lampsMarker.appendChild(document.createTextNode('Street Lamps'));
+                    
+                    lampsGroup.appendChild(lampsMarker);
+                    legendItems.appendChild(lampsGroup);
+                    return;
                 }
                 
                 item.appendChild(marker);
@@ -2343,6 +2495,7 @@
             (async () => {
                 await loadAuthorities();
                 await loadRegionalCyclingNetwork();
+                await loadRegionalStreetLamps();
             })();
         });
     </script>
