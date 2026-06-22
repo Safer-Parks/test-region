@@ -415,7 +415,7 @@
                 <hr id="layerHR" style="display: none;">
                 
                 <div id="layerHint" style="display: none; font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; line-height: 1.4;">
-                    Toggle layers on/off to show/hide them and control their stacking order.
+                    Toggle layers on/off to show/hide them and control their stacking order. Please view the layer guide (linked in the navbar) to learn about each layer.
                 </div>
                 
                 <div id="dataLayerToggles" style="display: none;">
@@ -601,6 +601,7 @@
         }
         
         // Load authorities from LUT
+        // THIS IS WHERE I NEED TO UPDATE FOR EACH REGION!!!
         async function loadAuthorities() {
             try {
                 const response = await fetch('E12000003_lut.geojson');
