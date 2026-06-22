@@ -246,6 +246,20 @@
             border-top-color: rgba(100, 100, 100, 0.95) !important;
         }
 
+        /* Toilet tooltip styling */
+        .toilet-tooltip {
+            background: rgba(0, 123, 255, 0.95) !important;
+            color: white !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .toilet-tooltip::before {
+            border-top-color: rgba(0, 123, 255, 0.95) !important;
+        }
+
     </style>
 </head>
 <body>
@@ -605,6 +619,33 @@
                 mapState.sortedParks = parks;
                 mapState.allParksData = parks;
                 
+                // Check which parks have toilet data available
+                const parksWithToilets = new Set();
+                try {
+                    // Try to fetch the toilet dataset directory listing
+                    // We'll check each park's toilet file existence asynchronously
+                    const toiletChecks = parks.map(async (park) => {
+                        try {
+                            const toiletFilename = `toilet_dataset/${park.id}_toilets.geojson`;
+                            const response = await fetch(`${authPath}${toiletFilename}`, { method: 'HEAD' });
+                            if (response.ok || response.status === 200) {
+                                parksWithToilets.add(park.id);
+                            }
+                        } catch (error) {
+                            // File doesn't exist or can't be checked, skip
+                        }
+                    });
+                    
+                    // Wait for all toilet checks to complete
+                    await Promise.all(toiletChecks);
+                    console.log(`Parks with toilet data: ${parksWithToilets.size}`);
+                } catch (error) {
+                    console.log('Could not check for toilet datasets');
+                }
+                
+                // Store for use in tooltip generation
+                mapState.parksWithToilets = parksWithToilets;
+                
                 // Remove existing all parks layer
                 if (mapState.allParksLayer) {
                     map.removeLayer(mapState.allParksLayer);
@@ -640,6 +681,12 @@
                         if (feature.properties.area !== null && feature.properties.area !== undefined) {
                             const areaM2 = parseFloat(feature.properties.area);
                             tooltipContent = `<strong>${parkName}</strong><br/>Area: ${areaM2.toLocaleString('en-GB', { maximumFractionDigits: 0 })} m²`;
+                        }
+                        
+                        // Find the park ID for this feature
+                        const parkData = mapState.sortedParks.find(p => p.name === parkName);
+                        if (parkData && mapState.parksWithToilets && mapState.parksWithToilets.has(parkData.id)) {
+                            tooltipContent += '<br/>Nearby toilet';
                         }
                         
                         layer.bindTooltip(tooltipContent, { 
@@ -781,6 +828,9 @@
             // Load NACH network and wait for it to complete
             await loadNACHNetwork(selectedPark);
             
+            // Load toilet dataset and wait for it to complete
+            await loadToiletDataset(selectedPark);
+            
             // Show and populate layer toggles for both layers
             const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
             if (mapState.entrancesLayer) {
@@ -791,6 +841,9 @@
             }
             if (mapState.nachLayer) {
                 layerToggles.push(mapState.nachLayer);
+            }
+            if (mapState.toiletLayer) {
+                layerToggles.push(mapState.toiletLayer);
             }
             if (mapState.foliageLowLayer) {
                 layerToggles.push(mapState.foliageLowLayer);
@@ -1348,6 +1401,99 @@
             }
         }
         
+        // Load Toilet dataset
+        async function loadToiletDataset(park) {
+            try {
+                // Remove existing toilet layer
+                if (mapState.toiletLayer && mapState.toiletLayer.layer) {
+                    map.removeLayer(mapState.toiletLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                
+                // Get the official park ID from the park object
+                if (!park.id) {
+                    console.log(`No official park id found for park: ${park.name}`);
+                    return;
+                }
+                
+                // Load toilet file from toilet_dataset directory
+                // Path format: {authorityId}/toilet_dataset/{parkId}_toilets.geojson
+                const toiletFilename = `toilet_dataset/${park.id}_toilets.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${toiletFilename}`);
+                    if (!response.ok) {
+                        console.log(`Toilet file not found: ${toiletFilename} (this is OK - not all parks have toilet data)`);
+                        return;
+                    }
+                    
+                    const toiletData = await response.json();
+                    
+                    if (!toiletData.features || toiletData.features.length === 0) {
+                        console.log(`No toilet data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for toilet markers
+                    const toiletGroup = L.featureGroup();
+                    
+                    // Create blue square icon
+                    const blueSquareIcon = L.icon({
+                        iconUrl: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSIyIiBmaWxsPSIjMDA3QkZGIi8+PC9zdmc+',
+                        iconSize: [24, 24],
+                        iconAnchor: [12, 12],
+                        popupAnchor: [0, -12]
+                    });
+                    
+                    toiletData.features.forEach(feature => {
+                        const coords = feature.geometry.coordinates; // GeoJSON: [lng, lat]
+                        const toiletCoords = [coords[1], coords[0]]; // Convert to [lat, lng]
+                        const props = feature.properties;
+                        
+                        // Build popup content
+                        let popupContent = `<strong>${props.name || 'Toilet Facility'}</strong><br/>`;
+                        popupContent += `<strong>Access:</strong> ${props.accessible === 'True' ? 'Accessible' : 'Not accessible'}<br/>`;
+                        popupContent += `<strong>Payment:</strong> ${props.payment_info || 'Unknown'}<br/>`;
+                        
+                        // Add facility info
+                        const facilities = [];
+                        if (props.women === 'True') facilities.push('Women');
+                        if (props.men === 'True') facilities.push('Men');
+                        if (props.baby_change === 'True') facilities.push('Baby Change');
+                        if (facilities.length > 0) {
+                            popupContent += `<strong>Facilities:</strong> ${facilities.join(', ')}<br/>`;
+                        }
+                        
+                        // Create marker
+                        const marker = L.marker(toiletCoords, { icon: blueSquareIcon });
+                        marker.bindPopup(popupContent);
+                        marker.bindTooltip(props.name || 'Toilet', { 
+                            permanent: false, 
+                            direction: 'top',
+                            className: 'toilet-tooltip'
+                        });
+                        
+                        toiletGroup.addLayer(marker);
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.toiletLayer = {
+                        id: 'toilet-facilities',
+                        name: 'Toilet Facilities',
+                        layer: toiletGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${toiletData.features.length} toilet facilities for ${park.name}`);
+                } catch (error) {
+                    console.error('Error loading toilet data:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadToiletDataset:', error);
+            }
+        }
+        
         // Populate layer toggles
         function populateLayerToggles(layers) {
             const container = document.getElementById('dataLayerToggles');
@@ -1517,6 +1663,22 @@
                 } catch (error) {
                     console.error('Error toggling NACH layer:', error);
                 }
+            } else if (layerId === 'toilet-facilities' && mapState.toiletLayer) {
+                const layerObj = mapState.toiletLayer;
+                console.log('Toilet layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Toilet layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Toilet layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling toilet layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
@@ -1593,6 +1755,14 @@
                     id: 'nach-network',
                     name: 'Predicted Route Popularity (NACH)',
                     type: 'nach'
+                });
+            }
+            
+            if (mapState.toiletLayer && mapState.toiletLayer.visible) {
+                visibleLayers.push({
+                    id: 'toilet-facilities',
+                    name: 'Toilet Facilities',
+                    type: 'toilet'
                 });
             }
             
@@ -1835,6 +2005,29 @@
                     nachGroup.appendChild(labelContainer);
                     
                     legendItems.appendChild(nachGroup);
+                    return;
+                } else if (layer.type === 'toilet') {
+                    // Create toilet facilities legend
+                    const toiletGroup = document.createElement('div');
+                    toiletGroup.style.marginBottom = '0.75rem';
+                    
+                    // Create marker
+                    const toiletMarker = document.createElement('div');
+                    toiletMarker.style.display = 'flex';
+                    toiletMarker.style.alignItems = 'center';
+                    toiletMarker.style.gap = '0.5rem';
+                    
+                    const square = document.createElement('div');
+                    square.style.width = '16px';
+                    square.style.height = '16px';
+                    square.style.backgroundColor = '#007BFF';
+                    square.style.borderRadius = '2px';
+                    
+                    toiletMarker.appendChild(square);
+                    toiletMarker.appendChild(document.createTextNode('Toilet Facilities'));
+                    
+                    toiletGroup.appendChild(toiletMarker);
+                    legendItems.appendChild(toiletGroup);
                     return;
                 }
                 
