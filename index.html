@@ -2107,23 +2107,22 @@
                                 lineCap: 'round'
                             });
                             
-                            // Build popup content from demographics properties
+                            // Build popup content with all properties as a bulleted list
                             const props = feature.properties;
-                            const parkId = props['park_offical_id'] || 'Unknown';
-                            const totalPop = props['total_All Ages'] || 'N/A';
-                            const malePop = props['male_All Ages'] || 'N/A';
-                            const femalePop = props['female_All Ages'] || 'N/A';
-                            const economicallyActive = props['Total Econ. Act. Potential'] || 'N/A';
-                            const inEmployment = props['Economically active (excluding full-time students): In employment'] || 'N/A';
+                            let bulletList = '<ul style="margin: 4px 0; padding-left: 20px;">';
+                            
+                            // Add each property as a bullet point
+                            for (const [key, value] of Object.entries(props)) {
+                                // Format the key for display (remove underscores, add spaces)
+                                const displayKey = key.replace(/_/g, ' ');
+                                bulletList += `<li style="margin: 2px 0;"><strong>${displayKey}:</strong> ${value}</li>`;
+                            }
+                            
+                            bulletList += '</ul>';
                             
                             const popupContent = `
-                                <div style="font-family: Arial, sans-serif; font-size: 12px;">
-                                    <strong>Park ID:</strong> ${parkId}<br>
-                                    <strong>Total Population (15 min):</strong> ${totalPop}<br>
-                                    <strong>Male:</strong> ${malePop} | <strong>Female:</strong> ${femalePop}<br>
-                                    <hr style="margin: 4px 0;">
-                                    <strong>Economically Active:</strong> ${economicallyActive}<br>
-                                    <strong>In Employment:</strong> ${inEmployment}
+                                <div style="font-family: Arial, sans-serif; font-size: 12px; width: 250px; max-height: 300px; overflow-y: auto;">
+                                    ${bulletList}
                                 </div>
                             `;
                             
