@@ -968,6 +968,9 @@
             // Load park entrances and wait for it to complete
             await loadParkEntrances(selectedPark);
             
+            // Load demographics for this park
+            await loadDemographicsData(selectedPark);
+            
             // Load visibility hexagons and wait for it to complete
             await loadVisibilityHexagons(selectedPark);
             
@@ -1008,6 +1011,9 @@
             }
             if (mapState.featuresNearParksLayer) {
                 layerToggles.push(mapState.featuresNearParksLayer);
+            }
+            if (mapState.demographicsLayer) {
+                layerToggles.push(mapState.demographicsLayer);
             }
             populateLayerToggles(layerToggles);
             updateLegend();
@@ -2036,6 +2042,115 @@
             }
         }
         
+        // Load Demographics data for selected authority
+        async function loadDemographicsData(park) {
+            try {
+                // Remove existing demographics layer
+                if (mapState.demographicsLayer && mapState.demographicsLayer.layer) {
+                    map.removeLayer(mapState.demographicsLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                const authName = mapState.currentAuthority.name;
+                const demographicsPath = `${authPath}demo/`;
+                
+                // Get the park's official ID
+                if (!park.id) {
+                    console.log(`No official park id found for park: ${park.name}`);
+                    return;
+                }
+                
+                try {
+                    const response = await fetch(`${demographicsPath}${authName}_15_min.geojson`);
+                    if (!response.ok) {
+                        console.log(`Demographics file not found for authority: ${authName}`);
+                        return;
+                    }
+                    
+                    const demographicsData = await response.json();
+                    if (!demographicsData.features || demographicsData.features.length === 0) {
+                        console.log(`No demographics data found for authority: ${authName}`);
+                        return;
+                    }
+                    
+                    // Filter features to only those matching this park's ID
+                    const parkDemographics = demographicsData.features.filter(feature => 
+                        feature.properties.park_offical_id === park.id
+                    );
+                    
+                    if (parkDemographics.length === 0) {
+                        console.log(`No demographics data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for demographics
+                    const demographicsGroup = L.featureGroup();
+                    
+                    // Use proj4.js for coordinate transformation (CRS: EPSG:27700)
+                    parkDemographics.forEach(feature => {
+                        try {
+                            // Transform geometry from EPSG:27700 to EPSG:4326
+                            const transformedGeometry = transformCoordinates(feature.geometry);
+                            
+                            if (!transformedGeometry || feature.geometry.type !== 'Polygon') {
+                                return;
+                            }
+                            
+                            const coords = transformedGeometry.coordinates[0].map(c => [c[1], c[0]]);
+                            const polygon = L.polygon(coords, {
+                                color: '#9C27B0',
+                                weight: 1.5,
+                                opacity: 0.6,
+                                fill: true,
+                                fillColor: '#9C27B0',
+                                fillOpacity: 0.08,
+                                lineCap: 'round'
+                            });
+                            
+                            // Build popup content from demographics properties
+                            const props = feature.properties;
+                            const parkId = props['park_offical_id'] || 'Unknown';
+                            const totalPop = props['total_All Ages'] || 'N/A';
+                            const malePop = props['male_All Ages'] || 'N/A';
+                            const femalePop = props['female_All Ages'] || 'N/A';
+                            const economicallyActive = props['Total Econ. Act. Potential'] || 'N/A';
+                            const inEmployment = props['Economically active (excluding full-time students): In employment'] || 'N/A';
+                            
+                            const popupContent = `
+                                <div style="font-family: Arial, sans-serif; font-size: 12px;">
+                                    <strong>Park ID:</strong> ${parkId}<br>
+                                    <strong>Total Population (15 min):</strong> ${totalPop}<br>
+                                    <strong>Male:</strong> ${malePop} | <strong>Female:</strong> ${femalePop}<br>
+                                    <hr style="margin: 4px 0;">
+                                    <strong>Economically Active:</strong> ${economicallyActive}<br>
+                                    <strong>In Employment:</strong> ${inEmployment}
+                                </div>
+                            `;
+                            
+                            polygon.bindPopup(popupContent);
+                            demographicsGroup.addLayer(polygon);
+                        } catch (e) {
+                            console.warn('Error processing demographics feature:', e);
+                        }
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.demographicsLayer = {
+                        id: 'demographics',
+                        name: 'Demographics (15 min catchment)',
+                        layer: demographicsGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded demographics data for ${park.name}`);
+                } catch (error) {
+                    console.log(`Demographics data not available for this authority (${authName})`);
+                }
+            } catch (error) {
+                console.error('Error in loadDemographicsData:', error);
+            }
+        }
+        
         // Load Regional Cycling Network for all authorities
         async function loadRegionalCyclingNetwork() {
             try {
@@ -2349,6 +2464,18 @@
                     layerObj.visible = visible;
                 } catch (error) {
                     console.error('Error toggling features near parks layer:', error);
+                }
+            } else if (layerId === 'demographics' && mapState.demographicsLayer) {
+                const layerObj = mapState.demographicsLayer;
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling demographics layer:', error);
                 }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
