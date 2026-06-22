@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "EASRI_122_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Cliff Road WC", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 27, "park_offical_id": "EASRI_122" }, "geometry": { "type": "Point", "coordinates": [ -0.45301624, 53.71498068 ] } },
+{ "type": "Feature", "properties": { "name": "Unknown", "payment_info": "Free", "accessible": "False", "radar": "Unknown", "women": "Unknown", "men": "Unknown", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 27, "park_offical_id": "EASRI_122" }, "geometry": { "type": "Point", "coordinates": [ -0.4539513, 53.7197733 ] } },
+{ "type": "Feature", "properties": { "name": "Hessle Foreshore Mill Car Park", "payment_info": "Cost unknown", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "09:00-18:00", "Tue": "09:00-18:00", "Wed": "09:00-18:00", "Thu": "09:00-18:00", "Fri": "09:00-18:00", "Sat": "09:00-18:00", "Sun": "09:00-18:00", "index_right": 27, "park_offical_id": "EASRI_122" }, "geometry": { "type": "Point", "coordinates": [ -0.456286669, 53.715987074 ] } }
+]
+}

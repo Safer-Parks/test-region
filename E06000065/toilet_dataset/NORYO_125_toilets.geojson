@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_125_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Harrogate", "payment_info": "Free", "accessible": "False", "radar": "False", "women": "Unknown", "men": "Unknown", "baby_change": "False", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 47, "park_offical_id": "NORYO_125" }, "geometry": { "type": "Point", "coordinates": [ -1.537615121, 53.993192164 ] } },
+{ "type": "Feature", "properties": { "name": "Jubilee Car Park", "payment_info": "Cost unknown", "accessible": "False", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 47, "park_offical_id": "NORYO_125" }, "geometry": { "type": "Point", "coordinates": [ -1.542339921, 53.994273715 ] } },
+{ "type": "Feature", "properties": { "name": "Victoria Centre Toilets", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 47, "park_offical_id": "NORYO_125" }, "geometry": { "type": "Point", "coordinates": [ -1.538354074, 53.993173711 ] } },
+{ "type": "Feature", "properties": { "name": "Library Gardens", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 47, "park_offical_id": "NORYO_125" }, "geometry": { "type": "Point", "coordinates": [ -1.53834343, 53.99108219 ] } },
+{ "type": "Feature", "properties": { "name": "Crescent Gardens", "payment_info": "Free", "accessible": "False", "radar": "True", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 47, "park_offical_id": "NORYO_125" }, "geometry": { "type": "Point", "coordinates": [ -1.546470523, 53.994406164 ] } }
+]
+}

@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_186_toilets",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Waterside", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "False", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 114, "park_offical_id": "NORYO_186" }, "geometry": { "type": "Point", "coordinates": [ -1.470188498, 54.007228098 ] } },
+{ "type": "Feature", "properties": { "name": "Castle Yard", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "Unknown", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 114, "park_offical_id": "NORYO_186" }, "geometry": { "type": "Point", "coordinates": [ -1.467415094, 54.006933331 ] } },
+{ "type": "Feature", "properties": { "name": "Fisher Street carpark", "payment_info": "Free", "accessible": "True", "radar": "Unknown", "women": "True", "men": "True", "baby_change": "True", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 114, "park_offical_id": "NORYO_186" }, "geometry": { "type": "Point", "coordinates": [ -1.465687752, 54.007526016 ] } },
+{ "type": "Feature", "properties": { "name": "York Place Long Stay", "payment_info": "Free", "accessible": "True", "radar": "True", "women": "True", "men": "True", "baby_change": "False", "Mon": "Unknown", "Tue": "Unknown", "Wed": "Unknown", "Thu": "Unknown", "Fri": "Unknown", "Sat": "Unknown", "Sun": "Unknown", "index_right": 114, "park_offical_id": "NORYO_186" }, "geometry": { "type": "Point", "coordinates": [ -1.461146654, 54.006652646 ] } },
+{ "type": "Feature", "properties": { "name": "Lidl", "payment_info": "No", "accessible": "True", "radar": "False", "women": "Unknown", "men": "Unknown", "baby_change": "Unknown", "Mon": "09:00-17:00", "Tue": "09:00-17:00", "Wed": "09:00-17:00", "Thu": "09:00-17:00", "Fri": "09:00-17:00", "Sat": "09:00-17:00", "Sun": "09:00-17:00", "index_right": 114, "park_offical_id": "NORYO_186" }, "geometry": { "type": "Point", "coordinates": [ -1.453661879, 54.0068169 ] } }
+]
+}
