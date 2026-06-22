@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Safer Parks Dashboard</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="css/icon-parks4.svg">
+    
     <!-- Pico CSS Framework - Jade Palette -->
     <link rel="stylesheet" href="css/pico.jade.min.css">
     
@@ -301,6 +304,27 @@
         .accordion-panel > .toggle-label + .toggle-label {
             margin-top: 0.75rem;
         }
+        
+        /* Navigation styling */
+        nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+        }
+        
+        nav li a {
+            color: #572B70;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'MrDodo', serif;
+        }
+        
+        nav li a:hover {
+            text-decoration: underline;
+        }
 
     </style>
 </head>
@@ -309,6 +333,7 @@
     <nav>
         <ul>
             <li><strong>The Safer Parks Dashboard</strong><span id="navParkName" style="display:none; margin-left: 2rem;"></span></li>
+            <li style="margin-left: auto;"><a href="https://murphyqm.github.io/Safer-Parks.github.io/guide.html" target="_blank" rel="noopener noreferrer">Layer guide</a></li>
         </ul>
     </nav>
 
