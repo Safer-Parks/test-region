@@ -1302,10 +1302,14 @@
                         const nachValue = feature.properties.nach || 0;
                         const color = getGreyscaleColor(nachValue, minNACH, maxNACH);
                         
+                        // Calculate line weight based on NACH value (1 to 5 for noticeable variation)
+                        const normalizedValue = (nachValue - minNACH) / (maxNACH - minNACH);
+                        const weight = 1 + (normalizedValue * 4); // Range from 1 to 5
+                        
                         // Create line for each network segment
                         const line = L.polyline(leafletCoords, {
                             color: color,
-                            weight: 3,
+                            weight: weight,
                             opacity: 1.0,
                             fillOpacity: 1.0,
                             lineCap: 'round',
