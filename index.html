@@ -218,6 +218,20 @@
             border-top-color: rgba(30, 125, 50, 0.95) !important;
         }
 
+        /* Park tooltip styling */
+        .park-tooltip {
+            background: white !important;
+            color: black !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .park-tooltip::before {
+            border-top-color: white !important;
+        }
+
     </style>
 </head>
 <body>
@@ -587,7 +601,10 @@
                     features: mapState.allParksData.map(park => ({
                         type: 'Feature',
                         geometry: park.geometry,
-                        properties: { name: park.name }
+                        properties: { 
+                            name: park.name,
+                            area: park.properties['Total Area (m²)'] || park.properties.area_m2 || park.properties['Area (m2)'] || park.properties.total_area || null
+                        }
                     }))
                 };
                 
@@ -601,9 +618,23 @@
                     onEachFeature: (feature, layer) => {
                         layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
                         
+                        // Add hover tooltip with park name and area
+                        const parkName = feature.properties.name;
+                        let tooltipContent = parkName;
+                        
+                        if (feature.properties.area !== null && feature.properties.area !== undefined) {
+                            const areaM2 = parseFloat(feature.properties.area);
+                            tooltipContent = `<strong>${parkName}</strong><br/>Area: ${areaM2.toLocaleString('en-GB', { maximumFractionDigits: 0 })} m²`;
+                        }
+                        
+                        layer.bindTooltip(tooltipContent, { 
+                            permanent: false, 
+                            direction: 'top',
+                            className: 'park-tooltip'
+                        });
+                        
                         // Click to select park
                         layer.on('click', () => {
-                            const parkName = feature.properties.name;
                             const parkIndex = mapState.sortedParks.findIndex(p => p.name === parkName);
                             
                             if (parkIndex !== -1) {
