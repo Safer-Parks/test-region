@@ -1,0 +1,22 @@
+{
+"type": "FeatureCollection",
+"name": "KINUP_86_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4112109,53.7363604],[-0.4110471,53.7364348],[-0.4108637,53.7364442],[-0.4107124,53.7364725]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4120879,53.7362819],[-0.4119857,53.7363481],[-0.411851,53.736366],[-0.4116889,53.7363877],[-0.4114955,53.7363887],[-0.4112109,53.7363604],[-0.4110339,53.7362668],[-0.4109367,53.7361603],[-0.4107706,53.7361129]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.404633,53.7381782],[-0.4085803,53.7379081],[-0.4100079,53.7378159]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4100079,53.7378159],[-0.4105148,53.7378423]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3997196,53.7447723],[-0.3997137,53.7448591],[-0.3997166,53.7448801],[-0.3996974,53.7452254],[-0.3996796,53.7455601],[-0.3996783,53.7456156]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3986362,53.7452576],[-0.3992942,53.7452243],[-0.3993016,53.7452401],[-0.3995342,53.745227]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3993016,53.7452401],[-0.3992482,53.7452804],[-0.3992525,53.7453127],[-0.3992645,53.7454031],[-0.3990081,53.7454172],[-0.3987385,53.745432],[-0.3987192,53.7453497]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3992291,53.7453165],[-0.3992525,53.7453127]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3990081,53.7454172],[-0.3990326,53.7455603],[-0.3993894,53.7455432]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3987022,53.7457853],[-0.3992083,53.7457561],[-0.3993125,53.7457501]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3992083,53.7457561],[-0.3992238,53.7459187],[-0.3987259,53.7459451]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Boothferry Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.40012,53.736969],[-0.4002109,53.736974],[-0.4003012,53.7369695],[-0.4009836,53.7368741],[-0.4020573,53.7367261]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Boothferry Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4020643,53.7368588],[-0.401038,53.737],[-0.4003562,53.7371009],[-0.4002536,53.7371227],[-0.4001441,53.7371579]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Boothferry Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4020573,53.7367261],[-0.4037747,53.7364899],[-0.4058338,53.7361842],[-0.4067067,53.7360734],[-0.4094438,53.7357012],[-0.4108597,53.7354793],[-0.4126447,53.7352287],[-0.413688,53.7350845],[-0.4158832,53.734781],[-0.4180457,53.7345175],[-0.4185406,53.7344473],[-0.4203384,53.7341973]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Boothferry Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4203652,53.7343271],[-0.4184581,53.7345917],[-0.4181027,53.7346416],[-0.4159365,53.7349265],[-0.4137491,53.7352314],[-0.4125957,53.7353922],[-0.4108109,53.7356459],[-0.4094874,53.735836],[-0.40673,53.736209],[-0.4058487,53.7363323],[-0.4038281,53.7366181],[-0.4020643,53.7368588]]]}}
+]
+}

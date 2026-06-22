@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "KINUP_118_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.2728191,53.769803],[-0.2728871,53.7697236]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.2758414,53.7677678],[-0.2758788,53.7678574],[-0.2756878,53.7681748],[-0.2756027,53.7682587],[-0.2755046,53.7683975],[-0.2754091,53.7685501],[-0.2753729,53.7687423],[-0.2752852,53.7690917],[-0.275231,53.7694441],[-0.2752077,53.7697522],[-0.2751561,53.7702801],[-0.2751122,53.7705059],[-0.2750813,53.770692],[-0.2750885,53.7707689]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.2798537,53.7676212],[-0.2799302,53.7677171],[-0.2800802,53.7678293],[-0.280319,53.7679089],[-0.280466,53.7679741],[-0.2805149,53.7679958],[-0.2806312,53.7680989],[-0.2807445,53.7682853],[-0.2810077,53.7685295],[-0.2811669,53.768705]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.280466,53.7679741],[-0.280705,53.7678586]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.2758414,53.7677678],[-0.2759462,53.7677003],[-0.2760726,53.7675597],[-0.276178,53.7672589],[-0.2762473,53.7670863],[-0.2771045,53.7657366],[-0.2776097,53.7647527],[-0.278087,53.7640061],[-0.2781211,53.7639527],[-0.2781655,53.7637568],[-0.2781731,53.7636868],[-0.2787963,53.7625785],[-0.2789103,53.7625154],[-0.2789447,53.7623982]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.2825446,53.7675182],[-0.2827156,53.7674903],[-0.2830402,53.7674538],[-0.283244,53.7674491],[-0.2834345,53.7674713],[-0.2837027,53.7675109],[-0.2839655,53.7675236],[-0.2841778,53.7675081],[-0.2842502,53.7675367],[-0.2843941,53.7676719]]]}}
+]
+}

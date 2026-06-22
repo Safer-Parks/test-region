@@ -1,0 +1,23 @@
+{
+"type": "FeatureCollection",
+"name": "NOREA_101_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0649236,53.5572098],[-0.0647898,53.5572288],[-0.0647257,53.5571094],[-0.0646897,53.5571147],[-0.0647457,53.5572296],[-0.0614357,53.5575945],[-0.0596265,53.5577769],[-0.0595258,53.5577871]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"Humberston Pedalway (cycleway)","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0613962,53.5602997],[-0.0613123,53.5602105],[-0.0613084,53.5601741],[-0.0613042,53.5601357],[-0.0595258,53.5577871],[-0.0594738,53.557721],[-0.0592631,53.5577745],[-0.0581742,53.5563812],[-0.0580641,53.5561509],[-0.0571089,53.5549016]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"David Street back-alley","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0698146,53.5575146],[-0.069692,53.5575313],[-0.0695823,53.5571865],[-0.0688189,53.5572787],[-0.0667594,53.5575353],[-0.0665154,53.5574575],[-0.0653559,53.5577108],[-0.0652386,53.5577365]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0738378,53.5586168],[-0.0736538,53.5581932],[-0.0734691,53.5577681]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.072633,53.5587971],[-0.072289,53.5579452]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0728017,53.5592159],[-0.072633,53.5587971]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0736538,53.5581932],[-0.0753061,53.5579359]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0749539,53.5641851],[-0.0752903,53.5630191]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0686512,53.5637869],[-0.0683132,53.5632301],[-0.0681271,53.5630144]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0707156,53.5633857],[-0.0703027,53.5624049]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0738869,53.5640827],[-0.0741393,53.5630109],[-0.0747009,53.5630629]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0760535,53.5606506],[-0.0759354,53.5603436],[-0.074004,53.5606213]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0670931,53.5701145],[-0.0684906,53.567956]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.072289,53.5579452],[-0.0719504,53.5571987]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0534087,53.5659785],[-0.0528107,53.5658462],[-0.0520639,53.5657026]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Queen Mary Avenue","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0578765,53.5657663],[-0.0577994,53.5657562]]]}}
+]
+}

@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "NOREA_22_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0927093,53.5407529],[-0.0928812,53.5407895],[-0.0930405,53.5407609]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Louth Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0921218,53.5381805],[-0.0922584,53.5382837]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Scartho Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0928954,53.5396789],[-0.0928624,53.5398617],[-0.0927093,53.5407529],[-0.0926126,53.5413154],[-0.0924932,53.5418366],[-0.0924754,53.5419325],[-0.0924571,53.5420309],[-0.0924471,53.5420848],[-0.0924102,53.542283],[-0.0922558,53.5431141],[-0.0921453,53.5437086],[-0.092078,53.544071],[-0.0919716,53.5445246],[-0.0918653,53.5449784]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Louth Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0920489,53.53813],[-0.0921218,53.5381805]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Louth Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.091331,53.5375736],[-0.0913921,53.5376213],[-0.0920489,53.53813]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Matthew Telford Park","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.0926126,53.5413154],[-0.0927776,53.541345],[-0.0933688,53.5414511],[-0.0936073,53.5414723],[-0.0938561,53.5414653],[-0.0941136,53.5414383]]]}}
+]
+}

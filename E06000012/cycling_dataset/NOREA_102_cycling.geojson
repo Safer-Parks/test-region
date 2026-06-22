@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "NOREA_102_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":"Lilac Court","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.1058448,53.532986],[-0.1058339,53.5329719],[-0.1056428,53.5329659]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"Lilac Court","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.1062262,53.5328743],[-0.1058448,53.532986],[-0.1057582,53.5330114],[-0.1057313,53.5330504],[-0.1057528,53.5330712],[-0.1057112,53.5330831],[-0.1055597,53.5330568],[-0.105494,53.5329795],[-0.1055342,53.5329652],[-0.1056428,53.5329659]]]}}
+]
+}
