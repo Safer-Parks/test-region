@@ -35,7 +35,7 @@
         
         aside {
             background: white;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             max-width: 300px;
@@ -260,6 +260,33 @@
             border-top-color: rgba(0, 123, 255, 0.95) !important;
         }
 
+        /* Cycling network tooltip styling */
+        .cycling-tooltip {
+            background: rgba(255, 107, 53, 0.95) !important;
+            color: white !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cycling-tooltip::before {
+            border-top-color: rgba(255, 107, 53, 0.95) !important;
+        }
+
+        /* Toggle label spacing */
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Space between adjacent toggle labels in accordion panel (regional level) */
+        .accordion-panel > .toggle-label + .toggle-label {
+            margin-top: 0.75rem;
+        }
+
     </style>
 </head>
 <body>
@@ -306,6 +333,11 @@
                 <label class="toggle-label">
                     <input type="checkbox" id="detailedToggle" role="switch" aria-label="Toggle detailed basemap on or off"/>
                     <span>Coloured Basemap</span>
+                </label>
+                
+                <label class="toggle-label">
+                    <input type="checkbox" id="cyclingNetworkToggle" role="switch" aria-label="Toggle national cycling network on or off"/>
+                    <span>National Cycling Network</span>
                 </label>
                 
                 <hr id="layerHR" style="display: none;">
@@ -433,6 +465,24 @@
             }
         });
         
+        // Cycling network toggle functionality (regional level)
+        const cyclingNetworkToggle = document.getElementById('cyclingNetworkToggle');
+        let cyclingNetworkVisible = false;
+        
+        cyclingNetworkToggle.addEventListener('change', function() {
+            cyclingNetworkVisible = this.checked;
+            
+            if (cyclingNetworkVisible && mapState.cyclingNetworkLayer) {
+                mapState.cyclingNetworkLayer.visible = true;
+                mapState.cyclingNetworkLayer.layer.addTo(map);
+                updateLegend();
+            } else if (mapState.cyclingNetworkLayer && mapState.cyclingNetworkLayer.layer) {
+                mapState.cyclingNetworkLayer.visible = false;
+                map.removeLayer(mapState.cyclingNetworkLayer.layer);
+                updateLegend();
+            }
+        });
+        
         // State management
         let mapState = {
             authorities: [],
@@ -447,7 +497,8 @@
             foliageLowLayer: null,
             foliageMidLayer: null,
             foliageTallLayer: null,
-            nachLayer: null
+            nachLayer: null,
+            cyclingNetworkLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -844,6 +895,9 @@
             }
             if (mapState.toiletLayer) {
                 layerToggles.push(mapState.toiletLayer);
+            }
+            if (mapState.cyclingNetworkLayer) {
+                layerToggles.push(mapState.cyclingNetworkLayer);
             }
             if (mapState.foliageLowLayer) {
                 layerToggles.push(mapState.foliageLowLayer);
@@ -1494,6 +1548,95 @@
             }
         }
         
+        // Load Regional Cycling Network for all authorities
+        async function loadRegionalCyclingNetwork() {
+            try {
+                // Remove existing cycling network layer if present
+                if (mapState.cyclingNetworkLayer && mapState.cyclingNetworkLayer.layer) {
+                    map.removeLayer(mapState.cyclingNetworkLayer.layer);
+                }
+                
+                // Create feature group for all cycling networks
+                const cyclingGroup = L.featureGroup();
+                let totalSegments = 0;
+                
+                // Load cycling network for each authority
+                for (const authority of mapState.authorities) {
+                    try {
+                        const authPath = getAuthorityPath(authority.id);
+                        const authName = authority.name;
+                        const cyclingFilename = `${authName}_national_cycle_network.geojson`;
+                        
+                        const response = await fetch(`${authPath}${cyclingFilename}`);
+                        if (!response.ok) {
+                            console.log(`Cycling network file not found for ${authName}`);
+                            continue;
+                        }
+                        
+                        const cyclingData = await response.json();
+                        
+                        if (!cyclingData.features || cyclingData.features.length === 0) {
+                            console.log(`No cycling network data for ${authName}`);
+                            continue;
+                        }
+                        
+                        cyclingData.features.forEach(feature => {
+                            // Handle both LineString and MultiLineString geometries
+                            const geometries = [];
+                            if (feature.geometry.type === 'LineString') {
+                                geometries.push(feature.geometry.coordinates);
+                            } else if (feature.geometry.type === 'MultiLineString') {
+                                geometries.push(...feature.geometry.coordinates);
+                            }
+                            
+                            geometries.forEach(geoJsonCoords => {
+                                // Convert from GeoJSON [lng, lat] to Leaflet [lat, lng]
+                                const leafletCoords = geoJsonCoords.map(coord => [coord[1], coord[0]]);
+                                
+                                // Create line for cycling network segment
+                                const line = L.polyline(leafletCoords, {
+                                    color: '#FF6B35',
+                                    weight: 2.5,
+                                    opacity: 0.8,
+                                    lineCap: 'round',
+                                    lineJoin: 'round'
+                                });
+                                
+                                // Add popup with cycling route info if available
+                                if (feature.properties && feature.properties.name) {
+                                    line.bindPopup(`<strong>${feature.properties.name}</strong>`);
+                                }
+                                
+                                // Add tooltip
+                                line.bindTooltip('National Cycle Network', { 
+                                    permanent: false, 
+                                    direction: 'top',
+                                    className: 'cycling-tooltip'
+                                });
+                                
+                                cyclingGroup.addLayer(line);
+                                totalSegments++;
+                            });
+                        });
+                    } catch (error) {
+                        console.error(`Error loading cycling network for ${authority.name}:`, error);
+                    }
+                }
+                
+                // Store layer info for toggling
+                mapState.cyclingNetworkLayer = {
+                    id: 'cycling-network',
+                    name: 'National Cycling Network',
+                    layer: cyclingGroup,
+                    visible: false
+                };
+                
+                console.log(`Loaded regional cycling network: ${totalSegments} segments across all authorities`);
+            } catch (error) {
+                console.error('Error in loadRegionalCyclingNetwork:', error);
+            }
+        }
+        
         // Populate layer toggles
         function populateLayerToggles(layers) {
             const container = document.getElementById('dataLayerToggles');
@@ -1679,6 +1822,22 @@
                 } catch (error) {
                     console.error('Error toggling toilet layer:', error);
                 }
+            } else if (layerId === 'cycling-network' && mapState.cyclingNetworkLayer) {
+                const layerObj = mapState.cyclingNetworkLayer;
+                console.log('Cycling network layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Cycling network layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Cycling network layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling cycling network layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
@@ -1763,6 +1922,14 @@
                     id: 'toilet-facilities',
                     name: 'Toilet Facilities',
                     type: 'toilet'
+                });
+            }
+            
+            if (mapState.cyclingNetworkLayer && mapState.cyclingNetworkLayer.visible) {
+                visibleLayers.push({
+                    id: 'cycling-network',
+                    name: 'National Cycling Network',
+                    type: 'cycling'
                 });
             }
             
@@ -2029,6 +2196,29 @@
                     toiletGroup.appendChild(toiletMarker);
                     legendItems.appendChild(toiletGroup);
                     return;
+                } else if (layer.type === 'cycling') {
+                    // Create cycling network legend
+                    const cyclingGroup = document.createElement('div');
+                    cyclingGroup.style.marginBottom = '0.75rem';
+                    
+                    // Create marker
+                    const cyclingMarker = document.createElement('div');
+                    cyclingMarker.style.display = 'flex';
+                    cyclingMarker.style.alignItems = 'center';
+                    cyclingMarker.style.gap = '0.5rem';
+                    
+                    const line = document.createElement('div');
+                    line.style.width = '24px';
+                    line.style.height = '3px';
+                    line.style.backgroundColor = '#FF6B35';
+                    line.style.borderRadius = '2px';
+                    
+                    cyclingMarker.appendChild(line);
+                    cyclingMarker.appendChild(document.createTextNode('National Cycling Network'));
+                    
+                    cyclingGroup.appendChild(cyclingMarker);
+                    legendItems.appendChild(cyclingGroup);
+                    return;
                 }
                 
                 item.appendChild(marker);
@@ -2148,7 +2338,11 @@
                 });
             }
             
-            loadAuthorities();
+            // Initialize data on page load
+            (async () => {
+                await loadAuthorities();
+                await loadRegionalCyclingNetwork();
+            })();
         });
     </script>
 </body>
