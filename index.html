@@ -203,6 +203,20 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             z-index: 1000;
         }
+        
+        /* Foliage tooltip styling */
+        .foliage-tooltip {
+            background: rgba(30, 125, 50, 0.95) !important;
+            color: white !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .foliage-tooltip::before {
+            border-top-color: rgba(30, 125, 50, 0.95) !important;
+        }
 
     </style>
 </head>
@@ -1127,7 +1141,21 @@
                                 fillOpacity: 0.6,
                                 fillColor: tallColor
                             });
+                            
+                            // Extract height properties
+                            const maxHeight = feature.properties.max_height || 0;
+                            const meanHeight = feature.properties.mean_height || 0;
+                            
+                            // Bind popup with foliage percentage
                             tallHexagon.bindPopup(`<strong>Tall Foliage (2m+)</strong><br/>${tallVal.toFixed(1)}%`);
+                            
+                            // Bind tooltip with height information (shown on hover)
+                            tallHexagon.bindTooltip(`<strong>Heights:</strong><br/>Max: ${maxHeight.toFixed(2)}m<br/>Mean: ${meanHeight.toFixed(2)}m`, {
+                                permanent: false,
+                                direction: 'top',
+                                className: 'foliage-tooltip'
+                            });
+                            
                             tallLayer.addLayer(tallHexagon);
                         }
                     });
