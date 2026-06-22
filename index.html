@@ -232,6 +232,20 @@
             border-top-color: white !important;
         }
 
+        /* NACH tooltip styling */
+        .nach-tooltip {
+            background: rgba(100, 100, 100, 0.95) !important;
+            color: white !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nach-tooltip::before {
+            border-top-color: rgba(100, 100, 100, 0.95) !important;
+        }
+
     </style>
 </head>
 <body>
@@ -418,7 +432,8 @@
             visibilityLayer: null,
             foliageLowLayer: null,
             foliageMidLayer: null,
-            foliageTallLayer: null
+            foliageTallLayer: null,
+            nachLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -763,6 +778,9 @@
             // Load foliage hexagons and wait for it to complete
             await loadFoliageHexagons(selectedPark);
             
+            // Load NACH network and wait for it to complete
+            await loadNACHNetwork(selectedPark);
+            
             // Show and populate layer toggles for both layers
             const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
             if (mapState.entrancesLayer) {
@@ -770,6 +788,9 @@
             }
             if (mapState.visibilityLayer) {
                 layerToggles.push(mapState.visibilityLayer);
+            }
+            if (mapState.nachLayer) {
+                layerToggles.push(mapState.nachLayer);
             }
             if (mapState.foliageLowLayer) {
                 layerToggles.push(mapState.foliageLowLayer);
@@ -1222,6 +1243,107 @@
             }
         }
         
+        // Load NACH (Predicted Route Popularity) network
+        async function loadNACHNetwork(park) {
+            try {
+                // Remove existing NACH layer
+                if (mapState.nachLayer && mapState.nachLayer.layer) {
+                    map.removeLayer(mapState.nachLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                
+                // Get the official park ID from the park object
+                if (!park.id) {
+                    console.log(`No official park id found for park: ${park.name}`);
+                    return;
+                }
+                
+                // Load NACH file from NACH_dataset directory
+                // Path format: {authorityId}/NACH_dataset/{parkId}_NACH.geojson
+                const nachFilename = `NACH_dataset/${park.id}_NACH.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${nachFilename}`);
+                    if (!response.ok) {
+                        console.log(`NACH file not found: ${nachFilename} (this is OK - not all areas have NACH data)`);
+                        return;
+                    }
+                    
+                    const nachData = await response.json();
+                    
+                    if (!nachData.features || nachData.features.length === 0) {
+                        console.log(`No NACH data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for NACH network
+                    const nachGroup = L.featureGroup();
+                    
+                    // Get NACH value range for color scaling
+                    const nachValues = nachData.features.map(f => f.properties.nach || 0);
+                    const minNACH = Math.min(...nachValues);
+                    const maxNACH = Math.max(...nachValues);
+                    
+                    // Create greyscale color palette (white for low, black for high)
+                    const greyscaleColors = ['#ffffff', '#e6e6e6', '#cccccc', '#999999', '#666666', '#333333', '#000000'];
+                    
+                    // Simple color interpolation function for greyscale
+                    const getGreyscaleColor = (value, minVal, maxVal) => {
+                        const normalized = (value - minVal) / (maxVal - minVal);
+                        const index = Math.floor(normalized * (greyscaleColors.length - 1));
+                        return greyscaleColors[Math.min(Math.max(index, 0), greyscaleColors.length - 1)];
+                    };
+                    
+                    nachData.features.forEach(feature => {
+                        const geoJsonCoords = feature.geometry.coordinates; // GeoJSON: [lng, lat]
+                        // Convert to Leaflet format: [lat, lng]
+                        const leafletCoords = geoJsonCoords.map(coord => [coord[1], coord[0]]);
+                        const nachValue = feature.properties.nach || 0;
+                        const color = getGreyscaleColor(nachValue, minNACH, maxNACH);
+                        
+                        // Create line for each network segment
+                        const line = L.polyline(leafletCoords, {
+                            color: color,
+                            weight: 3,
+                            opacity: 1.0,
+                            fillOpacity: 1.0,
+                            lineCap: 'round',
+                            lineJoin: 'round'
+                        });
+                        
+                        // Add popup with NACH value
+                        line.bindPopup(`<strong>Predicted Route Popularity</strong><br/>Choice: ${nachValue.toFixed(3)}`);
+                        
+                        // Add tooltip showing value on hover
+                        line.bindTooltip(`Choice: ${nachValue.toFixed(3)}`, { 
+                            permanent: false, 
+                            direction: 'top',
+                            className: 'nach-tooltip'
+                        });
+                        
+                        nachGroup.addLayer(line);
+                    });
+                    
+                    // Store layer info for toggling (but don't add to map yet - user must enable via toggle)
+                    mapState.nachLayer = {
+                        id: 'nach-network',
+                        name: 'Predicted Route Popularity (NACH)',
+                        layer: nachGroup,
+                        visible: false,
+                        minValue: minNACH,
+                        maxValue: maxNACH
+                    };
+                    
+                    console.log(`Loaded ${nachData.features.length} NACH segments for ${park.name}`);
+                } catch (error) {
+                    console.error('Error loading NACH:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadNACHNetwork:', error);
+            }
+        }
+        
         // Populate layer toggles
         function populateLayerToggles(layers) {
             const container = document.getElementById('dataLayerToggles');
@@ -1375,6 +1497,22 @@
                 } catch (error) {
                     console.error('Error toggling foliage tall layer:', error);
                 }
+            } else if (layerId === 'nach-network' && mapState.nachLayer) {
+                const layerObj = mapState.nachLayer;
+                console.log('NACH layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('NACH layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('NACH layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling NACH layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
@@ -1443,6 +1581,14 @@
                     id: 'foliage-tall-hexagons',
                     name: 'Tall Foliage (2m+)',
                     type: 'foliage-tall'
+                });
+            }
+            
+            if (mapState.nachLayer && mapState.nachLayer.visible) {
+                visibleLayers.push({
+                    id: 'nach-network',
+                    name: 'Predicted Route Popularity (NACH)',
+                    type: 'nach'
                 });
             }
             
@@ -1653,6 +1799,39 @@
                     
                     legendItems.appendChild(foliageGroup);
                     return;
+                } else if (layer.type === 'nach') {
+                    // Create NACH (Predicted Route Popularity) greyscale gradient legend
+                    const label = document.createElement('span');
+                    label.style.fontSize = '0.85rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '0.25rem';
+                    label.style.display = 'block';
+                    label.textContent = layer.name;
+                    
+                    const nachGroup = document.createElement('div');
+                    nachGroup.style.marginBottom = '0.75rem';
+                    nachGroup.appendChild(label);
+                    
+                    // Create gradient bar (white to black greyscale)
+                    const gradientBar = document.createElement('div');
+                    gradientBar.style.width = '100%';
+                    gradientBar.style.height = '20px';
+                    gradientBar.style.background = 'linear-gradient(to right, #ffffff, #e6e6e6, #cccccc, #999999, #666666, #333333, #000000)';
+                    gradientBar.style.borderRadius = '4px';
+                    gradientBar.style.marginBottom = '0.25rem';
+                    nachGroup.appendChild(gradientBar);
+                    
+                    // Add labels
+                    const labelContainer = document.createElement('div');
+                    labelContainer.style.display = 'flex';
+                    labelContainer.style.justifyContent = 'space-between';
+                    labelContainer.style.fontSize = '0.75rem';
+                    labelContainer.style.color = '#666';
+                    labelContainer.innerHTML = '<span>Low</span><span>High</span>';
+                    nachGroup.appendChild(labelContainer);
+                    
+                    legendItems.appendChild(nachGroup);
+                    return;
                 }
                 
                 item.appendChild(marker);
@@ -1679,6 +1858,10 @@
             if (mapState.visibilityLayer && mapState.visibilityLayer.layer) {
                 map.removeLayer(mapState.visibilityLayer.layer);
                 mapState.visibilityLayer = null;
+            }
+            if (mapState.nachLayer && mapState.nachLayer.layer) {
+                map.removeLayer(mapState.nachLayer.layer);
+                mapState.nachLayer = null;
             }
             if (mapState.foliageLowLayer && mapState.foliageLowLayer.layer) {
                 map.removeLayer(mapState.foliageLowLayer.layer);
