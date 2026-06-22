@@ -387,7 +387,10 @@
             allParksData: [],
             sortedParks: [],
             entrancesLayer: null,
-            visibilityLayer: null
+            visibilityLayer: null,
+            foliageLowLayer: null,
+            foliageMidLayer: null,
+            foliageTallLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -712,6 +715,9 @@
             // Load visibility hexagons and wait for it to complete
             await loadVisibilityHexagons(selectedPark);
             
+            // Load foliage hexagons and wait for it to complete
+            await loadFoliageHexagons(selectedPark);
+            
             // Show and populate layer toggles for both layers
             const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
             if (mapState.entrancesLayer) {
@@ -719,6 +725,15 @@
             }
             if (mapState.visibilityLayer) {
                 layerToggles.push(mapState.visibilityLayer);
+            }
+            if (mapState.foliageLowLayer) {
+                layerToggles.push(mapState.foliageLowLayer);
+            }
+            if (mapState.foliageMidLayer) {
+                layerToggles.push(mapState.foliageMidLayer);
+            }
+            if (mapState.foliageTallLayer) {
+                layerToggles.push(mapState.foliageTallLayer);
             }
             populateLayerToggles(layerToggles);
             updateLegend();
@@ -975,6 +990,179 @@
             }
         }
         
+        // Load foliage hexagons for selected park
+        async function loadFoliageHexagons(park) {
+            try {
+                // Remove existing foliage layers
+                if (mapState.foliageLowLayer && mapState.foliageLowLayer.layer) {
+                    map.removeLayer(mapState.foliageLowLayer.layer);
+                }
+                if (mapState.foliageMidLayer && mapState.foliageMidLayer.layer) {
+                    map.removeLayer(mapState.foliageMidLayer.layer);
+                }
+                if (mapState.foliageTallLayer && mapState.foliageTallLayer.layer) {
+                    map.removeLayer(mapState.foliageTallLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                const authName = mapState.currentAuthority.name;
+                
+                // Get the new_park_id from the park object
+                if (!park.newParkId) {
+                    console.log(`No new_park_id found for park: ${park.name}`);
+                    return;
+                }
+                
+                // Try to load foliage file from combined parks directory
+                const foliageFilename = `${authName}_pp_or_g_cmb/${park.newParkId}_foliage.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${foliageFilename}`);
+                    if (!response.ok) {
+                        console.log(`Foliage file not found: ${foliageFilename}`);
+                        return;
+                    }
+                    
+                    const foliageData = await response.json();
+                    
+                    if (!foliageData.features || foliageData.features.length === 0) {
+                        console.log(`No foliage data found for park: ${park.name}`);
+                        return;
+                    }
+                    
+                    // Create three feature groups for each foliage height category
+                    const lowLayer = L.featureGroup();
+                    const midLayer = L.featureGroup();
+                    const tallLayer = L.featureGroup();
+                    
+                    // White to green color scale for all foliage layers
+                    const whiteToGreenColors = ['#ffffff', '#e8f5e9', '#c8e6c9', '#a5d6a7', '#81c784', '#66bb6a', '#4caf50', '#388e3c', '#2e7d32', '#1b5e20'];
+                    
+                    const getColorForValue = (value, minVal, maxVal) => {
+                        if (maxVal === minVal) return whiteToGreenColors[0];
+                        const normalized = (value - minVal) / (maxVal - minVal);
+                        const index = Math.floor(normalized * (whiteToGreenColors.length - 1));
+                        return whiteToGreenColors[Math.min(Math.max(index, 0), whiteToGreenColors.length - 1)];
+                    };
+                    
+                    // Get ranges for each category - use correct property names with special characters
+                    // Filter to only include values >= 10%
+                    const lowValues = foliageData.features
+                        .map(f => f.properties['low_level_<0.5'] || 0)
+                        .filter(v => v >= 10);
+                    const midValues = foliageData.features
+                        .map(f => f.properties['mid_level_0.5-2'] || 0)
+                        .filter(v => v >= 10);
+                    const tallValues = foliageData.features
+                        .map(f => f.properties['tall_2+'] || 0)
+                        .filter(v => v >= 10);
+                    
+                    const lowMin = lowValues.length > 0 ? Math.min(...lowValues) : 10;
+                    const lowMax = lowValues.length > 0 ? Math.max(...lowValues) : 100;
+                    const midMin = midValues.length > 0 ? Math.min(...midValues) : 10;
+                    const midMax = midValues.length > 0 ? Math.max(...midValues) : 100;
+                    const tallMin = tallValues.length > 0 ? Math.min(...tallValues) : 10;
+                    const tallMax = tallValues.length > 0 ? Math.max(...tallValues) : 100;
+                    
+                    // Process each feature for all three categories
+                    foliageData.features.forEach((feature, index) => {
+                        const coords = feature.geometry.coordinates;
+                        const lon = coords[0];
+                        const lat = coords[1];
+                        
+                        // Extract property values - handle both underscores and angle brackets
+                        const lowVal = feature.properties['low_level_<0.5'] !== undefined ? 
+                                      feature.properties['low_level_<0.5'] : 
+                                      (feature.properties.low_level_lt_0_5 || 0);
+                        const midVal = feature.properties['mid_level_0.5-2'] !== undefined ? 
+                                      feature.properties['mid_level_0.5-2'] : 
+                                      (feature.properties.mid_level_0_5_2 || 0);
+                        const tallVal = feature.properties['tall_2+'] !== undefined ? 
+                                       feature.properties['tall_2+'] : 
+                                       (feature.properties.tall_2_plus || 0);
+                        
+                        // Skip hexagons with values < 10%
+                        if (lowVal < 10 && midVal < 10 && tallVal < 10) {
+                            return;
+                        }
+                        
+                        // Create hexagon using fixed radius
+                        const hexCorners = createHexFromCenter(lat, lon, HEX_RADIUS_M);
+                        
+                        // Low foliage hexagon - only if value >= 10%
+                        if (lowVal >= 10) {
+                            const lowColor = getColorForValue(lowVal, lowMin, lowMax);
+                            const lowHexagon = L.polygon(hexCorners, {
+                                color: lowColor,
+                                weight: 1,
+                                opacity: 0.7,
+                                fillOpacity: 0.6,
+                                fillColor: lowColor
+                            });
+                            lowHexagon.bindPopup(`<strong>Low Foliage (&lt;0.5m)</strong><br/>${lowVal.toFixed(1)}%`);
+                            lowLayer.addLayer(lowHexagon);
+                        }
+                        
+                        // Mid foliage hexagon - only if value >= 10%
+                        if (midVal >= 10) {
+                            const midColor = getColorForValue(midVal, midMin, midMax);
+                            const midHexagon = L.polygon(hexCorners, {
+                                color: midColor,
+                                weight: 1,
+                                opacity: 0.7,
+                                fillOpacity: 0.6,
+                                fillColor: midColor
+                            });
+                            midHexagon.bindPopup(`<strong>Mid Foliage (0.5-2m)</strong><br/>${midVal.toFixed(1)}%`);
+                            midLayer.addLayer(midHexagon);
+                        }
+                        
+                        // Tall foliage hexagon - only if value >= 10%
+                        if (tallVal >= 10) {
+                            const tallColor = getColorForValue(tallVal, tallMin, tallMax);
+                            const tallHexagon = L.polygon(hexCorners, {
+                                color: tallColor,
+                                weight: 1,
+                                opacity: 0.7,
+                                fillOpacity: 0.6,
+                                fillColor: tallColor
+                            });
+                            tallHexagon.bindPopup(`<strong>Tall Foliage (2m+)</strong><br/>${tallVal.toFixed(1)}%`);
+                            tallLayer.addLayer(tallHexagon);
+                        }
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.foliageLowLayer = {
+                        id: 'foliage-low-hexagons',
+                        name: 'Low Foliage (<0.5m)',
+                        layer: lowLayer,
+                        visible: false
+                    };
+                    
+                    mapState.foliageMidLayer = {
+                        id: 'foliage-mid-hexagons',
+                        name: 'Mid Foliage (0.5-2m)',
+                        layer: midLayer,
+                        visible: false
+                    };
+                    
+                    mapState.foliageTallLayer = {
+                        id: 'foliage-tall-hexagons',
+                        name: 'Tall Foliage (2m+)',
+                        layer: tallLayer,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${foliageData.features.length} foliage hexagons for ${park.name}`);
+                } catch (error) {
+                    console.error('Error loading foliage:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadFoliageHexagons:', error);
+            }
+        }
+        
         // Populate layer toggles
         function populateLayerToggles(layers) {
             const container = document.getElementById('dataLayerToggles');
@@ -1080,6 +1268,54 @@
                 } catch (error) {
                     console.error('Error toggling visibility layer:', error);
                 }
+            } else if (layerId === 'foliage-low-hexagons' && mapState.foliageLowLayer) {
+                const layerObj = mapState.foliageLowLayer;
+                console.log('Foliage low layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Foliage low layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Foliage low layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling foliage low layer:', error);
+                }
+            } else if (layerId === 'foliage-mid-hexagons' && mapState.foliageMidLayer) {
+                const layerObj = mapState.foliageMidLayer;
+                console.log('Foliage mid layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Foliage mid layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Foliage mid layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling foliage mid layer:', error);
+                }
+            } else if (layerId === 'foliage-tall-hexagons' && mapState.foliageTallLayer) {
+                const layerObj = mapState.foliageTallLayer;
+                console.log('Foliage tall layer found, toggling visibility:', visible);
+                
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Foliage tall layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Foliage tall layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling foliage tall layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
             }
@@ -1124,6 +1360,30 @@
                     id: 'visibility-hexagons',
                     name: 'Visibility Analysis',
                     type: 'visibility'
+                });
+            }
+            
+            if (mapState.foliageLowLayer && mapState.foliageLowLayer.visible) {
+                visibleLayers.push({
+                    id: 'foliage-low-hexagons',
+                    name: 'Low Foliage (<0.5m)',
+                    type: 'foliage-low'
+                });
+            }
+            
+            if (mapState.foliageMidLayer && mapState.foliageMidLayer.visible) {
+                visibleLayers.push({
+                    id: 'foliage-mid-hexagons',
+                    name: 'Mid Foliage (0.5-2m)',
+                    type: 'foliage-mid'
+                });
+            }
+            
+            if (mapState.foliageTallLayer && mapState.foliageTallLayer.visible) {
+                visibleLayers.push({
+                    id: 'foliage-tall-hexagons',
+                    name: 'Tall Foliage (2m+)',
+                    type: 'foliage-tall'
                 });
             }
             
@@ -1235,6 +1495,105 @@
                     
                     legendItems.appendChild(visibilityGroup);
                     return;
+                } else if (layer.type === 'foliage-low') {
+                    // Create low foliage gradient legend (white to green)
+                    const label = document.createElement('span');
+                    label.style.fontSize = '0.85rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '0.25rem';
+                    label.style.display = 'block';
+                    label.textContent = layer.name;
+                    
+                    const foliageGroup = document.createElement('div');
+                    foliageGroup.style.marginBottom = '0.75rem';
+                    foliageGroup.appendChild(label);
+                    
+                    // Create gradient bar (white to green)
+                    const gradientBar = document.createElement('div');
+                    gradientBar.style.width = '100%';
+                    gradientBar.style.height = '20px';
+                    gradientBar.style.background = 'linear-gradient(to right, #ffffff, #e8f5e9, #c8e6c9, #81c784, #4caf50, #2e7d32, #1b5e20)';
+                    gradientBar.style.borderRadius = '4px';
+                    gradientBar.style.marginBottom = '0.25rem';
+                    foliageGroup.appendChild(gradientBar);
+                    
+                    // Add labels
+                    const labelContainer = document.createElement('div');
+                    labelContainer.style.display = 'flex';
+                    labelContainer.style.justifyContent = 'space-between';
+                    labelContainer.style.fontSize = '0.75rem';
+                    labelContainer.style.color = '#666';
+                    labelContainer.innerHTML = '<span>10%</span><span>100%</span>';
+                    foliageGroup.appendChild(labelContainer);
+                    
+                    legendItems.appendChild(foliageGroup);
+                    return;
+                } else if (layer.type === 'foliage-mid') {
+                    // Create mid foliage gradient legend (white to green)
+                    const label = document.createElement('span');
+                    label.style.fontSize = '0.85rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '0.25rem';
+                    label.style.display = 'block';
+                    label.textContent = layer.name;
+                    
+                    const foliageGroup = document.createElement('div');
+                    foliageGroup.style.marginBottom = '0.75rem';
+                    foliageGroup.appendChild(label);
+                    
+                    // Create gradient bar (white to green)
+                    const gradientBar = document.createElement('div');
+                    gradientBar.style.width = '100%';
+                    gradientBar.style.height = '20px';
+                    gradientBar.style.background = 'linear-gradient(to right, #ffffff, #e8f5e9, #c8e6c9, #81c784, #4caf50, #2e7d32, #1b5e20)';
+                    gradientBar.style.borderRadius = '4px';
+                    gradientBar.style.marginBottom = '0.25rem';
+                    foliageGroup.appendChild(gradientBar);
+                    
+                    // Add labels
+                    const labelContainer = document.createElement('div');
+                    labelContainer.style.display = 'flex';
+                    labelContainer.style.justifyContent = 'space-between';
+                    labelContainer.style.fontSize = '0.75rem';
+                    labelContainer.style.color = '#666';
+                    labelContainer.innerHTML = '<span>10%</span><span>100%</span>';
+                    foliageGroup.appendChild(labelContainer);
+                    
+                    legendItems.appendChild(foliageGroup);
+                    return;
+                } else if (layer.type === 'foliage-tall') {
+                    // Create tall foliage gradient legend (white to green)
+                    const label = document.createElement('span');
+                    label.style.fontSize = '0.85rem';
+                    label.style.fontWeight = '500';
+                    label.style.marginBottom = '0.25rem';
+                    label.style.display = 'block';
+                    label.textContent = layer.name;
+                    
+                    const foliageGroup = document.createElement('div');
+                    foliageGroup.style.marginBottom = '0.75rem';
+                    foliageGroup.appendChild(label);
+                    
+                    // Create gradient bar (white to green)
+                    const gradientBar = document.createElement('div');
+                    gradientBar.style.width = '100%';
+                    gradientBar.style.height = '20px';
+                    gradientBar.style.background = 'linear-gradient(to right, #ffffff, #e8f5e9, #c8e6c9, #81c784, #4caf50, #2e7d32, #1b5e20)';
+                    gradientBar.style.borderRadius = '4px';
+                    gradientBar.style.marginBottom = '0.25rem';
+                    foliageGroup.appendChild(gradientBar);
+                    
+                    // Add labels
+                    const labelContainer = document.createElement('div');
+                    labelContainer.style.display = 'flex';
+                    labelContainer.style.justifyContent = 'space-between';
+                    labelContainer.style.fontSize = '0.75rem';
+                    labelContainer.style.color = '#666';
+                    labelContainer.innerHTML = '<span>10%</span><span>100%</span>';
+                    foliageGroup.appendChild(labelContainer);
+                    
+                    legendItems.appendChild(foliageGroup);
+                    return;
                 }
                 
                 item.appendChild(marker);
@@ -1261,6 +1620,18 @@
             if (mapState.visibilityLayer && mapState.visibilityLayer.layer) {
                 map.removeLayer(mapState.visibilityLayer.layer);
                 mapState.visibilityLayer = null;
+            }
+            if (mapState.foliageLowLayer && mapState.foliageLowLayer.layer) {
+                map.removeLayer(mapState.foliageLowLayer.layer);
+                mapState.foliageLowLayer = null;
+            }
+            if (mapState.foliageMidLayer && mapState.foliageMidLayer.layer) {
+                map.removeLayer(mapState.foliageMidLayer.layer);
+                mapState.foliageMidLayer = null;
+            }
+            if (mapState.foliageTallLayer && mapState.foliageTallLayer.layer) {
+                map.removeLayer(mapState.foliageTallLayer.layer);
+                mapState.foliageTallLayer = null;
             }
             if (mapState.allParksLayer) {
                 // Make sure all parks layer is visible
