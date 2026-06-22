@@ -292,6 +292,33 @@
             border-top-color: rgba(255, 215, 0, 0.95) !important;
         }
 
+        /* Features tooltip styling */
+        .features-in-parks-tooltip {
+            background: rgba(76, 175, 80, 0.95) !important;
+            color: white !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.75rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .features-in-parks-tooltip::before {
+            border-top-color: rgba(76, 175, 80, 0.95) !important;
+        }
+
+        .features-near-parks-tooltip {
+            background: rgba(255, 152, 0, 0.95) !important;
+            color: white !important;
+            border-radius: 4px;
+            padding: 8px 12px !important;
+            font-size: 0.75rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .features-near-parks-tooltip::before {
+            border-top-color: rgba(255, 152, 0, 0.95) !important;
+        }
+
         /* Toggle label spacing */
         .toggle-label {
             display: flex;
@@ -562,7 +589,9 @@
             foliageTallLayer: null,
             nachLayer: null,
             cyclingNetworkLayer: null,
-            streetLampsLayer: null
+            streetLampsLayer: null,
+            featuresInParksLayer: null,
+            featuresNearParksLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -847,6 +876,10 @@
                 }
                 
                 console.log(`Loaded ${parks.length} parks from ${successFile}`);
+                
+                // Load features for this authority
+                await loadFeaturesInParks(authority);
+                await loadFeaturesNearParks(authority);
             } catch (error) {
                 console.error('Error loading parks:', error);
             }
@@ -968,6 +1001,12 @@
             }
             if (mapState.foliageTallLayer) {
                 layerToggles.push(mapState.foliageTallLayer);
+            }
+            if (mapState.featuresInParksLayer) {
+                layerToggles.push(mapState.featuresInParksLayer);
+            }
+            if (mapState.featuresNearParksLayer) {
+                layerToggles.push(mapState.featuresNearParksLayer);
             }
             populateLayerToggles(layerToggles);
             updateLegend();
@@ -1694,6 +1733,308 @@
             }
         }
         
+        // Helper function to generate feature label with intelligent filtering and sentence case
+        function toSentenceCase(str) {
+            if (!str) return '';
+            return str.replace(/_/g, ' ').charAt(0).toUpperCase() + str.replace(/_/g, ' ').slice(1).toLowerCase();
+        }
+        
+        function getFeatureLabelIn(props) {
+            const primaryName = props['Primary Name_feature'];
+            const typeOS = props['Type (OS)_feature'];
+            const typeOSM = props['Type (OSM)_feature'];
+            
+            let label = '';
+            
+            // Prioritize Type (OS) first
+            if (typeOS) {
+                label = toSentenceCase(typeOS);
+            }
+            // Then try Type (OSM)
+            else if (typeOSM) {
+                label = toSentenceCase(typeOSM);
+            }
+            // Finally try Primary Name
+            else if (primaryName) {
+                label = toSentenceCase(primaryName);
+            }
+            
+            // Default to 'Feature'
+            return label || 'Feature';
+        }
+        
+        // Load Features In Parks dataset
+        async function loadFeaturesInParks(authority) {
+            try {
+                // Remove existing layer
+                if (mapState.featuresInParksLayer && mapState.featuresInParksLayer.layer) {
+                    map.removeLayer(mapState.featuresInParksLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(authority.id);
+                const authName = authority.name;
+                const featuresFilename = `${authName}_features_within_pp_or_g.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${featuresFilename}`);
+                    if (!response.ok) {
+                        console.log(`Features in parks file not found: ${featuresFilename}`);
+                        return;
+                    }
+                    
+                    const featuresData = await response.json();
+                    if (!featuresData.features || featuresData.features.length === 0) {
+                        console.log(`No features data found for authority: ${authority.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for features in parks
+                    const featuresGroup = L.featureGroup();
+                    
+                    // Use proj4.js for coordinate transformation (already loaded in HTML)
+                    featuresData.features.forEach(feature => {
+                        try {
+                            // Transform geometry from EPSG:27700 to EPSG:4326
+                            const transformedGeometry = transformCoordinates(feature.geometry);
+                            
+                            if (!transformedGeometry) {
+                                return;
+                            }
+                            
+                            if (feature.geometry.type === 'Point') {
+                                const coords = transformedGeometry.coordinates;
+                                const marker = L.circleMarker([coords[1], coords[0]], {
+                                    radius: 5,
+                                    color: '#4CAF50',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    fill: true,
+                                    fillColor: '#4CAF50',
+                                    fillOpacity: 0.3
+                                });
+                                
+                                const featureName = getFeatureLabelIn(feature.properties);
+                                marker.bindTooltip(featureName, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'features-in-parks-tooltip'
+                                });
+                                
+                                featuresGroup.addLayer(marker);
+                            } else if (feature.geometry.type === 'Polygon') {
+                                const coords = transformedGeometry.coordinates[0].map(c => [c[1], c[0]]);
+                                const polygon = L.polygon(coords, {
+                                    color: '#4CAF50',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    dashArray: '5, 5',
+                                    fill: true,
+                                    fillColor: '#4CAF50',
+                                    fillOpacity: 0.05,
+                                    lineCap: 'butt'
+                                });
+                                
+                                const featureName = getFeatureLabelIn(feature.properties);
+                                polygon.bindTooltip(featureName, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'features-in-parks-tooltip'
+                                });
+                                
+                                featuresGroup.addLayer(polygon);
+                            } else if (feature.geometry.type === 'LineString') {
+                                const coords = transformedGeometry.coordinates.map(c => [c[1], c[0]]);
+                                const line = L.polyline(coords, {
+                                    color: '#4CAF50',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    dashArray: '5, 5',
+                                    lineCap: 'butt'
+                                });
+                                
+                                const featureName = getFeatureLabelIn(feature.properties);
+                                line.bindTooltip(featureName, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'features-in-parks-tooltip'
+                                });
+                                
+                                featuresGroup.addLayer(line);
+                            }
+                        } catch (e) {
+                            console.warn('Error processing feature:', e);
+                        }
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.featuresInParksLayer = {
+                        id: 'features-in-parks',
+                        name: 'Features In Parks',
+                        layer: featuresGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${featuresData.features.length} features in parks for ${authority.name}`);
+                } catch (error) {
+                    console.error('Error loading features in parks:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadFeaturesInParks:', error);
+            }
+        }
+        
+        // Helper function to generate feature label with intelligent filtering and sentence case
+        function getFeatureLabelNear(props) {
+            const primaryName = props['Primary Name'];
+            const typeOS = props['Type (OS)'];
+            const typeOSM = props['Type (OSM)'];
+            
+            let label = '';
+            
+            // Use Primary Name if available
+            if (primaryName) {
+                label = toSentenceCase(primaryName);
+            }
+            
+            // Add Type (OS) if available
+            if (typeOS) {
+                const typeOSFormatted = toSentenceCase(typeOS);
+                if (label) {
+                    label += ', ' + typeOSFormatted;
+                } else {
+                    label = typeOSFormatted;
+                }
+            }
+            
+            // If both Primary Name and Type (OS) are null, try Type (OSM) with formatting
+            if (!label && typeOSM) {
+                label = toSentenceCase(typeOSM);
+            }
+            
+            // Default to 'Feature'
+            return label || 'Feature';
+        }
+        
+        // Load Features Near Parks dataset
+        async function loadFeaturesNearParks(authority) {
+            try {
+                // Remove existing layer
+                if (mapState.featuresNearParksLayer && mapState.featuresNearParksLayer.layer) {
+                    map.removeLayer(mapState.featuresNearParksLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(authority.id);
+                const authName = authority.name;
+                const featuresFilename = `${authName}_features_not_in_pp_or_g.geojson`;
+                
+                try {
+                    const response = await fetch(`${authPath}${featuresFilename}`);
+                    if (!response.ok) {
+                        console.log(`Features near parks file not found: ${featuresFilename}`);
+                        return;
+                    }
+                    
+                    const featuresData = await response.json();
+                    if (!featuresData.features || featuresData.features.length === 0) {
+                        console.log(`No features data found near parks for authority: ${authority.name}`);
+                        return;
+                    }
+                    
+                    // Create feature group for features near parks
+                    const featuresGroup = L.featureGroup();
+                    
+                    // Use proj4.js for coordinate transformation (already loaded in HTML)
+                    featuresData.features.forEach(feature => {
+                        try {
+                            // Transform geometry from EPSG:27700 to EPSG:4326
+                            const transformedGeometry = transformCoordinates(feature.geometry);
+                            
+                            if (!transformedGeometry) {
+                                return;
+                            }
+                            
+                            if (feature.geometry.type === 'Point') {
+                                const coords = transformedGeometry.coordinates;
+                                const marker = L.circleMarker([coords[1], coords[0]], {
+                                    radius: 5,
+                                    color: '#FF9800',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    fill: true,
+                                    fillColor: '#FF9800',
+                                    fillOpacity: 0.3
+                                });
+                                
+                                const featureName = getFeatureLabelNear(feature.properties);
+                                marker.bindTooltip(featureName, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'features-near-parks-tooltip'
+                                });
+                                
+                                featuresGroup.addLayer(marker);
+                            } else if (feature.geometry.type === 'Polygon') {
+                                const coords = transformedGeometry.coordinates[0].map(c => [c[1], c[0]]);
+                                const polygon = L.polygon(coords, {
+                                    color: '#FF9800',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    dashArray: '5, 5',
+                                    fill: true,
+                                    fillColor: '#FF9800',
+                                    fillOpacity: 0.05,
+                                    lineCap: 'butt'
+                                });
+                                
+                                const featureName = getFeatureLabelNear(feature.properties);
+                                polygon.bindTooltip(featureName, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'features-near-parks-tooltip'
+                                });
+                                
+                                featuresGroup.addLayer(polygon);
+                            } else if (feature.geometry.type === 'LineString') {
+                                const coords = transformedGeometry.coordinates.map(c => [c[1], c[0]]);
+                                const line = L.polyline(coords, {
+                                    color: '#FF9800',
+                                    weight: 2,
+                                    opacity: 0.8,
+                                    dashArray: '5, 5',
+                                    lineCap: 'butt'
+                                });
+                                
+                                const featureName = getFeatureLabelNear(feature.properties);
+                                line.bindTooltip(featureName, {
+                                    permanent: false,
+                                    direction: 'top',
+                                    className: 'features-near-parks-tooltip'
+                                });
+                                
+                                featuresGroup.addLayer(line);
+                            }
+                        } catch (e) {
+                            console.warn('Error processing feature:', e);
+                        }
+                    });
+                    
+                    // Store layer info for toggling
+                    mapState.featuresNearParksLayer = {
+                        id: 'features-near-parks',
+                        name: 'Features Near Parks',
+                        layer: featuresGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Loaded ${featuresData.features.length} features near parks for ${authority.name}`);
+                } catch (error) {
+                    console.error('Error loading features near parks:', error);
+                }
+            } catch (error) {
+                console.error('Error in loadFeaturesNearParks:', error);
+            }
+        }
+        
         // Load Regional Cycling Network for all authorities
         async function loadRegionalCyclingNetwork() {
             try {
@@ -1983,6 +2324,30 @@
                     layerObj.visible = visible;
                 } catch (error) {
                     console.error('Error toggling cycling network layer:', error);
+                }
+            } else if (layerId === 'features-in-parks' && mapState.featuresInParksLayer) {
+                const layerObj = mapState.featuresInParksLayer;
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling features in parks layer:', error);
+                }
+            } else if (layerId === 'features-near-parks' && mapState.featuresNearParksLayer) {
+                const layerObj = mapState.featuresNearParksLayer;
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling features near parks layer:', error);
                 }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met');
