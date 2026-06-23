@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_1002_lighting",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.347664483149847,53.894660619797868]}}
+]
+}

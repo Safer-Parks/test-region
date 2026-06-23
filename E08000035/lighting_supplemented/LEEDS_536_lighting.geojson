@@ -1,0 +1,22 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_536_lighting",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349743936103365,53.899331503539614]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349478706896583,53.899383154539329]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.348725007809715,53.899467831355679]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349455852548937,53.899476841922407]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.348216363699876,53.89960551187248]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349707002278952,53.899719749197089]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349836479506761,53.900049630142185]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.34851767826208,53.900384314503491]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349933295976989,53.900431014872638]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.348866477082757,53.900678871120881]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.348267085200948,53.900717755711121]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.350004117849424,53.90086337776124]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.349056665496007,53.900896733199531]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.350054116483496,53.901197041772321]}},
+{"type":"Feature","properties":{"Park Feature":"Street Light"},"geometry":{"type":"Point","coordinates":[-1.348966167023013,53.901272892374173]}}
+]
+}

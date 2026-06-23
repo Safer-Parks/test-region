@@ -359,8 +359,8 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><strong>The Safer Parks Dashboard</strong><span id="navParkName" style="display:none; margin-left: 2rem;"></span></li>
-            <li style="margin-left: auto;"><a href="https://murphyqm.github.io/Safer-Parks.github.io/guide.html" target="_blank" rel="noopener noreferrer">Layer guide</a></li>
+            <li><a href="https://Safer-Parks.github.io"><strong>The Safer Parks Dashboard</strong></a><span id="navParkName" style="display:none; margin-left: 2rem;"></span></li>
+            <li style="margin-left: auto;"><a href="https://Safer-Parks.github.io/guide.html" target="_blank" rel="noopener noreferrer">Layer guide</a></li>
         </ul>
     </nav>
 
@@ -409,7 +409,7 @@
                 
                 <label class="toggle-label">
                     <input type="checkbox" id="streetLampsToggle" role="switch" aria-label="Toggle street lamps on or off"/>
-                    <span>Street Lamps</span>
+                    <span>Street Lighting (authority level, from OSM)</span>
                 </label>
                 
                 <hr id="layerHR" style="display: none;">
@@ -423,6 +423,7 @@
                 </div>
                 
                 <button id="resetMapBtn" class="secondary" style="width:100%; margin-top:1rem;">Return to authority overview</button>
+                <!-- GitHub link will be inserted here by loadAuthorities() -->
             </div>
         </div>
     </aside>
@@ -591,7 +592,8 @@
             cyclingNetworkLayer: null,
             streetLampsLayer: null,
             featuresInParksLayer: null,
-            featuresNearParksLayer: null
+            featuresNearParksLayer: null,
+            supplementalLightingLayer: null
         };
         
         // Utility function to get proper path for authority
@@ -604,7 +606,8 @@
         // THIS IS WHERE I NEED TO UPDATE FOR EACH REGION!!!
         async function loadAuthorities() {
             try {
-                const response = await fetch('E12000003_lut.geojson');
+                const lutFilename = 'E12000003_lut.geojson';
+                const response = await fetch(lutFilename);
                 const geojson = await response.json();
                 
                 mapState.authorities = geojson.features.map(feature => ({
@@ -625,7 +628,39 @@
                     select.appendChild(option);
                 });
                 
+                // Extract region code from LUT filename (e.g., 'E12000003_lut.geojson' -> 'E12000003')
+                const regionCode = lutFilename.replace('_lut.geojson', '');
+                const githubUrl = `https://github.com/Safer-Parks/${regionCode}`;
+                
+                // Add GitHub link to the menu
+                const githubLinkContainer = document.createElement('div');
+                githubLinkContainer.style.marginTop = '1rem';
+                githubLinkContainer.style.paddingTop = '1rem';
+                githubLinkContainer.style.borderTop = '1px solid #ddd';
+                githubLinkContainer.style.textAlign = 'center';
+                
+                const githubLink = document.createElement('a');
+                githubLink.href = githubUrl;
+                githubLink.textContent = 'Download this data';
+                githubLink.target = '_blank';
+                githubLink.rel = 'noopener noreferrer';
+                githubLink.style.color = '#572B70';
+                githubLink.style.textDecoration = 'none';
+                githubLink.style.fontWeight = 'bold';
+                githubLink.style.display = 'block';
+                
+                githubLink.addEventListener('hover', function() {
+                    this.style.textDecoration = 'underline';
+                });
+                
+                githubLinkContainer.appendChild(githubLink);
+                
+                // Add the container to the controls panel
+                const controlsContent = document.getElementById('controls-content');
+                controlsContent.appendChild(githubLinkContainer);
+                
                 console.log(`Loaded ${mapState.authorities.length} authorities`);
+                console.log(`GitHub repository: ${githubUrl}`);
             } catch (error) {
                 console.error('Error loading authorities:', error);
             }
@@ -989,6 +1024,9 @@
             // Load walking dataset and wait for it to complete
             await loadWalkingDataset(selectedPark);
             
+            // Load supplemental lighting dataset and wait for it to complete
+            await loadSupplementalLighting(selectedPark);
+            
             // Show and populate layer toggles for both layers
             const layerToggles = [mapState.parkBoundaryLayer, mapState.otherParksLayer];
             if (mapState.entrancesLayer) {
@@ -1008,6 +1046,9 @@
             }
             if (mapState.walkingLayer) {
                 layerToggles.push(mapState.walkingLayer);
+            }
+            if (mapState.supplementalLightingLayer) {
+                layerToggles.push(mapState.supplementalLightingLayer);
             }
             if (mapState.foliageLowLayer) {
                 layerToggles.push(mapState.foliageLowLayer);
@@ -1949,6 +1990,127 @@
             }
         }
         
+        // Load Supplemental Lighting dataset for selected park (both buffer and points)
+        async function loadSupplementalLighting(park) {
+            try {
+                console.log(`loadSupplementalLighting called for park:`, park);
+                console.log(`Park object keys:`, Object.keys(park));
+                
+                // Remove existing supplemental lighting layer
+                if (mapState.supplementalLightingLayer && mapState.supplementalLightingLayer.layer) {
+                    map.removeLayer(mapState.supplementalLightingLayer.layer);
+                }
+                
+                const authPath = getAuthorityPath(mapState.currentAuthority.id);
+                console.log(`Auth path: ${authPath}`);
+                
+                // Try multiple possible ID fields
+                let parkId = park.id || park.properties?.park_offical_id || park.park_offical_id;
+                
+                if (!parkId) {
+                    console.log(`No park ID found in:`, park);
+                    return;
+                }
+                
+                console.log(`Using park ID: ${parkId}`);
+                
+                // Try to load both buffer and lighting files
+                const bufferFilename = `lighting_supplemented/${parkId}_lighting_buffer.geojson`;
+                const lightingFilename = `lighting_supplemented/${parkId}_lighting.geojson`;
+                
+                console.log(`Trying to load: ${authPath}${bufferFilename}`);
+                console.log(`Trying to load: ${authPath}${lightingFilename}`);
+                
+                const lightingGroup = L.featureGroup();
+                let filesLoaded = 0;
+                
+                // Load buffer polygon
+                try {
+                    const bufferResponse = await fetch(`${authPath}${bufferFilename}`);
+                    if (bufferResponse.ok) {
+                        const bufferData = await bufferResponse.json();
+                        console.log(`Buffer loaded:`, bufferData);
+                        
+                        if (bufferData.features && bufferData.features.length > 0) {
+                            bufferData.features.forEach(feature => {
+                                if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+                                    const polygon = L.geoJSON(feature, {
+                                        style: {
+                                            color: '#FFB300',
+                                            weight: 2,
+                                            opacity: 0.3,
+                                            fillOpacity: 0.1,
+                                            fillColor: '#FFB300'
+                                        }
+                                    });
+                                    
+                                    polygon.bindPopup('<strong>200m Buffer Zone</strong>');
+                                    lightingGroup.addLayer(polygon);
+                                    filesLoaded++;
+                                }
+                            });
+                        }
+                    } else {
+                        console.log(`Buffer not found (${bufferResponse.status}): ${authPath}${bufferFilename}`);
+                    }
+                } catch (error) {
+                    console.log(`Error loading buffer: ${error.message}`);
+                }
+                
+                // Load lighting points
+                try {
+                    const lightingResponse = await fetch(`${authPath}${lightingFilename}`);
+                    if (lightingResponse.ok) {
+                        const lightingData = await lightingResponse.json();
+                        console.log(`Lighting data loaded:`, lightingData);
+                        
+                        if (lightingData.features && lightingData.features.length > 0) {
+                            lightingData.features.forEach(feature => {
+                                if (feature.geometry.type === 'Point') {
+                                    const coords = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+                                    
+                                    const circle = L.circleMarker(coords, {
+                                        radius: 4,
+                                        fillColor: '#FFB300',
+                                        color: '#FF8C00',
+                                        weight: 1.5,
+                                        opacity: 0.8,
+                                        fillOpacity: 0.7
+                                    });
+                                    
+                                    circle.bindPopup('<strong>Street Light</strong>');
+                                    lightingGroup.addLayer(circle);
+                                }
+                            });
+                            filesLoaded++;
+                        }
+                    } else {
+                        console.log(`Lighting not found (${lightingResponse.status}): ${authPath}${lightingFilename}`);
+                    }
+                } catch (error) {
+                    console.log(`Error loading lighting: ${error.message}`);
+                }
+                
+                // Only create layer if we loaded at least one file
+                if (filesLoaded > 0) {
+                    console.log(`Creating supplemental lighting layer with ${filesLoaded} file(s)`);
+                    mapState.supplementalLightingLayer = {
+                        id: 'supplemental-lighting',
+                        name: 'Street Lighting (local data)',
+                        layer: lightingGroup,
+                        visible: false
+                    };
+                    
+                    console.log(`Supplemental lighting layer created successfully`);
+                } else {
+                    console.log(`No supplemental lighting files loaded for park: ${parkId}`);
+                    mapState.supplementalLightingLayer = null;
+                }
+            } catch (error) {
+                console.error('Error in loadSupplementalLighting:', error);
+            }
+        }
+        
         // Helper function to generate feature label with intelligent filtering and sentence case
         function toSentenceCase(str) {
             if (!str) return '';
@@ -2257,6 +2419,7 @@
                 // Remove existing demographics layer
                 if (mapState.demographicsLayer && mapState.demographicsLayer.layer) {
                     map.removeLayer(mapState.demographicsLayer.layer);
+                    mapState.demographicsLayer = null;
                 }
                 
                 const authPath = getAuthorityPath(mapState.currentAuthority.id);
@@ -2342,16 +2505,21 @@
                         }
                     });
                     
-                    // Store layer info for toggling
-                    mapState.demographicsLayer = {
-                        id: 'demographics',
-                        name: 'Demographics Data',
-                        layer: demographicsGroup,
-                        visible: false
-                    };
-                    
-                    console.log(`Loaded demographics data for ${park.name}`);
+                    // Only store layer if it has data
+                    if (demographicsGroup.getLayers().length > 0) {
+                        mapState.demographicsLayer = {
+                            id: 'demographics',
+                            name: 'Demographics Data',
+                            layer: demographicsGroup,
+                            visible: false
+                        };
+                        console.log(`Loaded demographics data for ${park.name}`);
+                    } else {
+                        mapState.demographicsLayer = null;
+                        console.log(`No demographics polygons created for park: ${park.name}`);
+                    }
                 } catch (error) {
+                    mapState.demographicsLayer = null;
                     console.log(`Demographics data not available for this authority (${authName})`);
                 }
             } catch (error) {
@@ -2715,6 +2883,21 @@
                 } catch (error) {
                     console.error('Error toggling walking dataset layer:', error);
                 }
+            } else if (layerId === 'supplemental-lighting' && mapState.supplementalLightingLayer) {
+                const layerObj = mapState.supplementalLightingLayer;
+                console.log('Supplemental lighting layer found, toggling visibility:', visible);
+                try {
+                    if (visible) {
+                        layerObj.layer.addTo(map);
+                        console.log('Supplemental lighting layer added to map');
+                    } else {
+                        map.removeLayer(layerObj.layer);
+                        console.log('Supplemental lighting layer removed from map');
+                    }
+                    layerObj.visible = visible;
+                } catch (error) {
+                    console.error('Error toggling supplemental lighting layer:', error);
+                }
             } else {
                 console.warn('toggleDataLayer: layer not found or condition not met', {layerId, cyclingLayer: !!mapState.cyclingLayer, walkingLayer: !!mapState.walkingLayer});
             }
@@ -2815,6 +2998,14 @@
                     id: 'park-walking',
                     name: 'Walking Routes',
                     type: 'park-walking'
+                });
+            }
+            
+            if (mapState.supplementalLightingLayer && mapState.supplementalLightingLayer.visible) {
+                visibleLayers.push({
+                    id: 'supplemental-lighting',
+                    name: 'Supplemental Lighting',
+                    type: 'supplemental-lighting'
                 });
             }
             
@@ -2930,11 +3121,11 @@
                     visibilityGroup.style.marginBottom = '0.75rem';
                     visibilityGroup.appendChild(label);
                     
-                    // Create gradient bar
+                    // Create gradient bar using full viridis palette with opacity matching hex display (0.6)
                     const gradientBar = document.createElement('div');
                     gradientBar.style.width = '100%';
                     gradientBar.style.height = '20px';
-                    gradientBar.style.background = 'linear-gradient(to right, #440154, #31688e, #35b779, #fde724)';
+                    gradientBar.style.background = 'linear-gradient(to right, rgba(68, 1, 84, 0.6), rgba(72, 39, 119, 0.6), rgba(59, 82, 139, 0.6), rgba(45, 112, 142, 0.6), rgba(32, 144, 140, 0.6), rgba(31, 167, 141, 0.6), rgba(53, 183, 121, 0.6), rgba(110, 206, 88, 0.6), rgba(181, 222, 43, 0.6), rgba(253, 231, 36, 0.6))';
                     gradientBar.style.borderRadius = '4px';
                     gradientBar.style.marginBottom = '0.25rem';
                     visibilityGroup.appendChild(gradientBar);
@@ -3144,6 +3335,51 @@
                     
                     legendItems.appendChild(walkingGroup);
                     return;
+                } else if (layer.type === 'supplemental-lighting') {
+                    // Create supplemental lighting legend
+                    const lightingGroup = document.createElement('div');
+                    lightingGroup.style.marginBottom = '0.75rem';
+                    
+                    // Buffer zone (polygon)
+                    const bufferDiv = document.createElement('div');
+                    bufferDiv.style.display = 'flex';
+                    bufferDiv.style.alignItems = 'center';
+                    bufferDiv.style.gap = '0.5rem';
+                    bufferDiv.style.marginBottom = '0.5rem';
+                    
+                    const bufferBox = document.createElement('div');
+                    bufferBox.style.width = '24px';
+                    bufferBox.style.height = '16px';
+                    bufferBox.style.backgroundColor = '#FFB300';
+                    bufferBox.style.opacity = '0.1';
+                    bufferBox.style.border = '1px solid #FFB300';
+                    bufferBox.style.borderRadius = '2px';
+                    bufferBox.style.flexShrink = '0';
+                    
+                    bufferDiv.appendChild(bufferBox);
+                    bufferDiv.appendChild(document.createTextNode('200m Buffer Zone'));
+                    lightingGroup.appendChild(bufferDiv);
+                    
+                    // Points (circle markers)
+                    const pointsDiv = document.createElement('div');
+                    pointsDiv.style.display = 'flex';
+                    pointsDiv.style.alignItems = 'center';
+                    pointsDiv.style.gap = '0.5rem';
+                    
+                    const circle = document.createElement('div');
+                    circle.style.width = '12px';
+                    circle.style.height = '12px';
+                    circle.style.backgroundColor = '#FFB300';
+                    circle.style.border = '1.5px solid #FF8C00';
+                    circle.style.borderRadius = '50%';
+                    circle.style.flexShrink = '0';
+                    
+                    pointsDiv.appendChild(circle);
+                    pointsDiv.appendChild(document.createTextNode('Street Lights'));
+                    lightingGroup.appendChild(pointsDiv);
+                    
+                    legendItems.appendChild(lightingGroup);
+                    return;
                 } else if (layer.type === 'cycling') {
                     // Create cycling network legend
                     const cyclingGroup = document.createElement('div');
@@ -3186,7 +3422,7 @@
                     circle.style.borderRadius = '50%';
                     
                     lampsMarker.appendChild(circle);
-                    lampsMarker.appendChild(document.createTextNode('Street Lamps'));
+                    lampsMarker.appendChild(document.createTextNode('Street Lighting (OSM)'));
                     
                     lampsGroup.appendChild(lampsMarker);
                     legendItems.appendChild(lampsGroup);
