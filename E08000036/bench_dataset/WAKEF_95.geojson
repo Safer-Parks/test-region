@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_95",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 9033941075, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.3064889, 53.6996038 ] } },
+{ "type": "Feature", "properties": { "osm_id": 9033941076, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.3065864, 53.6998328 ] } },
+{ "type": "Feature", "properties": { "osm_id": 9033941074, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.306518, 53.6995876 ] } }
+]
+}

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_592",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 10604756504, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4704066, 53.7623914 ] } },
+{ "type": "Feature", "properties": { "osm_id": 10604676196, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4724171, 53.7638504 ] } },
+{ "type": "Feature", "properties": { "osm_id": 10604676195, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4723279, 53.7639161 ] } }
+]
+}

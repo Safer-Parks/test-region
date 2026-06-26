@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_91",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 13357381841, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4918241, 53.5541124 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13357381840, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4917981, 53.5541553 ] } }
+]
+}

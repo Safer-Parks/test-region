@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_55",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 10313153547, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.8728907, 53.6883828 ] } },
+{ "type": "Feature", "properties": { "osm_id": 8451320265, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.8729993, 53.6885053 ] } }
+]
+}

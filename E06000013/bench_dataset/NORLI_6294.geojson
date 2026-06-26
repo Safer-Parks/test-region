@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6294",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 11190671097, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -0.8460899, 53.4886522 ] } }
+]
+}

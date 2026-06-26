@@ -1,0 +1,23 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_227",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 13272184343, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4681688, 53.379569 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184342, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.468205, 53.3796282 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184341, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4681715, 53.379671 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184353, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4684363, 53.3796718 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184337, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4682674, 53.3797046 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184338, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4682057, 53.3797214 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184352, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4683854, 53.3797266 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184344, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4680105, 53.3797422 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184345, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4679857, 53.3797686 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184351, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4683096, 53.379793 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184346, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4679589, 53.379797 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184350, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4682768, 53.3798242 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184347, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4679187, 53.379837 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184349, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4682432, 53.379863 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184348, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4681923, 53.3799126 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13272184333, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4679234, 53.3800034 ] } }
+]
+}

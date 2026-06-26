@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_81",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 12734272767, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.1593225, 53.5324594 ] } }
+]
+}

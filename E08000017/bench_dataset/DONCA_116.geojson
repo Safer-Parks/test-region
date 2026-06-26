@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_116",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 12178684495, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.2282933, 53.4881222 ] } },
+{ "type": "Feature", "properties": { "osm_id": 12178693808, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.2278125, 53.487966 ] } }
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "ROTH5_33",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 8862818767, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.3013811, 53.4872453 ] } },
+{ "type": "Feature", "properties": { "osm_id": 8862818750, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.3015473, 53.4869839 ] } }
+]
+}

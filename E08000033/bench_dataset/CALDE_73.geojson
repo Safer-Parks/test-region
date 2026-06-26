@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_73",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 7401626999, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -2.0209512, 53.7485476 ] } },
+{ "type": "Feature", "properties": { "osm_id": 7401627000, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -2.0209929, 53.7486063 ] } },
+{ "type": "Feature", "properties": { "osm_id": 7401627001, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -2.0209684, 53.7486466 ] } },
+{ "type": "Feature", "properties": { "osm_id": 7401627002, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -2.0208691, 53.748712 ] } }
+]
+}
