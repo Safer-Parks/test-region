@@ -2641,9 +2641,9 @@
                     // Create feature group for bench markers
                     const benchGroup = L.featureGroup();
                     
-                    // Create green circle icon for benches
-                    const greenCircleIcon = L.icon({
-                        iconUrl: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMiIgZmlsbD0iIzRDQUY1MCIvPjwvc3ZnPg==',
+                    // Create icon for benches
+                    const brownSquareIcon = L.icon({
+                        iconUrl: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSIyIiBmaWxsPSIjOEI2RjQ3Ii8+PC9zdmc+',
                         iconSize: [24, 24],
                         iconAnchor: [12, 12],
                         popupAnchor: [0, -12]
@@ -2662,7 +2662,7 @@
                         popupContent += `<strong>Type:</strong> Bench<br/>`;
                         
                         // Create marker
-                        const marker = L.marker(benchCoords, { icon: greenCircleIcon });
+                        const marker = L.marker(benchCoords, { icon: brownSquareIcon });
                         marker.bindPopup(popupContent);
                         marker.bindTooltip('Bench', { 
                             permanent: false, 
@@ -4308,13 +4308,13 @@
                     benchMarker.style.alignItems = 'center';
                     benchMarker.style.gap = '0.5rem';
                     
-                    const circle = document.createElement('div');
-                    circle.style.width = '16px';
-                    circle.style.height = '16px';
-                    circle.style.backgroundColor = '#4CAF50';
-                    circle.style.borderRadius = '50%';
+                    const square = document.createElement('div');
+                    square.style.width = '16px';
+                    square.style.height = '16px';
+                    square.style.backgroundColor = '#8B6F47';
+                    // circle.style.borderRadius = '50%';
                     
-                    benchMarker.appendChild(circle);
+                    benchMarker.appendChild(square);
                     benchMarker.appendChild(document.createTextNode('Benches'));
                     
                     benchGroup.appendChild(benchMarker);
