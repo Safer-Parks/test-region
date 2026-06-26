@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Safer Parks Dashboard</title>
     
-    <!-- Favicon -->
+    <!-- Favicon --
     <link rel="icon" type="image/svg+xml" href="css/icon-parks4.svg">
     
     <!-- Pico CSS Framework - Jade Palette -->
@@ -485,6 +485,9 @@
                     <span class="accordion-icon" aria-hidden="true"></span>
                 </button>
             </h2>
+            <div style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; line-height: 1.4;">
+                    Please be patient: layers may take a few seconds to load, especially when you select a specific park.
+            </div>
             <div id="controls-content" 
                  role="region" 
                  aria-labelledby="controls-heading" 
@@ -992,7 +995,10 @@
             <div class="modal-content" id="content-toiletFacilities">
                 Locations of toilet facilities within a 15 minute walk of the park. Click on the icon to
                 view details of the facility, including accessibility information.
-            </div>
+                <hr>
+                Toilet data comes from Toilet map (https://www.toiletmap.org.uk/dataset) © 2025 –CC BY 4.0. No changes made to the data,
+                but spatially filtered to only show toilets within a 15 minute walk of the park.
+                For more information, see https://www.toiletmap.org.uk/.
         </div>
     </div>
 
@@ -1001,8 +1007,7 @@
             <button class="modal-close-btn" aria-label="Close modal">&times;</button>
             <h3 class="modal-title">Cycling Routes</h3>
             <div class="modal-content" id="content-cyclingRoutes">
-                Cycling routes and paths within the park. This is one of the active travel layers. Please note this
-                data is not yet available on the dashboard for all locations, but will be available by 25-06-2026.
+                Cycling routes and paths within the park. This is one of the active travel layers.
                 <hr>
                 <section id="what-is-this-layer-2" class="level3">
                 <h3 class="anchored" data-anchor-id="what-is-this-layer-2">What is this layer?</h3>
@@ -3228,8 +3233,8 @@
                                     
                                     // Determine symbol based on LQ value
                                     let symbol = '';
-                                    if (value > 1.05) symbol = '↑'; // Significantly higher
-                                    else if (value < 0.95) symbol = '↓'; // Significantly lower
+                                    if (value > 1.2) symbol = '↑'; // Significantly higher
+                                    else if (value < 0.8) symbol = '↓'; // Significantly lower
                                     
                                     tableRows += `
                                         <tr style="border-bottom: 1px solid #e0e0e0;">
