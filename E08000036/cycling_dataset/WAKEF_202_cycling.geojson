@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_202_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Common Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2765959,53.6322771],[-1.2772825,53.6349617],[-1.2765959,53.6349744],[-1.2756124,53.63635]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Peartree Field Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2653703,53.6397264],[-1.2661106,53.6393639],[-1.2673444,53.6386642],[-1.269155,53.6375914],[-1.2692584,53.6375301]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Mourning Field Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2649761,53.6315257],[-1.2651478,53.6317929],[-1.2656842,53.6325436],[-1.2662636,53.6333452],[-1.2663367,53.6339062],[-1.2663803,53.6343161]]]}}
+]
+}

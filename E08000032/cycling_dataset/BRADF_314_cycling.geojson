@@ -1,0 +1,30 @@
+{
+"type": "FeatureCollection",
+"name": "BRADF_314_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8561299,53.7927223],[-1.8554643,53.7927869]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8718834,53.7916465],[-1.8701765,53.7920346]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8650627,53.7932264],[-1.865517,53.7932194],[-1.8667237,53.7932007],[-1.8679332,53.7931819],[-1.8682309,53.7931773],[-1.8686838,53.7931703]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8539767,53.7912546],[-1.8533259,53.7911818]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8552605,53.7904562],[-1.8543324,53.7905481],[-1.854288,53.7904227]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8516016,53.7922501],[-1.8518785,53.7922231],[-1.8521045,53.7920248]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8561604,53.7907922],[-1.8561638,53.7906728],[-1.8561366,53.7905905],[-1.8561424,53.7904763],[-1.8562283,53.790084],[-1.856196,53.7899877],[-1.8562074,53.7898842],[-1.856955,53.7899291]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"The Great Northern Railway Trail","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.856955,53.7899291],[-1.8571026,53.7899661],[-1.8574315,53.7900146],[-1.8577222,53.7899251],[-1.8578714,53.7899444],[-1.8581671,53.7900359],[-1.8592233,53.7901857],[-1.8601459,53.7903188],[-1.8611891,53.7903677],[-1.861369,53.7904139],[-1.8614854,53.7905339],[-1.8615621,53.7906104],[-1.8617874,53.7906864],[-1.8621794,53.7906926],[-1.8625921,53.7906991],[-1.8627468,53.7907034],[-1.8630534,53.7907118],[-1.8640512,53.7907435],[-1.8645232,53.7907371]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8652794,53.7907168],[-1.8653287,53.7907214],[-1.8662399,53.7906801],[-1.8668042,53.7906695],[-1.8693715,53.7906084],[-1.8698821,53.790668]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8768435,53.7922067],[-1.8770555,53.7923741],[-1.8773306,53.7926659]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8827778,53.7929458],[-1.8827283,53.792899],[-1.8811265,53.7912333]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8652794,53.7907168],[-1.8653387,53.7907883]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8785045,53.7922487],[-1.878013,53.7918665],[-1.877806,53.7919677]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8518382,53.7947267],[-1.8518132,53.7947686],[-1.8518024,53.7948019],[-1.8518024,53.7949809],[-1.851789,53.79535]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.865517,53.7932194],[-1.8655208,53.7931397],[-1.8658298,53.7929716],[-1.866216,53.7928131],[-1.8666713,53.792669],[-1.8667101,53.7926606],[-1.8673665,53.7925177],[-1.8675133,53.7924878],[-1.8680137,53.7923842],[-1.8681935,53.7923366],[-1.8685345,53.7921839],[-1.8689364,53.7920562],[-1.8692181,53.7918645],[-1.8693054,53.7916924],[-1.8693061,53.7916519],[-1.8692952,53.7915739]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8666713,53.792669],[-1.8682183,53.7926417],[-1.8682309,53.7931773]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8682183,53.7926417],[-1.8681935,53.7923366]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8666713,53.792669],[-1.8658151,53.7926817],[-1.8650493,53.7926933],[-1.8649313,53.7926937]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8567881,53.7898174],[-1.856955,53.7899291]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.865348,53.7908652],[-1.8653491,53.7908747],[-1.8652844,53.7909106]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8653387,53.7907883],[-1.865348,53.7908652]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"The Great Northern Railway Trail","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8647021,53.7907331],[-1.8649846,53.7907308],[-1.8652794,53.7907168]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"The Great Northern Railway Trail","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8645232,53.7907371],[-1.8647021,53.7907331]]]}}
+]
+}

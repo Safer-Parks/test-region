@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_166_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.068518,53.4473004],[-1.072224,53.4472603],[-1.0743268,53.4469025],[-1.0765278,53.4462943]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0783842,53.4604947],[-1.0781363,53.4605312]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0765278,53.4462943],[-1.0767592,53.4462294],[-1.0770529,53.4461807],[-1.0776795,53.4460774],[-1.0779898,53.4460373],[-1.0781877,53.4460216]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0781363,53.4605312],[-1.0778306,53.4605754],[-1.0743706,53.4617043]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0701581,53.4644075],[-1.0701808,53.4643777],[-1.0702178,53.4643291],[-1.0704326,53.4629501],[-1.070526,53.4629001],[-1.0738884,53.4630947],[-1.0740285,53.4630613],[-1.0741227,53.4629915],[-1.0744137,53.4618392],[-1.0743706,53.4617043]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0783842,53.4604947],[-1.0807489,53.4571759],[-1.0808004,53.4571502],[-1.0815739,53.457424]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0884552,53.4516708],[-1.0883507,53.4516812],[-1.0844603,53.4556397],[-1.0844341,53.4556552],[-1.0815899,53.4573876],[-1.0815739,53.457424],[-1.0815178,53.4575518],[-1.0793269,53.4606165],[-1.0783842,53.4604947]]]}}
+]
+}

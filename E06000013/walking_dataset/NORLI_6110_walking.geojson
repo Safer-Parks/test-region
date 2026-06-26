@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6110_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4483397,53.663562],[-0.4480184,53.6632842],[-0.4440916,53.6633987],[-0.444024,53.6609295],[-0.4436625,53.6607794],[-0.4397786,53.6608684],[-0.4397357,53.6586051],[-0.4396713,53.6565197],[-0.4393924,53.6562781],[-0.4320753,53.6564179]]]}}
+]
+}

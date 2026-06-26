@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_44_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7802008,54.4658119],[-1.7801204,54.4658087],[-1.7799621,54.4658306],[-1.7797905,54.4658664],[-1.779651,54.4659054],[-1.7795437,54.4659506],[-1.7794713,54.4659989],[-1.7793241,54.4661844]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7793241,54.4661844],[-1.7785937,54.4671034],[-1.7785734,54.4671625],[-1.7786059,54.4672003],[-1.7786669,54.4672428],[-1.7788051,54.4672783],[-1.7804273,54.4675642],[-1.780533,54.4675594],[-1.7806752,54.4674696]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7868087,54.4687227],[-1.7868373,54.4687726],[-1.7868062,54.4688529]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7867394,54.4689406],[-1.7867126,54.4690444]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7868062,54.4688529],[-1.7867394,54.4689406]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7786669,54.4672428],[-1.7783748,54.4674398],[-1.7751704,54.4686217],[-1.7731491,54.4683925],[-1.7712511,54.468328],[-1.7694087,54.4682038],[-1.7672958,54.4706517],[-1.7661515,54.4709541],[-1.7657935,54.4712466],[-1.7646351,54.4709388],[-1.7635871,54.4720432],[-1.7634844,54.4721378]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7804966,54.4657835],[-1.7803405,54.4657579],[-1.7802142,54.4657839]]]}}
+]
+}

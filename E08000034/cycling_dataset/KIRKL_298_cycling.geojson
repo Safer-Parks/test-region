@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_298_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6797949,53.7367084],[-1.6802223,53.7365102],[-1.6807151,53.7363119],[-1.6813349,53.736049],[-1.6816473,53.7359032],[-1.6826108,53.7354479],[-1.6842148,53.734991],[-1.6859274,53.7345491]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6939132,53.7348028],[-1.6940818,53.7347448],[-1.6940724,53.7346412],[-1.6946912,53.7344161],[-1.6957513,53.7341744],[-1.6959054,53.7341675],[-1.6960805,53.7341978],[-1.6962603,53.7342628],[-1.6967895,53.734649]]]}}
+]
+}

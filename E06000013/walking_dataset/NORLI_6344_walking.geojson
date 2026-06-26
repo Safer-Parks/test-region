@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6344_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7701062,53.5479842],[-0.7695437,53.5481365],[-0.769064,53.5481704],[-0.7689465,53.5481688],[-0.7680298,53.5481656],[-0.7669906,53.5482042],[-0.7667467,53.5482815],[-0.7666003,53.5484023],[-0.7666817,53.5487742],[-0.7669337,53.5513152]]]}}
+]
+}

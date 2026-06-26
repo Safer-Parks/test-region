@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_232_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Stone Moor Road","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6067319,53.4745275],[-1.6065235,53.4743663],[-1.606273,53.4742357],[-1.6058991,53.4740935],[-1.6052382,53.4738482],[-1.6050389,53.4737309]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Mucky Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.614881,53.472123],[-1.6137967,53.4728356],[-1.6127874,53.4734865],[-1.6113522,53.4744263]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.608915,53.4815789],[-1.6086645,53.4815069],[-1.6084034,53.4814476],[-1.6083613,53.4814385],[-1.6083108,53.4814276]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6151425,53.4782858],[-1.6149974,53.4783467]]]}}
+]
+}

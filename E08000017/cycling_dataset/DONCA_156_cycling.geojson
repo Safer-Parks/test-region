@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_156_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":"Hatfield Services Subway","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.993658,53.5718896],[-0.9932693,53.5718068]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"Hatfield Services Subway","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9938485,53.5719355],[-0.993658,53.5718896]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9949761,53.5700842],[-0.9947507,53.5704442],[-0.9945633,53.5707919],[-0.9942897,53.5712379],[-0.9938485,53.5719355],[-0.993753,53.5721452],[-0.9935759,53.572623],[-0.9934365,53.5730626],[-0.9932433,53.5736997],[-0.9931307,53.5738653],[-0.9927823,53.5742433],[-0.9926264,53.5744212],[-0.9925191,53.5745581],[-0.9923921,53.5746902]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"Hatfield Services Subway","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9932693,53.5718068],[-0.9931095,53.571773]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"Jubilee Fields BMX Track","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9967628,53.580722],[-0.9965509,53.5806519],[-0.9963122,53.5806217],[-0.9960574,53.5806121],[-0.9958562,53.5806264],[-0.9955397,53.5806185],[-0.9953386,53.5805978],[-0.9952393,53.5805978],[-0.9951723,53.5806519],[-0.9951186,53.5807427],[-0.9950757,53.5809417],[-0.9951132,53.5810277],[-0.9951669,53.5810293],[-0.9952313,53.5810213],[-0.9952769,53.5809863],[-0.9952635,53.5808685],[-0.9953251,53.5807427],[-0.9954083,53.5806917],[-0.9955102,53.5806981],[-0.9955987,53.5807586],[-0.9956336,53.5808271],[-0.995698,53.5808812],[-0.9957945,53.5808844],[-0.9960949,53.5808541],[-0.9962183,53.5808589],[-0.9967655,53.580817],[-0.9967628,53.580722]]]}}
+]
+}

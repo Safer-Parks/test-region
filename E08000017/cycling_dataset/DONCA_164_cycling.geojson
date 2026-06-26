@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_164_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0251032,53.5001593],[-1.0234086,53.4977587],[-1.0234086,53.4976385],[-1.023439,53.4975702],[-1.0234766,53.4974855],[-1.0235049,53.4974657],[-1.0236454,53.4973675],[-1.024197,53.497154],[-1.0255819,53.4968368],[-1.026525,53.4966207]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0193232,53.5063059],[-1.0188602,53.5066063],[-1.0188412,53.5066699]]]}}
+]
+}

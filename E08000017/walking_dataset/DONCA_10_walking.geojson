@@ -1,0 +1,25 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_10_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"footway","name":"Denison Road","category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1474261,53.5180779],[-1.1472606,53.5178944]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":"Stone Close Avenue","category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1465201,53.5181362],[-1.1466446,53.518202]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1454993,53.5185791],[-1.1453891,53.5185159]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1453245,53.5183314],[-1.1452345,53.5182875]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":"Kirk Street","category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1464135,53.5185737],[-1.1462211,53.5183519]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":"Shady Side","category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1507514,53.5168415],[-1.150623,53.516932],[-1.1503857,53.5169778],[-1.1501331,53.5170254],[-1.1499883,53.5170584],[-1.1498977,53.5170874],[-1.1498681,53.5170969],[-1.1496956,53.5171518],[-1.1495508,53.5172031],[-1.1494398,53.5172379],[-1.1493844,53.5172361],[-1.1489413,53.5173802]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1477462,53.5210072],[-1.1477844,53.5209691],[-1.147856,53.5208811],[-1.147899,53.5208499],[-1.1480411,53.520791],[-1.1481234,53.520769],[-1.1481927,53.5207562],[-1.1482332,53.5207562],[-1.1483072,53.5207711],[-1.1483416,53.52078],[-1.1483622,53.5207853],[-1.1484159,53.5207995],[-1.1484529,53.5207995],[-1.1485718,53.5207973]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1483416,53.52078],[-1.1483132,53.5207541],[-1.1483108,53.520725],[-1.1483096,53.5207073],[-1.148318,53.5206909],[-1.1483657,53.5206086],[-1.1483908,53.5205909],[-1.1484183,53.5205781],[-1.1485227,53.5205719]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1483096,53.5207073],[-1.1482559,53.52073],[-1.1481927,53.5207562]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1548297,53.5152312],[-1.1561886,53.5161305]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1607612,53.5145489],[-1.1607053,53.5145691],[-1.1593113,53.5151773],[-1.159853,53.5155091],[-1.1598877,53.5155274]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1598877,53.5155274],[-1.1599315,53.5155612],[-1.1616857,53.516526]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1598877,53.5155274],[-1.159847,53.515546],[-1.1597183,53.5156042]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1585955,53.5147886],[-1.1588015,53.5148306],[-1.1588774,53.5148597],[-1.1588903,53.5149194],[-1.1592452,53.5151624],[-1.1593113,53.5151773]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1504988,53.5178626],[-1.1498977,53.5170874]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1419306,53.5195786],[-1.1418233,53.5196256],[-1.1417304,53.5196711],[-1.1417058,53.519694],[-1.1416455,53.5197366],[-1.1416081,53.5197631],[-1.1415403,53.5198227]]]}},
+{"type":"Feature","properties":{"highway":"pedestrian","name":"Lindum Street","category":"Pedestrian area/street"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1470145,53.5175758],[-1.1465615,53.5173334]]]}},
+{"type":"Feature","properties":{"highway":"pedestrian","name":"Kirk Street","category":"Pedestrian area/street"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.1467838,53.5190006],[-1.1464135,53.5185737]]]}}
+]
+}

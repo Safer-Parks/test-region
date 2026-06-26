@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_152_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6948455,53.7620037],[-1.6949184,53.7619121],[-1.6950082,53.7617575],[-1.6950289,53.7616533],[-1.6949794,53.7614613],[-1.6949032,53.7613234],[-1.694757,53.7611629],[-1.6944371,53.760931],[-1.6943003,53.7608812],[-1.6941664,53.7606406],[-1.6939936,53.7604741],[-1.6936246,53.7603627],[-1.6925146,53.7598152],[-1.6922479,53.7596589],[-1.6920532,53.7595384],[-1.6919495,53.7594256],[-1.6918849,53.7593529]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7076906,53.7587785],[-1.7079063,53.7587823]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7076906,53.7589253],[-1.7078932,53.7589292]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7104314,53.7527218],[-1.7105787,53.7526347],[-1.7107185,53.7525151],[-1.7107734,53.752366],[-1.7107535,53.7521579],[-1.7106711,53.7520782],[-1.7104233,53.7519203],[-1.7102521,53.7517967]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6906424,53.7584269],[-1.6892516,53.7578089],[-1.688057,53.757534],[-1.6874321,53.757338]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.702151,53.7641261],[-1.7019107,53.7641768],[-1.7017657,53.7642041],[-1.7016981,53.7642582]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7000393,53.7636935],[-1.7000299,53.7636558],[-1.6999296,53.7636236],[-1.6998561,53.7635908],[-1.6997943,53.7635943]]]}}
+]
+}

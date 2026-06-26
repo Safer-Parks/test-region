@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "YORK__112_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0404233,54.0277593],[-1.0404147,54.0278233],[-1.0403792,54.0280887],[-1.0403575,54.0283759],[-1.0403008,54.0285005]]]}}
+]
+}

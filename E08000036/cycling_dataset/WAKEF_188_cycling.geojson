@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_188_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5594774,53.6630486],[-1.559446,53.6628408],[-1.5594122,53.6626166]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Storrs Hill Road","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5744577,53.6660936],[-1.5744974,53.6661068],[-1.5745337,53.6661206],[-1.574621,53.6661476],[-1.5746932,53.6661543],[-1.5751221,53.6663473],[-1.5755855,53.666539],[-1.5756235,53.6665998],[-1.5759966,53.6667496],[-1.5761538,53.666734]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5744122,53.6662263],[-1.5745337,53.6661206]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5639593,53.6688228],[-1.5639562,53.6687013],[-1.5637846,53.6684114],[-1.5636585,53.6680325],[-1.5635789,53.6679292],[-1.5635393,53.6677766],[-1.5634819,53.667684],[-1.5633726,53.6676588],[-1.5629584,53.6676749],[-1.5629155,53.6674028],[-1.5628905,53.6671949],[-1.5628404,53.6669113],[-1.5627975,53.6667224],[-1.5626711,53.666633],[-1.5621321,53.666603]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Matty Marsden Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5682011,53.6644204],[-1.5685893,53.664192],[-1.5690523,53.6639353],[-1.5696223,53.6637422],[-1.5698096,53.6637051],[-1.5701308,53.6637371],[-1.5702951,53.6637336],[-1.5707126,53.6637807],[-1.5713641,53.66385],[-1.5719934,53.6640626],[-1.5724239,53.6642252],[-1.5729452,53.6644106],[-1.5735413,53.6646574],[-1.5742069,53.6649602],[-1.5743297,53.6650456],[-1.5744868,53.6652278],[-1.5746957,53.6654406]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Jenkin Road","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5641102,53.6600384],[-1.5638742,53.6602275],[-1.5636709,53.6605049]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5747111,53.6651111],[-1.574588,53.6651373],[-1.5744868,53.6652278]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5584455,53.66254],[-1.558376,53.6626262],[-1.5588074,53.663012],[-1.5588462,53.6630472],[-1.559081,53.6632599],[-1.5592633,53.6634506]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5713774,53.6643076],[-1.5711199,53.6642027],[-1.5708034,53.6640821],[-1.5705244,53.6638755],[-1.5702951,53.6637336]]]}}
+]
+}

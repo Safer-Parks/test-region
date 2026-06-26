@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "EASRI_392_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4069163,53.7837259],[-0.4069304,53.783834]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Snuff Mill Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4029007,53.774486],[-0.4026035,53.7743956],[-0.4023978,53.7743331],[-0.4021296,53.7742796],[-0.4019474,53.7742464],[-0.4014426,53.7741046],[-0.4010372,53.7739872],[-0.400502,53.7738372],[-0.4000028,53.773697],[-0.3993435,53.7735242],[-0.3987311,53.7733514],[-0.3980333,53.7731868],[-0.3974485,53.7730433],[-0.3968775,53.7728966],[-0.3963782,53.7727711],[-0.39589,53.7726309],[-0.395239,53.772476],[-0.3945599,53.772276],[-0.3944064,53.7722822]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.4026035,53.7743956],[-0.4026084,53.7743567],[-0.4026154,53.7743167],[-0.4025781,53.7742636]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Greenwood Avenue","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3864438,53.7790314],[-0.3863792,53.7791305],[-0.3860644,53.7793754]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Thwaite Street","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3992958,53.7788273],[-0.3988729,53.7788885]]]}}
+]
+}

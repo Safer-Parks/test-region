@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_35_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5289587,53.5409381],[-1.5287814,53.5407953],[-1.5280947,53.5408112]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5218201,53.5382829],[-1.5220663,53.5382406],[-1.5226515,53.53829],[-1.5230367,53.538315],[-1.5234228,53.5384138]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.523399,53.5467073],[-1.5227876,53.5468824],[-1.5219667,53.5471296],[-1.5220498,53.5476077]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5132681,53.549449],[-1.5128952,53.5489877]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"Higham Lane","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5250951,53.5476975],[-1.5250881,53.5477947],[-1.5250718,53.5478737],[-1.524947,53.5480715],[-1.5247929,53.5486038],[-1.5246949,53.5487884],[-1.5246369,53.5488687]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5212089,53.5475702],[-1.5211995,53.5476858],[-1.5210172,53.5476826],[-1.5209903,53.5479168]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Ratten Row","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5292751,53.5399127],[-1.5291098,53.5398315],[-1.5287816,53.5397675]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5314319,53.5446231],[-1.5312979,53.5447072],[-1.5308286,53.544947],[-1.5302673,53.545331],[-1.5295852,53.5457754],[-1.5280502,53.5469889],[-1.5280199,53.5470416],[-1.5280418,53.5470941],[-1.528075,53.5471837]]]}}
+]
+}

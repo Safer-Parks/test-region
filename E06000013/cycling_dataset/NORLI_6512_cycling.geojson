@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6512_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.8553591,53.5250141],[-0.8557883,53.5258305],[-0.8562925,53.5268286],[-0.85688,53.5279495],[-0.8577651,53.5297511]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.8495268,53.5327321],[-0.8495663,53.5326677]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.8414129,53.5353629],[-0.8419208,53.5351507],[-0.8436848,53.5343823],[-0.8451623,53.5340484],[-0.8476866,53.5334463],[-0.8490813,53.5331368],[-0.849266,53.5330467],[-0.8495268,53.5327321]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.8495663,53.5326677],[-0.8619003,53.5346516],[-0.8619607,53.5346304]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.8443133,53.5217],[-0.8443991,53.5228156],[-0.8443854,53.5229334],[-0.8442585,53.5232188],[-0.8442591,53.5234665],[-0.8445168,53.5243579]]]}}
+]
+}

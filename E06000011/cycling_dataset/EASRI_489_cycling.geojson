@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "EASRI_489_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[0.0405546,53.7260029],[0.0406055,53.7258791],[0.0406498,53.7257696],[0.0409453,53.7254599],[0.0410655,53.7253181],[0.0413605,53.7249833],[0.0419238,53.7245167],[0.0422725,53.7241184],[0.0428357,53.7235201],[0.0436136,53.7225916],[0.0437568,53.7224197]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[0.0376581,53.7288374],[0.0378784,53.7286575],[0.038571,53.728092],[0.0385866,53.7280794],[0.0392043,53.7275782],[0.0394159,53.7274065],[0.0400838,53.7268654],[0.0407624,53.7263084],[0.0407114,53.7261941],[0.0406732,53.7261469]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[0.041015,53.7257367],[0.0413771,53.7256859]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[0.0437568,53.7224197],[0.0439864,53.7221441]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Leo Terrace","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[0.0396806,53.7253068],[0.0397948,53.7248371]]]}}
+]
+}

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "EASRI_410_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Butterfly Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.2336699,54.0782563],[-0.2343211,54.0787449],[-0.2345906,54.0789738],[-0.2357748,54.0801291],[-0.2360451,54.0803065],[-0.2363121,54.0805029],[-0.2372002,54.0817563]]]}}
+]
+}

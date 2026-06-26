@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6321_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Back Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7120633,53.6645003],[-0.7120306,53.6644242],[-0.7119556,53.6640307],[-0.711977,53.663834],[-0.7121806,53.6635992],[-0.7123123,53.6635111],[-0.7128447,53.6631549],[-0.7133695,53.6629454],[-0.7136587,53.6628312],[-0.7138087,53.6626598],[-0.7139597,53.661754],[-0.7140616,53.6614679],[-0.7141581,53.66122]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Margrave Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7148166,53.6589201],[-0.7147741,53.6588819],[-0.7146951,53.6587051]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7123123,53.6635111],[-0.7124469,53.663623]]]}}
+]
+}

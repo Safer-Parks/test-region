@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_123_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5359356,53.573704],[-1.5352328,53.573774],[-1.5348359,53.57379],[-1.5339078,53.5737868],[-1.532953,53.5739524],[-1.5315153,53.5741531],[-1.5310593,53.5741435],[-1.5291496,53.5740002],[-1.5280874,53.5740097],[-1.5266758,53.5744319]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5292449,53.5669725],[-1.5293559,53.5669912],[-1.529375,53.5670021],[-1.5293505,53.5672116]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5255394,53.5725747],[-1.5253003,53.5728111],[-1.5256577,53.5729391]]]}}
+]
+}

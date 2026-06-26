@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_357_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Bullace Trees Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7093703,53.703877],[-1.7095651,53.703453],[-1.7095257,53.7033555],[-1.7094196,53.703036],[-1.7090641,53.7025118],[-1.7084701,53.7019979],[-1.7077173,53.7015634],[-1.7076232,53.701465],[-1.7075959,53.7014183]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7037431,53.6956124],[-1.7047462,53.6962983],[-1.7059425,53.6972018],[-1.7064217,53.6975294]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Bullace Trees Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7116834,53.7055986],[-1.7113476,53.7055604],[-1.7112223,53.7055039],[-1.7111315,53.7054916],[-1.7102666,53.705019],[-1.709829,53.7048837],[-1.708993,53.7047265],[-1.7088629,53.7046394],[-1.7088413,53.7045689]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6983599,53.6970574],[-1.69851,53.6971649]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7139453,53.69915],[-1.7141243,53.699045],[-1.7154934,53.6991639]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"SPE/133/30","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6938838,53.7028317],[-1.6937577,53.7025551]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Bullace Trees Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7088413,53.7045689],[-1.7092869,53.7039973],[-1.7093703,53.703877]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Leeds Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7045884,53.6924775],[-1.7045431,53.6925109],[-1.7034684,53.6932804],[-1.7023471,53.6940848],[-1.7022696,53.6941438],[-1.7019493,53.6943876],[-1.701094,53.6950346],[-1.6999909,53.695869]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Leeds Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6999909,53.695869],[-1.6999489,53.6959008],[-1.6998064,53.6959923],[-1.6996426,53.6961061]]]}}
+]
+}

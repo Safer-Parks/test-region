@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_27_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2141433,53.5876088],[-1.2134459,53.5877126]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2142296,53.5877592],[-1.2141975,53.5876818],[-1.2141745,53.5876032]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2134138,53.5877135],[-1.2133973,53.587667],[-1.2133501,53.5876054],[-1.213316,53.5875498]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2071097,53.593421],[-1.2070719,53.5935112],[-1.2070965,53.59425],[-1.2070041,53.5946888],[-1.2065358,53.5950472],[-1.2059704,53.5953535],[-1.2056805,53.5955106],[-1.2052211,53.5957736],[-1.2050463,53.5957736],[-1.2048593,53.5958218],[-1.2048308,53.5959425],[-1.2048877,53.5960438]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2045309,53.5888962],[-1.2039984,53.5886718],[-1.203423,53.5880859]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2067945,53.5963137],[-1.2064154,53.5960586],[-1.205961,53.5957635],[-1.2059171,53.5957173],[-1.2059051,53.5956767],[-1.205917,53.5956329],[-1.2059313,53.5955856],[-1.2059432,53.595532],[-1.2059704,53.5953535]]]}}
+]
+}

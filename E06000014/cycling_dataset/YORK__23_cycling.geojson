@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "YORK__23_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0982902,54.0185955],[-1.0987555,54.0186067]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Green Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.098019,54.021477],[-1.0993198,54.0224254],[-1.0995242,54.0225406],[-1.0998783,54.0227517],[-1.100058,54.0228179],[-1.1001492,54.0228289],[-1.100235,54.0228368]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0920611,54.0197995],[-1.0921276,54.0200578]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0963828,54.0230537],[-1.0965001,54.0231459],[-1.0965339,54.0231551],[-1.0967977,54.0232271]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0978079,54.0165572],[-1.097641,54.0165648],[-1.0974673,54.0165887]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0955269,54.0273997],[-1.0954707,54.0274084],[-1.0954,54.0274037],[-1.0953044,54.0274179],[-1.094084,54.0277219]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0957552,54.027835],[-1.0956424,54.0278554]]]}}
+]
+}

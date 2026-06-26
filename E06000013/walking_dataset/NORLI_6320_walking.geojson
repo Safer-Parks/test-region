@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6320_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7148166,53.6589201],[-0.7145283,53.6589598],[-0.7132891,53.6586833],[-0.713012,53.6586062],[-0.7129579,53.6587111],[-0.71264,53.6590878],[-0.7126025,53.659141],[-0.7124898,53.659211],[-0.7123986,53.6594176],[-0.7122699,53.6595002],[-0.7120767,53.6597037],[-0.7117817,53.6600533],[-0.7115632,53.6603535]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7112124,53.6516992],[-0.7113325,53.6523702],[-0.7118865,53.6526017]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7110952,53.6517052],[-0.7112124,53.6516992]]]}}
+]
+}

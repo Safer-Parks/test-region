@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "YORK__60_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Westfield Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0871392,54.0160356],[-1.0872067,54.0160086],[-1.0872439,54.0159394],[-1.0871766,54.0156339],[-1.0870603,54.0150839],[-1.0869974,54.0147499],[-1.0869478,54.0143876],[-1.0869999,54.0137574],[-1.0870253,54.0136249],[-1.0869559,54.0131177],[-1.0868611,54.0126012],[-1.0867912,54.0122151],[-1.0867368,54.0120775],[-1.0864551,54.0116439],[-1.0862869,54.0114021],[-1.0861585,54.0111342]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0920611,54.0197995],[-1.0921276,54.0200578]]]}}
+]
+}

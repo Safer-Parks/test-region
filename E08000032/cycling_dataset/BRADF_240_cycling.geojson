@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "BRADF_240_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7151926,53.8236861],[-1.7151153,53.8236891],[-1.7150099,53.8238295],[-1.7146773,53.823915],[-1.7141408,53.8240037],[-1.7134113,53.8241081],[-1.7132396,53.8240353],[-1.7131261,53.823938],[-1.7130036,53.823763],[-1.7126916,53.823216],[-1.7121139,53.8223044]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7396417,53.8204232],[-1.7396868,53.8204647],[-1.7398806,53.8203984]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.73257,53.8234186],[-1.732469,53.8234297]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7328082,53.8232715],[-1.7328338,53.8233015],[-1.7328273,53.8233394]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7169543,53.819648],[-1.716858,53.8196602],[-1.7168105,53.819651]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7167479,53.8196388],[-1.7166369,53.8196154]]]}}
+]
+}

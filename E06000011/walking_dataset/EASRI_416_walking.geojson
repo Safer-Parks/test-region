@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "EASRI_416_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.1902564,53.9619165],[-0.1904155,53.9619545],[-0.190586,53.9621343],[-0.190724,53.9622117],[-0.1908634,53.9622196],[-0.1912229,53.9621565],[-0.1913838,53.9621739]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.1929756,53.9568879],[-0.1931123,53.9568802],[-0.1933336,53.9568502],[-0.1933149,53.9567602],[-0.1933075,53.9567129],[-0.1933075,53.9566032],[-0.1933752,53.9565314],[-0.1933417,53.9563945],[-0.1932786,53.9563933],[-0.1930869,53.9564327]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.1933417,53.9563945],[-0.1934739,53.9562809],[-0.1935118,53.9562612],[-0.1938511,53.9562024]]]}}
+]
+}

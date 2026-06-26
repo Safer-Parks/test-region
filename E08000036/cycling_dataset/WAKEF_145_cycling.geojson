@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_145_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5869808,53.691218],[-1.5865933,53.691808]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":"Wood Street","category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5826958,53.6892064],[-1.5826488,53.6892482]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.582571,53.6776909],[-1.5824354,53.6777916],[-1.5823101,53.6778896],[-1.5821878,53.6779767],[-1.5821424,53.6779951],[-1.5820776,53.6780063]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5803729,53.6790506],[-1.5811995,53.6793117]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5805959,53.679543],[-1.5809195,53.6796257]]]}}
+]
+}

@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_183_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5013486,53.5329053],[-1.5006585,53.5333063]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5006585,53.5333063],[-1.5006186,53.5333305]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5009191,53.5325052],[-1.5014418,53.5328561]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5050815,53.5350351],[-1.5048781,53.5350285],[-1.5046203,53.5349665],[-1.50414,53.5348413],[-1.5036208,53.5344603],[-1.503111,53.5340828],[-1.5018191,53.5332365],[-1.5014418,53.5328561]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4988385,53.5320707],[-1.4987552,53.5321076],[-1.4984722,53.5323798],[-1.4983138,53.5327056],[-1.498006,53.5328195],[-1.4975807,53.5331871],[-1.4975114,53.5332411]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4993927,53.5315414],[-1.4994628,53.5311844]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4979319,53.5335198],[-1.4978826,53.5335869],[-1.4980794,53.5338243],[-1.4977776,53.5341845],[-1.4974229,53.5346078],[-1.4974041,53.5347852],[-1.497223,53.5351145],[-1.4970516,53.5352803],[-1.49669,53.5355354],[-1.4960871,53.5359546],[-1.4959954,53.5361393],[-1.4960131,53.536259],[-1.4962041,53.536482],[-1.4962963,53.5366303],[-1.4962736,53.536761],[-1.4961959,53.5369218],[-1.4960519,53.5371339],[-1.4959032,53.5374273],[-1.4957806,53.5376406],[-1.4954978,53.5379703],[-1.4952385,53.538156],[-1.4948844,53.5382796],[-1.4946284,53.5384724],[-1.4943779,53.5387398],[-1.4941621,53.5391159],[-1.4933531,53.5394755]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5013486,53.5329053],[-1.5014418,53.5328561]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4862147,53.5358251],[-1.485038,53.5340058],[-1.4835977,53.5318522],[-1.4836084,53.5317976],[-1.4833806,53.5313631],[-1.4832114,53.5308877],[-1.483177,53.5305398],[-1.4830261,53.5301499],[-1.4828721,53.529889],[-1.4827003,53.5296294],[-1.482625,53.5293904],[-1.4827029,53.5289683]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"Calf Croft Green Road","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4842352,53.5302621],[-1.4844909,53.5304507],[-1.4848605,53.5304092],[-1.485152,53.530405],[-1.4855038,53.5304693],[-1.4876108,53.5313553],[-1.48943,53.5332538],[-1.4895453,53.533311],[-1.4895963,53.5334271],[-1.4911075,53.534979],[-1.4911528,53.5350124]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.484245,53.5358157],[-1.484698,53.5359689],[-1.4847475,53.5359967]]]}}
+]
+}

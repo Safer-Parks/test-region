@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_734",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 4902096975, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4755126, 53.7489569 ] } }
+]
+}

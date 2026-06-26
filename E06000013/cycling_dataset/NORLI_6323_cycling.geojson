@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6323_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7022323,53.6752529],[-0.6954858,53.6749015],[-0.6952146,53.6749015],[-0.6950145,53.6750174],[-0.6925628,53.6763496],[-0.6904333,53.6762749],[-0.6901531,53.676239],[-0.690055,53.6761449],[-0.6899897,53.67599],[-0.6900037,53.6758213]]]}}
+]
+}

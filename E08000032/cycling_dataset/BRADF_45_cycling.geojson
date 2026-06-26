@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "BRADF_45_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7414277,53.8280589],[-1.7412379,53.8285206],[-1.7412217,53.8285872],[-1.7412162,53.8286313]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.73257,53.8234186],[-1.732469,53.8234297]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7328082,53.8232715],[-1.7328338,53.8233015],[-1.7328273,53.8233394]]]}}
+]
+}

@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_60_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Hatfield Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0603672,53.5751113],[-1.0543691,53.574222],[-1.0543109,53.5742134],[-1.0542239,53.5741982],[-1.0541692,53.5741874],[-1.0539949,53.5741521],[-1.049916,53.573563]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Common Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.049916,53.573563],[-1.0475867,53.5774644],[-1.0463122,53.5781218]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0625659,53.5739803],[-1.0620901,53.5739218]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Hatfield Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.049916,53.573563],[-1.0493506,53.5734789],[-1.0375726,53.571728]]]}}
+]
+}

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_24",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 624392349, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.5114342, 53.7111168 ] } }
+]
+}

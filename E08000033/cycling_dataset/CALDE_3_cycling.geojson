@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "CALDE_3_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7905688,53.6901075],[-1.7905249,53.6900844],[-1.7904547,53.6900476],[-1.790413,53.6900189],[-1.7903705,53.6899665],[-1.7902236,53.6899329],[-1.7901654,53.6899355]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Mount Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8021135,53.6874534],[-1.8020878,53.6875042]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Mount Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8004252,53.6853688],[-1.8004738,53.6853967]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7935528,53.6861935],[-1.7934064,53.6860892],[-1.7931391,53.6858779],[-1.7929623,53.6857485],[-1.7928383,53.6856407],[-1.7927367,53.6855276],[-1.7926289,53.6853964],[-1.7925283,53.6852603],[-1.7925009,53.6852182],[-1.7924775,53.6851345],[-1.7924551,53.6850346],[-1.7923982,53.6849708],[-1.7923057,53.6848878]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8035282,53.693631],[-1.803518,53.6936439],[-1.803511,53.6936688],[-1.8035227,53.6937013],[-1.8035577,53.6937607],[-1.8035764,53.693798],[-1.8035752,53.6938333],[-1.8035554,53.6938741],[-1.8034865,53.6939957],[-1.8033429,53.694219],[-1.8031432,53.6945218],[-1.8029174,53.6948841]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.7922832,53.6928819],[-1.7925982,53.6926605]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Mount Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8004738,53.6853967],[-1.800832,53.6856027],[-1.8010737,53.685676],[-1.8015405,53.6858204],[-1.8016114,53.6858558]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Mount Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.8019663,53.6868254],[-1.8019796,53.6868596],[-1.8022464,53.6871904],[-1.8021135,53.6874534]]]}}
+]
+}

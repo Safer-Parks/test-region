@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_694",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 11949959276, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.6559417, 54.2215762 ] } },
+{ "type": "Feature", "properties": { "osm_id": 11949959277, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.65589, 54.2216095 ] } },
+{ "type": "Feature", "properties": { "osm_id": 11949959278, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.6559457, 54.2216423 ] } }
+]
+}

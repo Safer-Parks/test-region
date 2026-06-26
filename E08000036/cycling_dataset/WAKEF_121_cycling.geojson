@@ -1,0 +1,20 @@
+{
+"type": "FeatureCollection",
+"name": "WAKEF_121_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5052006,53.7059738],[-1.5039282,53.7062232]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5106533,53.7034746],[-1.5106922,53.7034848],[-1.5107112,53.7034923],[-1.5113544,53.7037112],[-1.5117627,53.7038907],[-1.5119289,53.7039729],[-1.5123526,53.7042041],[-1.5124349,53.7042446],[-1.5125679,53.704303],[-1.5130013,53.7046239],[-1.5132826,53.7048616],[-1.5136866,53.7052092],[-1.5139868,53.7054939],[-1.5141704,53.7056788],[-1.5144899,53.7059819],[-1.5145184,53.7060352],[-1.514532,53.7060837]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5125679,53.704303],[-1.5126556,53.7042654]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4984054,53.7056086],[-1.4984263,53.7057043]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.500401,53.7035864],[-1.5005076,53.7037544]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5024814,53.7031434],[-1.5026172,53.7033223]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4984263,53.7057043],[-1.4977699,53.7058116],[-1.4971745,53.7058744],[-1.4970557,53.7059001],[-1.4969679,53.7059541]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Red Hall Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5053327,53.6979753],[-1.5053402,53.6980391],[-1.5052862,53.6980424],[-1.5044545,53.6981344],[-1.5042602,53.6981538],[-1.5037651,53.6981851],[-1.5036121,53.6981878],[-1.503423,53.6981439]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Red Hall Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5042602,53.6981538],[-1.5042633,53.698167]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5006787,53.7000653],[-1.4995455,53.6996997],[-1.4995364,53.6996747],[-1.4995449,53.6996409],[-1.4997022,53.6995089],[-1.4997639,53.6994848],[-1.4998305,53.6994858],[-1.500694,53.6997512],[-1.5007261,53.6997782],[-1.5007512,53.6998267],[-1.5007436,53.6998733],[-1.5006787,53.7000653]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5008595,53.7001327],[-1.5006787,53.7000653]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5026231,53.7015465],[-1.5025936,53.7012606],[-1.5025378,53.7008763]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5068039,53.7115242],[-1.5072248,53.711405],[-1.5072705,53.7114503],[-1.5076891,53.7112586]]]}}
+]
+}

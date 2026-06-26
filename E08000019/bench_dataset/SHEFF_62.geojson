@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_62",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 8349440016, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.3586432, 53.3386793 ] } }
+]
+}

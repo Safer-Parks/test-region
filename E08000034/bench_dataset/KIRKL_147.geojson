@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_147",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 10822160167, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7811777, 53.5774766 ] } },
+{ "type": "Feature", "properties": { "osm_id": 10822160168, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7809022, 53.57803 ] } },
+{ "type": "Feature", "properties": { "osm_id": 1710510264, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7820314, 53.5780871 ] } }
+]
+}

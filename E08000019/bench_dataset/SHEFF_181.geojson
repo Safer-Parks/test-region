@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_181",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 12351064896, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4911933, 53.4621237 ] } },
+{ "type": "Feature", "properties": { "osm_id": 12351064889, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4911093, 53.4621521 ] } },
+{ "type": "Feature", "properties": { "osm_id": 12351064891, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4910432, 53.4627845 ] } }
+]
+}

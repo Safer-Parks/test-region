@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_725_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5258838,54.2373397],[-1.5260427,54.2375129],[-1.5263674,54.237878],[-1.5266811,54.2382386]]]}}
+]
+}

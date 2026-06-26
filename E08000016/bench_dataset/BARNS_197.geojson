@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_197",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 9287267852, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4435509, 53.5857284 ] } },
+{ "type": "Feature", "properties": { "osm_id": 9181381170, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4435506, 53.5860179 ] } },
+{ "type": "Feature", "properties": { "osm_id": 9181381171, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.443659, 53.5860729 ] } },
+{ "type": "Feature", "properties": { "osm_id": 9181381172, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4438024, 53.5860782 ] } },
+{ "type": "Feature", "properties": { "osm_id": 9287267854, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.4441578, 53.5861418 ] } }
+]
+}

@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_708_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4287432,54.2535082],[-1.428571,54.2534843],[-1.4285018,54.2534925],[-1.4277185,54.2536649],[-1.4275275,54.2537052],[-1.4272425,54.2537123],[-1.4270083,54.2537283],[-1.4269295,54.2537742]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4287592,54.2541663],[-1.428689,54.254061],[-1.4288559,54.2540244],[-1.4289524,54.2540096],[-1.4290179,54.254001],[-1.4290727,54.2539989],[-1.4291559,54.2539969],[-1.4292001,54.2539886],[-1.4292054,54.2539772],[-1.4292037,54.2539214],[-1.4291524,54.253849],[-1.4290975,54.2537932],[-1.429009,54.253725],[-1.4289577,54.253665],[-1.428848,54.2535854],[-1.4287896,54.2535368],[-1.4287432,54.2535082]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4288559,54.2540244],[-1.4285018,54.2534925]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4277185,54.2536649],[-1.4280131,54.2541142],[-1.4281491,54.2540861],[-1.4285339,54.2540064],[-1.4285878,54.254077],[-1.428689,54.254061]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4265309,54.2580458],[-1.4266123,54.2579827],[-1.4266495,54.257869],[-1.4266406,54.2577884],[-1.4266264,54.2577636]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4251046,54.2587818],[-1.4249918,54.2587299],[-1.424848,54.2586877],[-1.4246392,54.2586484],[-1.4245286,54.2586452]]]}}
+]
+}

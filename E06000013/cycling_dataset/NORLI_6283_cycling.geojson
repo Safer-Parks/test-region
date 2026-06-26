@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_6283_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Sand Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9329994,53.5236001],[-0.9338503,53.5251879],[-0.9340718,53.5257388]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9340718,53.5257388],[-0.931718,53.526095],[-0.9277198,53.5267553]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9277198,53.5267553],[-0.9104967,53.5295793]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9341619,53.5259708],[-0.9215428,53.5280926],[-0.9106117,53.5298619]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.92622,53.5152935],[-0.9273217,53.5150655],[-0.9273638,53.5150458],[-0.9274656,53.5147398]]]}}
+]
+}

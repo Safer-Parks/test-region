@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_279_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6013931,53.7607608],[-1.6015916,53.7606498],[-1.602289,53.7603073],[-1.6031129,53.7599475],[-1.6041602,53.7595094],[-1.6044869,53.7593845],[-1.6051059,53.7590893]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6073879,53.7493941],[-1.6074806,53.7494249],[-1.6074887,53.7495867],[-1.607486,53.7497675],[-1.6074748,53.7498469],[-1.607311,53.7499188],[-1.6072634,53.749942]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Rooms Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6059836,53.7620136],[-1.6061273,53.7617392],[-1.6061874,53.7615627],[-1.6067271,53.7605461]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5995961,53.7625081],[-1.5996431,53.7623943],[-1.5996855,53.7623105],[-1.5998717,53.7621504],[-1.6002294,53.7619727],[-1.6007754,53.7617463],[-1.6010357,53.7616449],[-1.6012516,53.7615949],[-1.6013743,53.7615649],[-1.601514,53.7615048],[-1.6016791,53.7613947],[-1.6021616,53.7612946]]]}}
+]
+}

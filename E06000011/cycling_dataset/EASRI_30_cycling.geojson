@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "EASRI_30_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3561381,53.7873807],[-0.3562117,53.7874607]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Hall Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3669007,53.7867819],[-0.365649,53.7867465],[-0.3640555,53.7867271]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Hall Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3640555,53.7867271],[-0.3636233,53.7867182],[-0.3633487,53.7867258]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Hall Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3621982,53.7868304],[-0.3620367,53.7868868]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Beverley Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3634956,53.789359],[-0.3636866,53.7897253],[-0.3637592,53.7898645],[-0.3640892,53.790576],[-0.3642411,53.7908947],[-0.3646151,53.7916122],[-0.3647296,53.7918023],[-0.3648676,53.7920097],[-0.3650041,53.7922024],[-0.3652147,53.7924489],[-0.365349,53.7925975],[-0.3654859,53.7927335],[-0.3656338,53.7928735],[-0.3658974,53.7931054],[-0.3663874,53.7935071],[-0.3675087,53.7943697],[-0.3676215,53.7944621],[-0.3677163,53.7945585],[-0.3677866,53.7946417]]]}},
+{"type":"Feature","properties":{"highway":"cycle_lane_on_street","name":"Hall Road","category":"Cycle lane on street"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.3633487,53.7867258],[-0.3625586,53.7867475],[-0.3621982,53.7868304]]]}}
+]
+}

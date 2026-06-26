@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "NORLI_21",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 13787280894, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -0.8332033, 53.608836 ] } },
+{ "type": "Feature", "properties": { "osm_id": 13787319222, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -0.8332075, 53.6088601 ] } }
+]
+}

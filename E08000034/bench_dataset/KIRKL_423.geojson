@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_423",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 8931377007, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7067793, 53.7249661 ] } }
+]
+}

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "ROTH5_107_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Scamming Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2121626,53.3880888],[-1.2121511,53.3881833],[-1.2118688,53.3883309],[-1.2110191,53.3887083],[-1.2103278,53.3889863],[-1.210209,53.3890796],[-1.210085,53.3892455],[-1.2100288,53.3892883],[-1.2099084,53.38938],[-1.2098182,53.3894873],[-1.2097402,53.3895669],[-1.2095811,53.3896564],[-1.2088023,53.3899138],[-1.2086775,53.3899965]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2149595,53.397161],[-1.2134986,53.3973439]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2152579,53.39409],[-1.2149815,53.3940062],[-1.2137263,53.3935845],[-1.2136412,53.3935738],[-1.2135482,53.3935895],[-1.2120624,53.3939031],[-1.2103043,53.3942399]]]}}
+]
+}

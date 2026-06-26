@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "YORK__80",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 12012859921, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.133995, 54.0013209 ] } },
+{ "type": "Feature", "properties": { "osm_id": 12012859920, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.1337088, 54.0013806 ] } }
+]
+}

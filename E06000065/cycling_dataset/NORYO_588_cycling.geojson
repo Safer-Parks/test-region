@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_588_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Wells Walk","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.780174,54.2478345],[-0.7801446,54.2476554],[-0.7800509,54.247139],[-0.7799998,54.2470531]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Broadrum Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7936659,54.2378831],[-0.7931402,54.2379204],[-0.7922283,54.2379016],[-0.7900388,54.2377968],[-0.789869,54.2377887],[-0.7878831,54.2376667],[-0.7839172,54.2373148]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7721818,54.2323956],[-0.7726198,54.2323215],[-0.773006,54.2322902],[-0.7734888,54.2323278],[-0.7761026,54.232678],[-0.7763708,54.2326749],[-0.7765358,54.2326414],[-0.7768939,54.2325669],[-0.7772158,54.2325481],[-0.7779158,54.232617],[-0.780193,54.2329337],[-0.781642,54.233139]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.7760026,54.2444687],[-0.775922,54.2446091],[-0.7758479,54.244738]]]}}
+]
+}

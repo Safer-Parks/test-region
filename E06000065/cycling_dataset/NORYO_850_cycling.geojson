@@ -1,0 +1,22 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_850_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6600636,54.2263023],[-1.6601368,54.2263864],[-1.6602244,54.2264871],[-1.6604528,54.226766],[-1.6609004,54.2274553],[-1.6609881,54.2275442],[-1.6610056,54.2275769],[-1.6610004,54.2276071]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6729947,54.2347992],[-1.6729497,54.2348288],[-1.6729046,54.2348584],[-1.6728652,54.2348844],[-1.6724893,54.2346663],[-1.6720114,54.2344017],[-1.6716975,54.2342738],[-1.6712125,54.2340269],[-1.6708885,54.2338608],[-1.6702373,54.2335943],[-1.6695045,54.2333077],[-1.6686934,54.2329704],[-1.6682589,54.2327885],[-1.6678818,54.2325531],[-1.667268,54.2320908],[-1.6671056,54.2319052],[-1.6665718,54.2312703],[-1.6662827,54.2308473],[-1.666214,54.230827],[-1.6661903,54.2307928],[-1.6661704,54.2307546]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6620261,54.2248043],[-1.6618475,54.2248911],[-1.6616851,54.2249811],[-1.6614697,54.225055],[-1.6611791,54.225136],[-1.6607193,54.2252639],[-1.660345,54.2253818],[-1.6596706,54.2255777],[-1.6595243,54.2256189],[-1.6594723,54.2256336]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6590371,54.2250681],[-1.6590859,54.2250539],[-1.6593233,54.2249896],[-1.6595432,54.2249222],[-1.6598651,54.224832],[-1.6601105,54.2247606],[-1.6604123,54.224665],[-1.6607677,54.2245639],[-1.661119,54.2244612],[-1.6614622,54.2243566],[-1.6615181,54.2243377]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6578467,54.2234263],[-1.6576719,54.2233467],[-1.6575085,54.2231068]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Foxholme Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.669742,54.2221663],[-1.6691501,54.2223555],[-1.6686485,54.2223387],[-1.6680471,54.2224038],[-1.6679699,54.2224056]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Foxholme Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6679699,54.2224056],[-1.6676565,54.2223888]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.658711,54.2241608],[-1.6581779,54.2243412]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6554671,54.2243879],[-1.6553443,54.2244814]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6606437,54.2213024],[-1.6597222,54.221521]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6615936,54.2277677],[-1.6621693,54.2281307],[-1.6624676,54.2284515],[-1.6631725,54.2290509],[-1.6642521,54.2298462],[-1.6651148,54.2309873],[-1.6651486,54.2310358]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6688519,54.224812],[-1.668784,54.2249318],[-1.6687598,54.2249774]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.659084,54.2193975],[-1.658836,54.2189728]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.669742,54.2221663],[-1.6726688,54.221971]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Foxholme Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6676565,54.2223888],[-1.6675099,54.2223798]]]}}
+]
+}

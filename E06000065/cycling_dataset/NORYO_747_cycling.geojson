@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_747_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4095932,54.132143],[-1.4099417,54.1330303],[-1.4100139,54.1332141]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4077682,54.1362672],[-1.4076301,54.136291],[-1.4072852,54.1363758],[-1.4065194,54.1365871],[-1.4056759,54.1368881],[-1.4045118,54.1373123],[-1.4043254,54.1373445]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":null,"category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4053629,54.1398224],[-1.4055293,54.1399262],[-1.4060248,54.1402351],[-1.4036736,54.1413479],[-1.4021946,54.1421771],[-1.4018205,54.1424491],[-1.4010702,54.1429948],[-1.3999896,54.1440743],[-1.3991361,54.145089],[-1.3988365,54.1460983],[-1.3989652,54.1473928],[-1.3993265,54.15093]]]}}
+]
+}

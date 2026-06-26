@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_336_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Damasel Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5554515,53.4442759],[-1.5552304,53.4443377],[-1.5551006,53.444353],[-1.5548911,53.4443654],[-1.5544385,53.4443921],[-1.5541115,53.4444313],[-1.5537784,53.4445073],[-1.5535831,53.4445991],[-1.5533367,53.4446826],[-1.5532952,53.4447081],[-1.5526845,53.4449959]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Storth Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5562055,53.4446781],[-1.5562218,53.4447217],[-1.556326,53.4449083],[-1.5564857,53.4451945],[-1.5570742,53.4461265],[-1.5574299,53.4466898],[-1.5579878,53.4469965],[-1.5583311,53.4473926]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Storth Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5561676,53.4446177],[-1.5562055,53.4446781]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Storth Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5561676,53.4446177],[-1.5561384,53.4445574]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.551426,53.4422547],[-1.551668,53.4423497],[-1.5517878,53.442373],[-1.5519294,53.4423696],[-1.5521613,53.4423313],[-1.5524516,53.4422298],[-1.5527162,53.4421169],[-1.5528325,53.4420559],[-1.552929,53.4419923],[-1.5531586,53.441841]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Farhouse Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.553351,53.4354823],[-1.5535423,53.4351302],[-1.553659,53.4349424],[-1.5537998,53.4348537],[-1.5540344,53.4347977],[-1.5544556,53.4348177],[-1.554803,53.4348433],[-1.555036,53.4348305],[-1.5552694,53.4347226],[-1.5556705,53.4345508],[-1.5560957,53.4343904],[-1.5566257,53.4342865],[-1.5572869,53.4341411],[-1.5575552,53.4340924],[-1.5580203,53.4341163],[-1.5587672,53.4342284],[-1.5592825,53.434334],[-1.5596648,53.4343892]]]}}
+]
+}

@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_150_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9813356,53.5895203],[-0.9781135,53.5888878],[-0.9766468,53.5875646],[-0.9765853,53.5875091],[-0.9725731,53.5838892]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Stanhurst Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-0.9654869,53.5820094],[-0.9656091,53.5821927],[-0.9658642,53.5826323],[-0.9663195,53.5834858],[-0.9667893,53.5842471],[-0.9669805,53.5846005],[-0.9670483,53.5847765],[-0.9672654,53.5857189],[-0.9675666,53.5869361],[-0.9679417,53.5883447]]]}}
+]
+}

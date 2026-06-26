@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "NORYO_292",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 12337448017, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.1903751, 53.9127083 ] } },
+{ "type": "Feature", "properties": { "osm_id": 12337448018, "name": null, "amenity": null, "man_made": null, "leisure": "picnic_table", "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.1901954, 53.9127289 ] } }
+]
+}

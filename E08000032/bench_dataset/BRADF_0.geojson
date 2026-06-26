@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "BRADF_0",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 12912785042, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.8256446, 53.8306016 ] } },
+{ "type": "Feature", "properties": { "osm_id": 12912802033, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.8272539, 53.8309221 ] } }
+]
+}

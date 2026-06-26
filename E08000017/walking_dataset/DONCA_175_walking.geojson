@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_175_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0326049,53.4363194],[-1.0325495,53.4364186],[-1.0325539,53.4364655],[-1.0326281,53.4365222],[-1.0326745,53.4366097],[-1.0364048,53.4443517],[-1.0367599,53.445082],[-1.0369845,53.445544]]]}},
+{"type":"Feature","properties":{"highway":"footway","name":null,"category":"Footpath (pedestrian only)"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0456609,53.4449677],[-1.0514055,53.444513],[-1.0517934,53.4444823],[-1.0550335,53.4442778],[-1.0563639,53.4446996],[-1.0565141,53.4451213],[-1.0564927,53.445428],[-1.0559777,53.4459904],[-1.0515359,53.4463354],[-1.0516218,53.4488657],[-1.0515789,53.4493257],[-1.0528663,53.4499136],[-1.0525468,53.4509269]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0514746,53.4454785],[-1.046708,53.4462459],[-1.0463217,53.4459648],[-1.0458154,53.4459527]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0458856,53.4463997],[-1.04291,53.4465782],[-1.0427598,53.4482012],[-1.0427598,53.4500669],[-1.0425487,53.451153]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.04291,53.4465782],[-1.0377172,53.4467571],[-1.0326746,53.4469872],[-1.0292414,53.447575],[-1.028444,53.4477167]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.0480062,53.4380252],[-1.0497335,53.4404564],[-1.0516432,53.4404308],[-1.0538319,53.4405842],[-1.05557,53.4408398],[-1.0571364,53.4400857]]]}}
+]
+}

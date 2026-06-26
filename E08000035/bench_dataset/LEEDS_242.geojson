@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "LEEDS_242",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": 7717833289, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7066688, 53.8760271 ] } },
+{ "type": "Feature", "properties": { "osm_id": 7717833291, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7068814, 53.8760279 ] } },
+{ "type": "Feature", "properties": { "osm_id": 7717833288, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.706876, 53.8760419 ] } },
+{ "type": "Feature", "properties": { "osm_id": 7717833290, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.7066735, 53.8760425 ] } }
+]
+}

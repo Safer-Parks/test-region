@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "SHEFF_342_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":"Stone Moor Road","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6067319,53.4745275],[-1.6065235,53.4743663],[-1.606273,53.4742357],[-1.6058991,53.4740935],[-1.6052382,53.4738482],[-1.6050389,53.4737309]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.5932016,53.4679741],[-1.5931799,53.468093],[-1.5931812,53.4683956],[-1.5931839,53.4686303],[-1.5931517,53.4693679],[-1.5931329,53.46951],[-1.5931222,53.4700816],[-1.5931088,53.4704057]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6070214,53.4737767],[-1.6070643,53.4734662],[-1.6070603,53.473443],[-1.606721,53.4732131],[-1.60643,53.4730447]]]}}
+]
+}

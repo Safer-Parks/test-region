@@ -1,0 +1,22 @@
+{
+"type": "FeatureCollection",
+"name": "KIRKL_67_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6020516,53.5852498],[-1.6015645,53.5847512],[-1.6013634,53.5845454],[-1.6013206,53.5845016],[-1.6012037,53.5843819]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Langley Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6211487,53.5935523],[-1.6210182,53.5933488],[-1.6209224,53.5931944],[-1.6208089,53.593065],[-1.6205237,53.5929228]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6036989,53.5928487],[-1.6036683,53.5926865],[-1.6035742,53.5926118],[-1.603388,53.5924682],[-1.603382,53.5924165],[-1.6034045,53.5923181]]]}},
+{"type":"Feature","properties":{"highway":"cycleway","name":null,"category":"Dedicated cycleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6232531,53.5939564],[-1.6230318,53.5939492],[-1.6227341,53.5939278],[-1.6225759,53.5939214],[-1.6225532,53.5939236],[-1.6223774,53.5939405],[-1.6219469,53.5939652],[-1.6213105,53.5940362]]]}},
+{"type":"Feature","properties":{"highway":"track","name":"Back Lane","category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6063086,53.5992885],[-1.6065298,53.5991174],[-1.6067625,53.5989664],[-1.6070426,53.5988078],[-1.6074046,53.5986627],[-1.6076037,53.598576],[-1.6078322,53.5984777],[-1.6079875,53.5983977],[-1.6081358,53.598297]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Langley Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6220432,53.5970836],[-1.6219425,53.5970955],[-1.6214592,53.5972127],[-1.6198942,53.5975924],[-1.6192586,53.5977827]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6045135,53.5886431],[-1.6044166,53.5887094]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6044166,53.5887094],[-1.6043458,53.5887403],[-1.6042725,53.5887708],[-1.6041981,53.5888092],[-1.6041816,53.5888515]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6068713,53.5828257],[-1.6069358,53.5828824],[-1.6071839,53.583046],[-1.6076438,53.583498],[-1.6079255,53.5837389]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6172944,53.5857435],[-1.6170638,53.5858098],[-1.6169747,53.5858521]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6212888,53.5847813],[-1.6213424,53.5848268],[-1.6213575,53.5849049],[-1.6212101,53.58548],[-1.6211369,53.5855347],[-1.6210352,53.5855524],[-1.6204384,53.5855767],[-1.6196772,53.585594],[-1.6188482,53.5856755],[-1.6185424,53.5857017],[-1.618296,53.5857003],[-1.6174753,53.5857295],[-1.6172944,53.5857435]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6137204,53.5884897],[-1.6135493,53.588746],[-1.6133543,53.5890428]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.614754,53.5811602],[-1.6148128,53.5811452],[-1.615034,53.581088],[-1.6154965,53.5809422]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6141976,53.5930839],[-1.6142125,53.5930397],[-1.6141829,53.5929743],[-1.6140276,53.5927157]]]}},
+{"type":"Feature","properties":{"highway":"bridleway","name":"Langley Lane","category":"Bridleway"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.6192586,53.5977827],[-1.6190159,53.5977992],[-1.6185971,53.5979268],[-1.6174568,53.5983916]]]}}
+]
+}

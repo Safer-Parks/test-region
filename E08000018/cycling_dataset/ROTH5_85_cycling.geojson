@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "ROTH5_85_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":"The Balk","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.3746392,53.4568352],[-1.3745046,53.4571377],[-1.3743837,53.4573152],[-1.3729164,53.4587493],[-1.3724271,53.4592042],[-1.3720934,53.459546]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.3652212,53.465261],[-1.3651231,53.4653073],[-1.3626507,53.466457],[-1.3622091,53.4667313],[-1.3618822,53.4669276],[-1.3619103,53.4670236],[-1.3619378,53.4671175]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.3715864,53.4602239],[-1.3714753,53.4603286],[-1.3711932,53.4604501],[-1.3695827,53.462113],[-1.3691669,53.4624752],[-1.3685853,53.4630922],[-1.3679976,53.4635699],[-1.3665752,53.4645656],[-1.3664117,53.4645729]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"The Balk","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.372032,53.4596887],[-1.371941,53.4598417],[-1.3717597,53.4600665],[-1.3715864,53.4602239]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"The Balk","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.3720934,53.459546],[-1.372032,53.4596887]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.3670703,53.4736178],[-1.3681262,53.4720965]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.3681262,53.4720965],[-1.3684882,53.4717665],[-1.3687866,53.471523],[-1.3675494,53.4709103],[-1.3652058,53.4697341],[-1.3640495,53.4691457],[-1.364037,53.4690647],[-1.3639299,53.4689737],[-1.361529,53.467741]]]}}
+]
+}

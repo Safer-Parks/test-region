@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "BARNS_437_cycling",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4812157,53.5383543],[-1.4811652,53.5383814],[-1.4810901,53.5384547],[-1.480964,53.538646],[-1.4806636,53.5389169],[-1.4806161,53.5389659],[-1.4804919,53.5390939],[-1.4804485,53.5391385],[-1.4802747,53.539317],[-1.4801164,53.5395434],[-1.4800344,53.5396647],[-1.4800011,53.5397139],[-1.4798804,53.5398303],[-1.4796748,53.5399375]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4821896,53.5405469],[-1.4820643,53.5405431],[-1.481269,53.5402123],[-1.4809642,53.5401099],[-1.4800344,53.5396647],[-1.4791837,53.53917]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4790012,53.5392361],[-1.4791837,53.53917],[-1.4792969,53.5391566],[-1.4794796,53.5391772],[-1.4796392,53.5391772],[-1.4798027,53.5391634],[-1.4799142,53.5391783],[-1.4800758,53.5391566],[-1.4803008,53.5391634],[-1.4804485,53.5391385]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4807612,53.5383912],[-1.4808245,53.5383959],[-1.481172,53.5383312],[-1.4812157,53.5383543]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4808245,53.5383959],[-1.4810901,53.5384547],[-1.4812299,53.5385029],[-1.481965,53.5396911]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4807612,53.5383912],[-1.4807223,53.5386065],[-1.4806133,53.5388913],[-1.4806161,53.5389659]]]}},
+{"type":"Feature","properties":{"highway":"path","name":"Calf Croft Green Road","category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4842352,53.5302621],[-1.4844909,53.5304507],[-1.4848605,53.5304092],[-1.485152,53.530405],[-1.4855038,53.5304693],[-1.4876108,53.5313553],[-1.48943,53.5332538],[-1.4895453,53.533311],[-1.4895963,53.5334271],[-1.4911075,53.534979],[-1.4911528,53.5350124]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4909829,53.5440028],[-1.4913596,53.5440202],[-1.4913152,53.5438972]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4913596,53.5440202],[-1.4914732,53.544209]]]}},
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.4836888,53.5424176],[-1.483659,53.5424679],[-1.4837906,53.5425461],[-1.4837214,53.5426812],[-1.4837415,53.5428693],[-1.483703,53.542977],[-1.4836848,53.5432673]]]}},
+{"type":"Feature","properties":{"highway":"track","name":null,"category":"Track"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.484245,53.5358157],[-1.484698,53.5359689],[-1.4847475,53.5359967]]]}}
+]
+}

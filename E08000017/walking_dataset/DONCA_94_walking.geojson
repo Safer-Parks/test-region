@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "DONCA_94_walking",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{"type":"Feature","properties":{"highway":"path","name":null,"category":"Shared path"},"geometry":{"type":"MultiLineString","coordinates":[[[-1.2211251,53.541028],[-1.2209335,53.5398724],[-1.2208795,53.5392954],[-1.2202562,53.537087],[-1.2199266,53.5361003],[-1.2194231,53.535395],[-1.2191893,53.5352311],[-1.2167979,53.5336958],[-1.2164443,53.5334393],[-1.2151477,53.5323235]]]}}
+]
+}
