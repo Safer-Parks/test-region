@@ -3,8 +3,6 @@
 "name": "NORYO_113",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "osm_id": 1816542309, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.9106005, 54.2910334 ] } },
-{ "type": "Feature", "properties": { "osm_id": 8928576733, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.9105576, 54.2912251 ] } },
-{ "type": "Feature", "properties": { "osm_id": 1745255154, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.9107404, 54.291228 ] } }
+{ "type": "Feature", "properties": { "osm_id": 1816542309, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.9106005, 54.2910334 ] } }
 ]
 }

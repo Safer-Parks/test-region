@@ -4,10 +4,10 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "osm_id": 11942044694, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0802371, 53.9619566 ] } },
+{ "type": "Feature", "properties": { "osm_id": 1474210076, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0801424, 53.9619625 ] } },
 { "type": "Feature", "properties": { "osm_id": 11942034458, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0803432, 53.9619943 ] } },
 { "type": "Feature", "properties": { "osm_id": 11942034460, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0805077, 53.9620507 ] } },
 { "type": "Feature", "properties": { "osm_id": 5891096616, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0802777, 53.9620701 ] } },
-{ "type": "Feature", "properties": { "osm_id": 11942034461, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0806751, 53.9621079 ] } },
 { "type": "Feature", "properties": { "osm_id": 5891096615, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0803787, 53.9621171 ] } },
 { "type": "Feature", "properties": { "osm_id": 11942034459, "name": null, "amenity": "bench", "man_made": null, "leisure": null, "playground": null, "memorial": null }, "geometry": { "type": "Point", "coordinates": [ -1.0804505, 53.9621662 ] } }
 ]
