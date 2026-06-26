@@ -1013,18 +1013,36 @@
                 Toilet data comes from Toilet map (https://www.toiletmap.org.uk/dataset) © 2025 –CC BY 4.0. No changes made to the data,
                 but spatially filtered to only show toilets within a 15 minute walk of the park.
                 For more information, see https://www.toiletmap.org.uk/.
+            </div>
         </div>
     </div>
 
     <div class="modal-overlay" id="modal-benchFacilities">
         <div class="modal-box">
             <button class="modal-close-btn" aria-label="Close modal">&times;</button>
-            <h3 class="modal-title">Benches</h3>
+            <h3 class="modal-title">Benches &amp; Picnic Tables</h3>
             <div class="modal-content" id="content-benchFacilities">
-                Locations of benches within the park and nearby. Benches provide places to rest and enjoy the park's green space.
-                <hr>
-                Bench data comes from OpenStreetMap (https://www.openstreetmap.org/) © 2025 –ODbL. Data is spatially filtered to show benches within the park and immediate surroundings.
-                For more information about the data source, visit https://www.openstreetmap.org/.
+                <section id="what-is-this-layer-10" class="level3">
+                <h3 class="anchored" data-anchor-id="what-is-this-layer-10">What is this layer?</h3>
+                <p>The location of seating within parks. The layer is displayed as points.</p>
+                </section>
+                <section id="how-to-use-this-information-10" class="level3">
+                <h3 class="anchored" data-anchor-id="how-to-use-this-information-10">How to use this information</h3>
+                <p>Seating encourages people to spend time in the park, supporting activity, comfort and a sense of belonging. Well-used seating areas can also provide greater ‘eyes on the park’, helping spaces feel safer.</p>
+                <p>Use this layer to understand where seating is—and is not—located within your chosen park. Consider:</p>
+                <ul>
+                <li><p><strong>Gaps in seating:</strong> Are there areas with no or limited seating? Lack of seating may discourage use, particularly by women, older people, parents, and disabled users (See <a href="https://www.greenflagaward.org/media/j0mbuudi/250908_safer-parks_pcpi_single.pdf#page=44">Belonging and Familiarity: The Safer Parks guidance</a>).</p></li>
+                <li><p><strong>Location and safety:</strong> Is seating located in visible, well-lit areas? Seating in concealed or isolated spots may feel unsafe or attract unwanted behaviour (See <a href="https://www.greenflagaward.org/media/j0mbuudi/250908_safer-parks_pcpi_single.pdf#page=24">Visibility and Openness: The Safer Parks guidance</a>)</p></li>
+                <li><p><strong>Accessibility and diversity of seating:</strong> Does the type and distribution of seating meet a range of needs? Features such as circular seating, back-rests accessible picnic tables, and shelter from sun or rain can support inclusive use. Consider this alongside the Demographics Data layer (See <a href="https://www.greenflagaward.org/media/j0mbuudi/250908_safer-parks_pcpi_single.pdf#page=52">Access and Location: The Safer Parks guidance</a>).</p></li>
+                </ul>
+                </section>
+                <section id="what-layers-could-be-combined-8" class="level3">
+                <h3 class="anchored" data-anchor-id="what-layers-could-be-combined-8">What layers could be combined?</h3>
+                <p>For deeper insight, use alongside the <em>Visibility Analysis, Foliage,</em> <em>Predicted Route Popularity</em>, and <em>Street Lighting</em> layers.</p>
+                <h3 class="anchored" data-anchor-id="where-is-the-data-from-2">Where is the data from?</h3>
+                <p>This layer uses Ordnance Survey and OpenStreetMap.</p>
+                </section>
+            </div>
         </div>
     </div>
 
@@ -2676,7 +2694,7 @@
                     // Store layer info for toggling
                     mapState.benchesLayer = {
                         id: 'benches',
-                        name: 'Benches',
+                        name: 'Benches & Picnic Tables',
                         layer: benchGroup,
                         visible: false
                     };
@@ -4315,7 +4333,7 @@
                     // circle.style.borderRadius = '50%';
                     
                     benchMarker.appendChild(square);
-                    benchMarker.appendChild(document.createTextNode('Benches'));
+                    benchMarker.appendChild(document.createTextNode('Benches & Picnic Tables'));
                     
                     benchGroup.appendChild(benchMarker);
                     legendItems.appendChild(benchGroup);
